@@ -28,7 +28,7 @@
 
 <div id="site" class="grid_24">
 
-    <div id="header" class="grid_24 header">
+    <div id="header" class="grid_24 header" style="margin-left:0px">
     <div id="test" class="grid_24">
 	<div id="logo"class="grid_9">
 		<a name="yourethetop"></a>

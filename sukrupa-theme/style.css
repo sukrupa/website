@@ -4,6 +4,9 @@ Description: The default theme for Sukrupa.
 Author: ThoughtWorks
 Version: 0.1
 */
+#site{
+    background-color: white;
+}
 
 body {
     background-color: #24333D;
@@ -114,9 +117,7 @@ height:400px;
 position:relative;
 }
 
-#sidebar{
-    background-color: #24333D;
-}
+
 
 .sidebarheader {
     background-color: #4991C9;
