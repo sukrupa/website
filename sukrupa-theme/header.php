@@ -28,8 +28,8 @@
 
 <div id="site" class="grid_24">
 
-<div id="header" class="grid_24 header">
-    <div class="grid_24">
+    <div id="header" class="grid_24 header">
+    <div id="test" class="grid_24">
 	<div id="logo"class="grid_9">
 		<a name="yourethetop"></a>
 		<a class="yellowtext masthead" href="<?php echo get_option('home'); ?>/">
@@ -37,8 +37,8 @@
         
                 <div class="grid_15" style="float:right;">
 
-                <div  class="grid_15" style="float: right;">
-                    <a href="#">Home</a> | <a href="#">Contact Us</a> | <a href="#">Login</a> </div><br/>
+                <div  class="grid_15" style="float: right; color: white;">
+                    <a href="#" class="cornerlinks">HOME</a> | <a href="#" class="cornerlinks">Contact Us</a> | <a href="#" class="cornerlinks">Login</a> </div><br/>
 
 		<div id="searchbox" class="grid_15" style="float: right;">
 		    <form id="searchpane" action="<?php echo get_option('home'); ?>" method="get" class="grid_10">
@@ -55,18 +55,19 @@
     <br/>
 
    <div class="links grid_24">
-        <div class="grid_18">
-            <img src="http://placehold.it/15x15" alt="home" class="grid_3"></img>
-            <a href="#" class="grid_3">who we are</a>
-            <a href="#" class="grid_3">volunteer with us</a>
-            <a href="#" class="grid_3">blog</a>
-            <a href="#" class="grid_3">sponsorship</a>
-            <a href="#" class="grid_3">events</a>
+        <div class="grid_18" style="width: 75%">
+            <img src="http://placehold.it/15x15" alt="home" class="grid_3 headerlinks"></img>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#" class="grid_3 headerlinks">who we are&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a href="#" class="grid_3 headerlinks">volunteer with us&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a href="#" class="grid_3 headerlinks">blog&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a href="#" class="grid_3 headerlinks">sponsorship&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a href="#" class="grid_3 headerlinks">events</a>
         </div>
-        <div class="createopportunity grid_6">
-            <a href="#">create an opportunity</a>
+        <div class="grid_6" style="float:right; ">
+            <a href="#" class="createopportunitylink" >create an opportunity</a>
         </div>
     </div>
-	
+</div>
+
 
     <div id="content" class="container_24">

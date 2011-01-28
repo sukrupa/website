@@ -11,10 +11,11 @@ body {
     font-family: "century gothic",verdana,arial,helvetica,sans-serif;
 }
 .header {
+    width: 100%;
     background-color: #24333D;
     font-family: “Myriad Pro”, Arial, Helvetica, Tahoma, sans-serif;
 }
-div {
+.loop {
     background-color: white;
 }
 .yellowtext{
@@ -23,7 +24,44 @@ div {
 }
 .masthead {
     text-decoration: none;
+    letter-spacing: -10px;
+    font-size: 28px;
 }
+
+#footer {
+    background-color:white;
+}
+
+.headerlinks {
+    font-weight: bold;
+    color:white;
+}
+
+a {
+    text-decoration: none;
+}
+
+.links {
+    width: 100%;
+    background-color: #254965;
+}
+
+.cornerlinks {
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-size: 10pt;
+    color: white;
+}
+
+.createopportunitylink {
+    background-color:  #F7C321;
+    font-weight: bold;
+    color:white;
+}
+
+.content {
+    width: 100%;
+}
+
 #photocarousel{
 height:250px;
 float:left;
@@ -47,6 +85,17 @@ color:white;
 }
 
 .statistic{
+    text-align: center;
+    font-size: 17pt;
+    font-weight: bold;
+    color: white;
+    background-color: #231F20;
+    opacity:0.75;filter:alpha(opacity=75);
+}
+
+h2 {
+    color: #254965;
+    text-align: center;
 }
 
 #medianewswrapper{
@@ -66,8 +115,26 @@ position:relative;
 }
 
 #sidebar{
-    float: right;
-    top:0px;
+    background-color: #24333D;
+}
+
+.sidebarheader {
+    background-color: #4991C9;
+    color: #F9DD85;
+}
+.space{
+    margin:0px;
+    padding:0px;
+    background-color: white;
+}
+.sidebaritem{
+    background-color:#E6E7E8;
+}
+#side{
+    background-color:cyan;
+}
+#test{
+    width:100%;
 }
 
 /* 24-column Grid System styles below */

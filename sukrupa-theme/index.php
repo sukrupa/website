@@ -1,3 +1,4 @@
+
 <?php get_header(); ?>
 
 <script type="text/javascript" src="http://www.stockyardmagazine.com/_assets/scripts/jq-homefeatured.js"></script>
@@ -9,8 +10,8 @@ $(document).ready(function() {
 	});
 });
 </script>
-
-<div class="grid_18">
+<br/>
+<div class="loop grid_18">
 <?php $query = new WP_Query('showposts=3&meta_key=carousel'); ?>
 <div id="photocarousel" class="grid_18">
     <?php
@@ -44,7 +45,8 @@ if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(
     endif;
 ?>
 </div>
+   
 </div>
-    <?php get_sidebar();
+    <?php
+    get_sidebar();
     get_footer(); ?>
-</div>
