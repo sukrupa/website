@@ -10,7 +10,9 @@ if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(
 endwhile;
 endif;
 ?>
-</div> 
+</div>
+
+    <div>&nbsp;</div>
    
 <div id="howhelpsidebar" class="sidebaritem grid_6">
     <div class="sidebarheader" style="margin-left:0px">How Can I Help?</div>
@@ -19,7 +21,7 @@ endif;
     <a href="#">View our Shop</a><br/>
 </div>
 
-
+    <div>&nbsp;</div>
 
     <?php
 $query = new WP_Query('showposts=3&meta_key=events');
@@ -31,6 +33,9 @@ endwhile;
 endif;
 ?>
 </div>
+
+    <div>&nbsp;</div>
+
 
 <?php
 $query = new WP_Query('showposts=1&meta_key=studentdisplay');

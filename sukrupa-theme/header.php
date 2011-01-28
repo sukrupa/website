@@ -24,7 +24,7 @@
 </head>
 
 <body onload="">
-<div id="wrapper">
+<div id="wrapper" style="width:960px;margin: 0 auto">
 
 <div id="site" class="grid_24">
 
