@@ -12,7 +12,7 @@ Version: 0.2a
 @import url('import.css');
 
 body{background-color: #24333D; font-size: 12px; font-family: "century gothic",verdana,arial,helvetica,sans-serif; line-height: normal;}
-a{}
+a{text-decoration: none;}
 a.hover{}
 h1{}
 h2{text-align: center; color: #254965; font-size: 16px; display: block; margin: 5px 0 10px; border-bottom: 2px solid silver;}
@@ -43,7 +43,7 @@ a#yt{ background: url(img/18px_sprites.png) no-repeat -36px left; }
 #donateLink { background-color:  #c94a53; font-weight: bold; float:right; padding: 6px 42px 5px 42px; margin-top: -5px; -webkit-border-bottom-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-bottomleft: 4px; -moz-border-radius-topright: 4px; border-bottom-left-radius: 4px; border-top-right-radius: 4px;}
 
 
-#content { background: #F7F7F5; }
+#content { background: #F7F7F5; padding-top: 15px;}
 #photocarousel{ height:350px; float:left; width: 100%;}
 .carouselEntry{max-height: 350px; position: relative;}
 .carouselImage{ z-index:0; left:40px; position:relative; color:blue;}
@@ -52,19 +52,14 @@ a#yt{ background: url(img/18px_sprites.png) no-repeat -36px left; }
 .container{margin-left: 0; margin-right: 0;}
 .col{ min-height:250px; float: left; margin-top: 15px;}
 
+#sidebar{width: 220px; float: left;}
+#sidebar .grid_6{width: 210px;}
+.sidebarHeader { background-color: #4991C9; color: #F9DD85; padding: 5px; font-size: 1.1em; text-indent: 5px;}
 
-#footer {
-    background-color:white;
-}
+.sidebarGuts{background: #e6E7E8; padding: 10px;}
+.sidebarEntry{width: 220px; float: left;}
 
-.headerlinks {
-    font-weight: bold;
-    color:white;
-}
-
-a {
-    text-decoration: none;
-}
+#footer {}
 .statistic{
     text-align: center;
     font-size: 17pt;
@@ -72,30 +67,4 @@ a {
     color: white;
     background-color: #231F20;
     opacity:0.75;filter:alpha(opacity=75);
-}
-
-
-
-
-
-
-
-
-.sidebarheader {
-    background-color: #4991C9;
-    color: #F9DD85;
-}
-.space{
-    margin:0px;
-    padding:0px;
-    background-color: white;
-}
-.sidebaritem{
-    background-color:#E6E7E8;
-}
-#side{
-    background-color:cyan;
-}
-#test{
-    width:100%;
 }
