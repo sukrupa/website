@@ -18,7 +18,7 @@ Initial results are largely positive.
 
 SHORT TAGS
 <? ... ?>
-Not to be used, since not all web hosts support them. Use :
+Not to be used, since not all web hosts support them. Use:
 
 <?php ... ?>
 Instead.
@@ -35,3 +35,6 @@ Type commenting for informative messages and developer info.
 
 // Single line comments.
 For warnings or critical information.
+
+FILE PERMISSIONS
+I'm not sure what the effect of permissions on a Windows box is, but 755 is web viewable for *nix.
