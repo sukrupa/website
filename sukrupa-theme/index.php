@@ -2,12 +2,14 @@
 
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.min.js"></script>
 <script type="text/javascript">
+/*
 $(document).ready(function() {
     $('#photocarousel').cycle({
 		fx:'fade',
 		timeout:2000
 	});
 });
+*/
 </script>
 
 <div class="loop grid_18">

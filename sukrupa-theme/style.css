@@ -9,36 +9,30 @@ Version: 0.2a
 @author Shefali Kakodkar
 */
 
-@import url('import.css')
+@import url('import.css');
 
-body {
-    background-color: #24333D;
-    font-size: 11pt;
-    font-family: "century gothic",verdana,arial,helvetica,sans-serif;
-}
-
-#site{
-    background-color: white;
-}
+body{background-color: #24333D; font-size: 12px; font-family: "century gothic",verdana,arial,helvetica,sans-serif; line-height: normal;}
+#wrapper{ clear: both; margin: 0 auto; position: relative; width: 960px; }
+#site{ float: left; }
 
 
-#header {
-    width: 100%;
-    background-color: #24333D;
-    font-family: “Myriad Pro”, Arial, Helvetica, Tahoma, sans-serif;
-}
-.loop {
-    background-color: white;
-}
-.yellowtext{
-    color:  #F7C321;
-    background-color: #24333D;
-}
-.masthead {
-    text-decoration: none;
-    letter-spacing: -10px;
-    font-size: 28px;
-}
+#header {font-family: “Myriad Pro”, Arial, Helvetica, Tahoma, sans-serif; height: 95px;}
+#logo h1 a{height:60px; width: 230px; background: url(img/opportunities_logo.png) no-repeat 0 0; margin: 10px 0 0 45px; float: left; text-indent: 9999px;}
+.cornerlinks { font-family: "Arial Narrow", Arial, sans-serif; font-size: 10px; color: #cecece; text-align: right; margin-top: 10px;}
+.cornerlinks a{color: #ececec; padding: 3px;}
+#search a{height: 18px; width: 18px;text-indent: -9999px !important;}
+#searchInput{ background-color: #24333D; color: #ececec; font-size: 9px; border: 1px solid #ececec; height: 13px; width: 163px; margin: 0;}
+#searchSubmit{ background: url(img/18px_sprites.png) no-repeat -54px left; height: 18px; width: 18px; text-indent: 9999px; border: none; margin: 0;}
+a#fb{background: url(img/18px_sprites.png) no-repeat -18px left; margin-right: 7px;}
+a#twi{ background: url(img/18px_sprites.png) no-repeat top left; margin-right: 7px; }
+a#yt{ background: url(img/18px_sprites.png) no-repeat -36px left; margin-right: 7px;}
+
+#navigation { width: 100%; background-color: #254965; height: 25px;}
+
+
+
+.loop { background-color: white; }
+
 
 #footer {
     background-color:white;
@@ -53,16 +47,9 @@ a {
     text-decoration: none;
 }
 
-.links {
-    width: 100%;
-    background-color: #254965;
-}
 
-.cornerlinks {
-    font-family: "Arial Narrow", Arial, sans-serif;
-    font-size: 10pt;
-    color: white;
-}
+
+
 
 .createopportunitylink {
     background-color:  #F7C321;
@@ -70,9 +57,7 @@ a {
     color:white;
 }
 
-.content {
-    width: 100%;
-}
+#content { background: #F7F7F5; }
 
 #photocarousel{
 height:250px;
