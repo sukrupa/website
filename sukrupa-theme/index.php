@@ -1,16 +1,15 @@
-
 <?php get_header(); ?>
 
-<script type="text/javascript" src="http://www.stockyardmagazine.com/_assets/scripts/jq-homefeatured.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
     $('#photocarousel').cycle({
 		fx:'fade',
-		timeout:500
+		timeout:2000
 	});
 });
 </script>
-<br/>
+
 <div class="loop grid_18">
 <?php $query = new WP_Query('showposts=3&meta_key=carousel'); ?>
 <div id="photocarousel" class="grid_18">
