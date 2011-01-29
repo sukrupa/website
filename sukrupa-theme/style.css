@@ -12,6 +12,11 @@ Version: 0.2a
 @import url('import.css');
 
 body{background-color: #24333D; font-size: 12px; font-family: "century gothic",verdana,arial,helvetica,sans-serif; line-height: normal;}
+a{}
+a.hover{}
+h1{}
+h2{text-align: center; color: #254965; font-size: 16px; display: block; margin: 5px 0 10px; border-bottom: 2px solid silver;}
+h4 { color: #254965; text-align: center; }
 #wrapper{ clear: both; margin: 0 auto; position: relative; width: 960px;}
 #site{ float: left; overflow: none;}
 
@@ -35,7 +40,7 @@ a#yt{ background: url(img/18px_sprites.png) no-repeat -36px left; }
  *  AHHHHHHH!!! Negative margin! Here be dragons, etc.
  */
 #homeLink{height:20px; width: 40px; background: url(img/home_button.png) no-repeat top right; float: left; text-indent: -9999px; margin-top: -2px; }
-#donateLink { background-color:  #c94a53; font-weight: bold; float:right; padding: 6px 35px 5px 35px; margin-top: -5px; -webkit-border-bottom-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-bottomleft: 4px; -moz-border-radius-topright: 4px; border-bottom-left-radius: 4px; border-top-right-radius: 4px;}
+#donateLink { background-color:  #c94a53; font-weight: bold; float:right; padding: 6px 42px 5px 42px; margin-top: -5px; -webkit-border-bottom-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-bottomleft: 4px; -moz-border-radius-topright: 4px; border-bottom-left-radius: 4px; border-top-right-radius: 4px;}
 
 
 #content { background: #F7F7F5; }
@@ -45,7 +50,7 @@ a#yt{ background: url(img/18px_sprites.png) no-repeat -36px left; }
 .carouselText{ position:absolute; bottom: 0px; z-index:10; opacity:0.4;filter:alpha(opacity=40); background-color: black; color:white; max-width: 330px; max-height: 125px; padding:10px; }
 
 .container{margin-left: 0; margin-right: 0;}
-
+.col{ min-height:250px; float: left; margin-top: 15px;}
 
 
 #footer {
@@ -69,12 +74,10 @@ a {
     opacity:0.75;filter:alpha(opacity=75);
 }
 
-h3 { color: #254965; text-align: center; }
 
 
-#media{ min-height:400px; float: left;}
 
-#news{ height:400px; float: left;}
+
 
 
 

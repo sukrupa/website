@@ -18,14 +18,14 @@ $(document).ready(function() {
     	<div class="carouselEntry">
     		<img src="<?php echo $featuredPhoto; ?>" id="<?php echo $post->ID; ?>-photo" alt="Featured Photo" width="665" height="350" class="carouselImage"/>
       		<div id="post-<?php echo $post->ID; ?>" class="carouselText">
-        		<?php the_title('<h2>', '</h2>', true);
+        		<?php the_title('<h3>', '</h3>', true);
 			          the_excerpt(); ?>
       		</div>
     	</div>
 	<?php endwhile; endif; ?>
 	</div>
 	
-	<div id="media" class="grid_9 container">
+	<div class="grid_9 container col">
 	    <h2>Photos and Media</h2>
 	    <?php $query = new WP_Query('category_name=media&showposts=5');
 	    if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
@@ -34,8 +34,8 @@ $(document).ready(function() {
 	    endif;?>
 	</div>
 	
-	<div id="news" class="grid_9 container">
-	    <h2>Current News</h2><br/>
+	<div class="grid_9 container col" style="margin-left: 15px;">
+	    <h2>Current News</h2>
 	    <?php $query = new WP_Query('category_name=news&showposts=5');
 	    if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
 	        the_title('<li>', '</li>', true);
