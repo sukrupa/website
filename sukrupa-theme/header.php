@@ -35,7 +35,7 @@
            <a href="<?php bloginfo('home'); ?>/">HOME</a> | <a href="<?php bloginfo('home'); ?>/#">Contact Us</a> | <a href="<?php bloginfo('home'); ?>/#">Login</a>
         </div>
 
-		<div id="search" class="prefix_16">
+		<div id="search" class="prefix_7">
 		    <form id="searchForm" action="<?php echo get_option('home'); ?>" method="get" class="grid_5">
 		    	<input id="searchInput" class="grid_4" type="text" name="s" value="Search Sukrupa" onfocus="if (this.value == 'Search Sukrupa') {this.value = '';}" />
 		    	<input type="submit" id="searchSubmit" value="Submit" alt="Submit">
@@ -46,17 +46,13 @@
 		</div>
 		
 		<div id="navigation" class="grid_24" style="margin: 0;">
-    	    <div class="grid_18">
-    	        <img src="http://placehold.it/15x15" alt="home" class="grid_3 headerlinks"></img>&nbsp;&nbsp;&nbsp;&nbsp;
-    	        <a href="#" class="grid_3 headerlinks">who we are&nbsp;&nbsp;&nbsp;&nbsp;</a>
-    	        <a href="#" class="grid_3 headerlinks">volunteer with us&nbsp;&nbsp;&nbsp;&nbsp;</a>
-    	        <a href="#" class="grid_3 headerlinks">blog&nbsp;&nbsp;&nbsp;&nbsp;</a>
-    	        <a href="#" class="grid_3 headerlinks">sponsorship&nbsp;&nbsp;&nbsp;&nbsp;</a>
-    	        <a href="#" class="grid_3 headerlinks">events</a>
-    	    </div>
-    	    <div class="grid_6">
-    	        <a href="#" class="createopportunitylink" >create an opportunity</a>
-    	    </div>
+    		<a id="homeLink" href="<?php bloginfo('home'); ?>/" style="margin-left: 5px;">home</a>
+    		<a href="<?php bloginfo('home'); ?>/" class="">who we are</a>
+    		<a href="<?php bloginfo('home'); ?>/#" class="">volunteer with us</a>
+    		<a href="<?php bloginfo('home'); ?>/#" class="">blog</a>
+    		<a href="<?php bloginfo('home'); ?>/#" class="">sponsorship</a>
+    		<a href="<?php bloginfo('home'); ?>/#" class="">events</a>
+    	    <a href="<?php bloginfo('home'); ?>/#" id="donateLink" style="line-height:1em; color:#ececec; font-weight:bold; font-size: 1.2em; letter-spacing: .03em">create an opportunity</a>
     	</div>
 	</div><!-- /header -->
 
