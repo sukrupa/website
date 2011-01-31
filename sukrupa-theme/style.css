@@ -21,9 +21,9 @@ h4 { color: #254965; text-align: center; }
 #site{ float: left; overflow: none;}
 
 
-#header {font-family: “Myriad Pro”, Arial, Helvetica, Tahoma, sans-serif; height: 95px;}
+#header {font-family: 'Myriad Pro', Arial, Helvetica, Tahoma, sans-serif; height: 95px;}
 #logo h1 a{height:60px; width: 230px; background: url(img/opportunities_logo.png) no-repeat 0 0; margin: 10px 0 0 45px; float: left; text-indent: -9999px;}
-.cornerlinks { font-family: "Arial Narrow", Arial, sans-serif; font-size: 10px; color: #cecece; text-align: right; margin-top: 10px;}
+.cornerlinks { font-family: 'Arial Narrow', Arial, sans-serif; font-size: 10px; color: #cecece; text-align: right; margin-top: 10px;}
 .cornerlinks a{color: #ececec; padding: 3px;}
 #search{float: left; margin-top: 15px;}
 #search a{height: 18px; width: 20px;text-indent: -9999px !important; float: left;}
@@ -51,13 +51,14 @@ a#yt{ background: url(img/18px_sprites.png) no-repeat -36px left; }
 
 .container{margin-left: 0; margin-right: 0;}
 .col{ min-height:250px; float: left; margin-top: 15px;}
+.statisticmargin{margin-left:3px; margin-right: 3px;}
 
 #sidebar{width: 220px; float: left;}
 #sidebar .grid_6{width: 210px;}
 .sidebarHeader { background-color: #4991C9; color: #F9DD85; padding: 5px; font-size: 1.1em; text-indent: 5px;}
 
 .sidebarGuts{background: #e6E7E8; padding: 10px;}
-.sidebarEntry{width: 220px; float: left;}
+.sidebarEntry{width: 220px; float: left; margin-bottom: 10px;}
 
 #footer {}
 .statistic{
