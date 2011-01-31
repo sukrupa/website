@@ -1,51 +1,55 @@
-
 <?php get_header(); ?>
 
-<script type="text/javascript" src="http://www.stockyardmagazine.com/_assets/scripts/jq-homefeatured.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.min.js"></script>
+<!--<script type="text/javascript">
 $(document).ready(function() {
     $('#photocarousel').cycle({
 		fx:'fade',
-		timeout:500
+		timeout:2000
 	});
 });
-</script>
-<br/>
-<div class="loop grid_18">
-<?php $query = new WP_Query('showposts=3&meta_key=carousel'); ?>
-<div id="photocarousel" class="grid_18">
-    <?php
-if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
-   $featuredPhoto = get_post_meta($post->ID,'carousel',true); ?>
-    <div id="" class="photoHolder grid_17 alpha omega"><img src="<?php echo $featuredPhoto; ?>" alt = "Featured Photo" class ="carouselImage"/>
-      <div id="" class="grid_8 carouseltext">
-        <?php the_title(true);
-        the_excerpt(); ?>
-      </div>
-    </div>
-<?php endwhile; endif; ?>
-</div>
-<?php //get_sidebar(); ?>
-<div id="media" class="grid_9" style="margin-right:0px;">
-    <h2>Photos and Media</h2><br/>
-    <?php $query = new WP_Query('category_name=media');
-    if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
-        the_title('<li>', '</li>', true);
-    endwhile;
-    endif;?>
-</div>
+</script>-->
 
-<div id="news" class="grid_9" style="margin-left:0px;">
-    <h2>Current News</h2><br/>
-    <?php $query = new WP_Query('meta_key=news');
-    if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
-        the_title('<li>', '</li>', true);
-        the_excerpt();
-    endwhile;
-    endif;
-?>
-</div>
-   
+<div class="grid_18">
+	<div id="photocarousel">
+    <?php $query = new WP_Query('showposts=1&meta_key=carousel');
+		  if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
+  	      $featuredPhoto = get_post_meta($post->ID,'carousel',true); ?>
+    	<div class="carouselEntry">
+    		<img src="<?php echo $featuredPhoto; ?>" id="<?php echo $post->ID; ?>-photo" alt="Featured Photo" width="665" height="350" class="carouselImage"/>
+      		<div id="post-<?php echo $post->ID; ?>" class="carouselText">
+        		<?php the_title('<h3>', '</h3>', true);
+			          the_excerpt(); ?>
+      		</div>
+    	</div>
+	<?php endwhile; endif; ?>
+	</div>
+	
+	<div class="grid_9 container col">
+	    <h2>Photos and Media</h2>
+	    <?php $query = new WP_Query('meta_key=media&showposts=5');
+	    if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
+	        the_title('<li>', '</li>', true);
+	    endwhile;
+	    endif;?>
+	</div>
+	
+	<div class="grid_9 container col" style="margin-left: 15px;">
+	    <h2>Current News</h2>
+	    <?php $query = new WP_Query('showposts=2&meta_key=news');
+            
+	    if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
+            ?><div id="newspost"><p><?php
+	        the_title(true);?></p><?php
+                $featuredPhoto = get_post_meta($post->ID,'thumbnail',true);
+                if($featuredPhoto): ?><p><img src=" <?php echo $featuredPhoto; ?>" class="newsthumbnail" alt="Featured Photo" width="108"/><?php endif;
+	        the_excerpt();
+                ?></p></div><br/><?php
+                endwhile;
+	        endif;
+	?>
+	</div>
+	   
 </div>
     <?php
     get_sidebar();

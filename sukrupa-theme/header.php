@@ -23,51 +23,38 @@
 
 </head>
 
-<body onload="">
-<div id="wrapper" style="width:960px;margin: 0 auto">
+<body>
+<div id="wrapper">
 
-<div id="site" class="grid_24">
+<div id="site" class="container_24">
+    <div id="header" class="grid_24">
+		<div id="logo" class="grid_9">
+			<h1><a href="<?php echo get_option('home'); ?>/">SUKRUPA</a></h1>
+		</div>
+        <div class="prefix_20 cornerlinks">
+           <a href="<?php bloginfo('home'); ?>/">HOME</a> | <a href="<?php bloginfo('home'); ?>/#">Contact Us</a> | <a href="<?php bloginfo('home'); ?>/#">Login</a>
+        </div>
 
-    <div id="header" class="grid_24 header" style="margin-left:0px">
-    <div id="test" class="grid_24">
-	<div id="logo"class="grid_9">
-		<a name="yourethetop"></a>
-		<a class="yellowtext masthead" href="<?php echo get_option('home'); ?>/">
-                    <h1>SUKRUPA</h1></a></div>
-        
-                <div class="grid_15" style="float:right;">
-
-                <div  class="grid_15" style="float: right; color: white;">
-                    <a href="#" class="cornerlinks">HOME</a> | <a href="#" class="cornerlinks">Contact Us</a> | <a href="#" class="cornerlinks">Login</a> </div><br/>
-
-		<div id="searchbox" class="grid_15" style="float: right;">
-		    <form id="searchpane" action="<?php echo get_option('home'); ?>" method="get" class="grid_10">
-		    	<input style="font-size:10px;" id="searchinput" type="text" name="s" value="SEARCH" onfocus="if (this.value == 'SEARCH') {this.value = '';}" />
+		<div id="search" class="prefix_7">
+		    <form id="searchForm" action="<?php echo get_option('home'); ?>" method="get" class="grid_5">
+		    	<input id="searchInput" class="grid_4" type="text" name="s" value="Search Sukrupa" onfocus="if (this.value == 'Search Sukrupa') {this.value = '';}" />
+		    	<input type="submit" id="searchSubmit" value="Submit" alt="Submit">
 		    </form>
-                    <div class="grid_5">
-                        <img src="http://placehold.it/15x15" alt="You Tube"></img>
-                        <img src="http://placehold.it/15x15" alt="Twitter"></img>
-                        <img src="http://placehold.it/15x15" alt="FB"></img>
-                    </div>
-                </div>
-               </div>
-    </div>
-    <br/>
-
-   <div class="links grid_24">
-        <div class="grid_18" style="width: 75%">
-            <img src="http://placehold.it/15x15" alt="home" class="grid_3 headerlinks"></img>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#" class="grid_3 headerlinks">who we are&nbsp;&nbsp;&nbsp;&nbsp;</a>
-            <a href="#" class="grid_3 headerlinks">volunteer with us&nbsp;&nbsp;&nbsp;&nbsp;</a>
-            <a href="#" class="grid_3 headerlinks">blog&nbsp;&nbsp;&nbsp;&nbsp;</a>
-            <a href="#" class="grid_3 headerlinks">sponsorship&nbsp;&nbsp;&nbsp;&nbsp;</a>
-            <a href="#" class="grid_3 headerlinks">events</a>
-        </div>
-        <div class="grid_6" style="float:right; ">
-            <a href="#" class="createopportunitylink" >create an opportunity</a>
-        </div>
-    </div>
-</div>
+			<a href="http://www.facebook.com/#" id="fb">Facebook</a>
+            <a href="http://www.twitter.com/#" id="twi">Twitter</a>
+            <a href="http://www.youtube.com/#" id="yt">YouTube</a>
+		</div>
+		
+		<div id="navigation" class="grid_24" style="margin: 0;">
+    		<a id="homeLink" href="<?php bloginfo('home'); ?>/" style="margin-left: 5px;">home</a>
+    		<a href="<?php bloginfo('home'); ?>/" class="">who we are</a>
+    		<a href="<?php bloginfo('home'); ?>/#" class="">volunteer with us</a>
+    		<a href="<?php bloginfo('home'); ?>/#" class="">blog</a>
+    		<a href="<?php bloginfo('home'); ?>/#" class="">sponsorship</a>
+    		<a href="<?php bloginfo('home'); ?>/#" class="">events</a>
+    	    <a href="<?php bloginfo('home'); ?>/#" id="donateLink" style="line-height:1em; color:#ececec; font-weight:bold; font-size: 1.2em; letter-spacing: .03em">create an opportunity</a>
+    	</div>
+	</div><!-- /header -->
 
 
-    <div id="content" class="container_24">
+    <div id="content" class="grid_24">
