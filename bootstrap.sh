@@ -3,6 +3,11 @@ echo "You need to enable on apache the php module."
 echo "(On mac, uncomment in /etc/apache2/httpd.conf: LoadModule php5_module libexec/apache2/libphp5.so)"
 echo "********************************************"
 
+if [[ -z $(which mysql) ]] ; then
+  echo "!!  Is mysql installed? It is not found on your path. Exiting... !!";
+  exit 1
+fi
+
 echo ""
 echo "We will bootstrap the wordpress configuration. Creating database."
 
