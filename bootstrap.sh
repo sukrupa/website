@@ -12,7 +12,7 @@ mysql -uroot -p  --verbose --execute="create database if not exists sukrupa_word
 mkdir -p installed-wordpress/
 
 echo "extracting wordpress binary"
-unzip lib/wordpress-3.0.4.zip -d installed-wordpress
+unzip lib/wordpress-3.0.4.zip -q -d installed-wordpress
 mv installed-wordpress/wordpress/* installed-wordpress
 rm -fr installed-wordpress/wordpress
 
@@ -26,4 +26,5 @@ echo "now dropping everything from the database and recreating tables"
 mysql -uroot -p sukrupa_wordpress < lib/sukrupa_wordpress.dump.sql
 
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-echo "You need to create a file that's similar to conf/apache-sukrupa-dev.conf with appropriate paths for your envoronment."
+echo "You need to create a file that's similar to conf/apache-sukrupa-dev.conf with appropriate paths for your environment."
+echo "Edit /etc/hosts to include l127.0.0.1 sukrupa.localhost"
