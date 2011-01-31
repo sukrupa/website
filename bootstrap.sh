@@ -24,3 +24,6 @@ mysqldump sukrupa_wordpress -uroot -p > sukrupa_wordpress.backupdump.$timestamp.
 
 echo "now dropping everything from the database and recreating tables"
 mysql -uroot -p sukrupa_wordpress < lib/sukrupa_wordpress.dump.sql
+
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo "You need to create a file that's similar to conf/apache-sukrupa-dev.conf with appropriate paths for your envoronment."
