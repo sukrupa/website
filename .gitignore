@@ -2,3 +2,4 @@ logs
 installed-wordpress
 sukrupa_wordpress.backupdump*sql
 nbproject
+.DS_Store
