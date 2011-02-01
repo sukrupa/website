@@ -36,23 +36,12 @@ $(document).ready(function() {
 	
 	<div class="grid_9 container col" style="margin-left: 15px;">
 	    <h2>Current News</h2>
-		<?php 
-		// Category is a more stable query basis; with 'meta_key' the client will need to unneccessiarily
-		// tag items (especially since the meta_key has a null and unused value)
-
-		$query = new WP_Query('category_name=news&showposts=5');
-            
-	    if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
-	    
-	    <div id="newspost">
-	    	<p><?php the_title(true);?></p>
-	    	<?php // Change to thumbnail to support naming conventions.
-                $thumbnail = get_post_meta($post->ID,'thumbnail',true);
-                if($thumbnail): ?><p><img src=" <?php echo $thumbnail; ?>" class="newsthumbnail" alt="Featured Photo" width="108"/><?php endif;
+	    <?php $query = new WP_Query('category_name=news&showposts=5');
+	    if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
+	        the_title('<li>', '</li>', true);
 	        the_excerpt();
-                ?></p></div><br/><?php
-                endwhile;
-	        endif;
+	    endwhile;
+	    endif;
 	?>
 	</div>
 	   
