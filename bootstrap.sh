@@ -26,7 +26,7 @@ ROOT_MYSQL_PASSWORD='root'
 
 echo ""
 echo "Bootstraping wordpress configuration. (With default mysql 'root' user and password '$ROOT_MYSQL_PASSWORD') Creating database."
-echo "If you do not have the mysql root password correct, run this command: `mysqladmin -u root password root`"
+echo "If you do not have the mysql root password correct, run this command: mysqladmin -u root password root"
 
 mysql -uroot -p$ROOT_MYSQL_PASSWORD --verbose --execute="create database if not exists sukrupa_wordpress default character set 'utf8';" 
 die_if_errors
