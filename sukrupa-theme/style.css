@@ -11,7 +11,7 @@ Version: 0.2a
 
 @import url('import.css');
 
-body{background-color: #24333D; font-size: 12px; font-family: "century gothic",verdana,arial,helvetica,sans-serif; line-height: normal;}
+body{background-color: #24333D; font-size: 14px; font-family: "century gothic",verdana,arial,helvetica,sans-serif; line-height: normal;}
 a{text-decoration: none;}
 a.hover{}
 h1{}
@@ -47,7 +47,8 @@ a#yt{ background: url(img/18px_sprites.png) no-repeat -36px left; }
 #photocarousel{ height:350px; float:left; width: 100%;}
 .carouselEntry{max-height: 350px; position: relative;}
 .carouselImage{ z-index:0; left:40px; position:relative; color:blue;}
-.carouselText{ position:absolute; bottom: 0px; z-index:10; opacity:0.4;filter:alpha(opacity=40); background-color: black; color:white; max-width: 330px; max-height: 125px; padding:10px; }
+.carouselText{ position:absolute; bottom: 0px; z-index:10; opacity:0.6;filter:alpha(opacity=60); background-color: black; color:white; max-width: 330px; max-height: 125px; padding:10px; }
+.carouselText a{color: #405dff;}
 
 .container{margin-left: 0; margin-right: 0;}
 .col{ min-height:250px; float: left; margin-top: 15px;}
@@ -60,7 +61,7 @@ a#yt{ background: url(img/18px_sprites.png) no-repeat -36px left; }
 .sidebarGuts{background: #e6E7E8; padding: 10px;}
 .sidebarEntry{width: 220px; float: left; margin-bottom: 10px;}
 
-#footer {}
+#footer {float: left; background: #f7f7f5; width: 915px; padding:15px;}
 .statistic{
     text-align: center;
     font-size: 17pt;
@@ -70,8 +71,11 @@ a#yt{ background: url(img/18px_sprites.png) no-repeat -36px left; }
     opacity:0.75;filter:alpha(opacity=75);
 }
 #footerinfo{
+	float: left;
+	width: 100%;
     text-align: center;
     font-size: 11px;
+    line-height: 13px;
 }
 hr{
     background-color: #4991C9;

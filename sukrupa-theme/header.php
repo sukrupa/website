@@ -52,7 +52,7 @@
     		<a href="<?php bloginfo('home'); ?>/#" class="">blog</a>
     		<a href="<?php bloginfo('home'); ?>/#" class="">sponsorship</a>
     		<a href="<?php bloginfo('home'); ?>/#" class="">events</a>
-    	    <a href="<?php bloginfo('home'); ?>/#" id="donateLink" style="line-height:1em; color:#ececec; font-weight:bold; font-size: 1.2em; letter-spacing: .03em">create an opportunity</a>
+    	    <a href="<?php bloginfo('home'); ?>/#" id="donateLink" style="line-height:1em; color:#ececec; font-weight:bold; font-size: 1em; letter-spacing: .04em">donate now</a>
     	</div>
 	</div><!-- /header -->
 

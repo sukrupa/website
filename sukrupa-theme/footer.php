@@ -1,4 +1,4 @@
-<div id="footer" class="grid_24" style="margin:0px; padding-left: 0px; width: 100%">
+<div id="footer" class="grid_24">
 
     <div class="statistic grid_5 statisticmargin">
         <?php $query = new WP_Query('showposts=1&meta_key=statistic1');
@@ -32,19 +32,16 @@
         endif; ?>
     </div>
 
-    <div>&nbsp;</div><br/>
-    <div>&nbsp;</div><br/>
-
     <div id="footerinfo">
         <hr/>
         <p>
-          2011  Sukrupa Foundation
+          <?php echo date('Y'); ?> &copy; Sukrupa Foundation
         </p>
         <p>
-            <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a > | <a href="#">Login</a> | <a href="#">Register</a>
+            <a href="<?php bloginfo('home'); ?>">Terms & Conditions</a> | <a href="<?php bloginfo('home'); ?>">Privacy Policy</a > | <a href="<?php bloginfo('home'); ?>">Login</a> | <a href="<?php bloginfo('home'); ?>">Register</a>
         </p>
         <p>
-          The Sukrupa Foundation is a non-profit charitable organization in Bangalore, India
+          The Sukrupa Foundation is a non-profit, charitable organization in Bangalore, India.
         </p>
     </div>
 
@@ -52,8 +49,6 @@
 </div><!--content-->
 </div><!-- site -->
 </div><!-- wrapper -->
-
-<div>&nbsp;</div><br/>
 
 </body>
 </html>

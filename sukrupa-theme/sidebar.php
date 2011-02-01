@@ -15,7 +15,7 @@
 
 	   
 	<div class="sidebarEntry">
-	    <div class="sidebarHeader">How Can I Help?</div>
+	    <div class="sidebarHeader">Create an Opportunity</div>
 	    <div class="sidebarGuts">
 	    	<a href="#">Donate Now to Sukrupa</a><br/>
 	    	<a href="#">Volunteer with Us</a><br/>
