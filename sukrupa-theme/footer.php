@@ -35,6 +35,18 @@
     <div>&nbsp;</div><br/>
     <div>&nbsp;</div><br/>
 
+    <div id="footerinfo">
+        <hr/>
+        <p>
+          2011  Sukrupa Foundation
+        </p>
+        <p>
+            <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a > | <a href="#">Login</a> | <a href="#">Register</a>
+        </p>
+        <p>
+          The Sukrupa Foundation is a non-profit charitable organization in Bangalore, India
+        </p>
+    </div>
 
 </div>
 </div><!--content-->
