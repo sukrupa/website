@@ -1,25 +1,25 @@
 <?php get_header(); ?>
 
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.min.js"></script>
-<!--<script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function() {
     $('#photocarousel').cycle({
 		fx:'fade',
 		timeout:2000
 	});
 });
-</script>-->
+</script>
 
 <div class="grid_18">
 	<div id="photocarousel">
-    <?php $query = new WP_Query('showposts=1&meta_key=carousel');
+    <?php $query = new WP_Query('showposts=3&meta_key=carousel');
 		  if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
   	      $featuredPhoto = get_post_meta($post->ID,'carousel',true); ?>
     	<div class="carouselEntry">
     		<img src="<?php echo $featuredPhoto; ?>" id="<?php echo $post->ID; ?>-photo" alt="Featured Photo" width="665" height="350" class="carouselImage"/>
       		<div id="post-<?php echo $post->ID; ?>" class="carouselText">
-        		<?php the_title('<h3>', '</h3>', true);
-			          the_excerpt(); ?>
+        		<a href="<?php the_permalink();?>"><?php the_title('<h3>', '</h3>', true);?></a>
+			         <?php the_excerpt(); ?>
       		</div>
     	</div>
 	<?php endwhile; endif; ?>
