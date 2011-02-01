@@ -35,6 +35,7 @@ mysql -uroot -p$ROOT_MYSQL_PASSWORD --verbose --execute="create database if not 
 die_if_errors
 
 mkdir -p installed-wordpress/
+mkdir -p logs/
 
 # TODO: add step to clean (and back up) any existing installed-wordpress/ directory, and then initialize the template directory
 
