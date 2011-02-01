@@ -17,10 +17,13 @@ die_if_errors() {
   if [[  $? -gt 0 ]]; then die; fi
 }
 
-
-if [[ -z $(which mysql) ]] ; then
-  die "!!  Is mysql installed? It is not found on your path. Exiting... !!";
-fi
+die_if_not_on_path() {
+  if [[ -z $(which $1) ]] ; then
+    die "!!  Is $1 installed? It is not found on your path. Exiting... !!";
+  fi
+}
+die_if_not_on_path 'mysql'
+die_if_not_on_path 'mysqladmin'
 
 ROOT_MYSQL_PASSWORD='root'
 
