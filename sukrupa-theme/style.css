@@ -53,11 +53,11 @@ a#yt{ background: url(img/18px_sprites.png) no-repeat -36px left; }
 .container{margin-left: 0; margin-right: 0;}
 .col{ min-height:250px; float: left; margin-top: 15px;}
 .statisticmargin{margin-left:3px; margin-right: 3px;}
+.guts{min-height: 400px;}
 
 #sidebar{width: 220px; float: left;}
 #sidebar .grid_6{width: 210px;}
 .sidebarHeader { background-color: #4991C9; color: #F9DD85; padding: 5px; font-size: 1.1em; text-indent: 5px;}
-
 .sidebarGuts{background: #e6E7E8; padding: 10px;}
 .sidebarEntry{width: 220px; float: left; margin-bottom: 10px;}
 
