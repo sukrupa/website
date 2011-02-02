@@ -10,7 +10,7 @@ $(document).ready(function() {
 });
 </script>
 
-<div class="grid_18">
+<div class="grid_18 guts">
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	
 	<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -20,3 +20,5 @@ $(document).ready(function() {
 	?>
 	
 </div>
+
+<?php get_sidebar(); get_footer(); ?>
