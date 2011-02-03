@@ -1,0 +1,20 @@
+set :application, "sukrupa-website"
+set :user, "go"
+
+set :staging_server, "twu-staging" 
+set :local_path, "."
+set :staging_deploy_path, "/var/opt/sukrupa/#{application}"
+
+role :staging_server, "#{staging_server}"
+
+namespace :staging do
+
+    task :default, :roles => :staging_server do
+        upload_artifact
+    end 
+
+    task :upload_artifact, :roles => :staging_server do
+        upload "#{local_path}", "#{staging_deploy_path}", :via => :scp, :recursive => true
+    end
+
+end
