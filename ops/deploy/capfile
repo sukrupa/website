@@ -14,7 +14,13 @@ namespace :staging do
     end 
 
     task :upload_artifact, :roles => :staging_server do
-        upload "#{local_path}", "#{staging_deploy_path}", :via => :scp, :recursive => true
+        upload "#{local_path}/bootstrap.sh", "#{staging_deploy_path}", :via => :scp, :recursive => true
+        upload "#{local_path}/conf", "#{staging_deploy_path}", :via => :scp, :recursive => true
+        upload "#{local_path}/lib", "#{staging_deploy_path}", :via => :scp, :recursive => true
+        upload "#{local_path}/README", "#{staging_deploy_path}", :via => :scp, :recursive => true
+        upload "#{local_path}/scripts", "#{staging_deploy_path}", :via => :scp, :recursive => true
+        upload "#{local_path}/sukrupa-theme", "#{staging_deploy_path}", :via => :scp, :recursive => true
     end
 
 end
+
