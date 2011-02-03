@@ -39,7 +39,9 @@ namespace :staging do
                 sleep 2
             end
         end
-        fail "Could not contact webserver."
+        unless wgetresult
+            fail "Could not contact webserver."
+        end
     end
 end
 
