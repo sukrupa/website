@@ -11,6 +11,7 @@ namespace :staging do
 
     task :default, :roles => :staging_server do
         upload_artifact
+        bootstrap
     end 
 
     task :upload_artifact, :roles => :staging_server do
@@ -22,5 +23,8 @@ namespace :staging do
         upload "#{local_path}/sukrupa-theme", "#{staging_deploy_path}", :via => :scp, :recursive => true
     end
 
+    task :bootstrap, :roles => :staging_server do
+        run "cd #{staging_deploy_path} && sh bootstrap.sh" 
+    end
 end
 
