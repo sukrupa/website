@@ -12,6 +12,7 @@ namespace :staging do
     task :default, :roles => :staging_server do
         upload_artifact
         bootstrap
+        safety_check
     end 
 
     task :upload_artifact, :roles => :staging_server do
@@ -25,6 +26,19 @@ namespace :staging do
 
     task :bootstrap, :roles => :staging_server do
         run "cd #{staging_deploy_path} && sh bootstrap.sh" 
+    end
+
+    task :safety_check, :roles => :staging_server do
+        times = 0;
+        while times < 3
+            wgetresult = system "wget --spider http://#{staging_server}:8080/sukrupa-website"
+            if wgetresult
+                break
+            else
+                times = times + 1
+                sleep 2
+            end
+        end
     end
 end
 
