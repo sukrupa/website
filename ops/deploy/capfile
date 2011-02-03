@@ -12,6 +12,9 @@ namespace :staging do
     task :default, :roles => :staging_server do
         upload_artifact
         bootstrap
+        create_config_file
+        create_symlink
+        restart_apache
         safety_check
     end 
 
@@ -28,10 +31,24 @@ namespace :staging do
         run "cd #{staging_deploy_path} && sh bootstrap.sh" 
     end
 
+    task :create_config_file, :roles => :staging_server do
+        run "cd #{staging_deploy_path} && cp conf/apache-sukrupa-dev.conf conf/local-apache-sukrupa-dev.conf"
+        run "cd #{staging_deploy_path} && sed -i 's:##sukrupa-website-path##:#{staging_deploy_path}:g' conf/local-apache-sukrupa-dev.conf"
+        run "cd #{staging_deploy_path} && sed -i 's:##server-name##:#{staging_server}:g' conf/local-apache-sukrupa-dev.conf"
+    end
+
+    task :create_symlink, :roles => :staging_server do
+        run "#{sudo} ln -sf #{staging_deploy_path}/conf/local-apache-sukrupa-dev.conf /etc/apache2/sites-enabled/apache-sukrupa.conf"
+    end
+
+    task :restart_apache, :roles => :staging_server do
+        run "#{sudo} /etc/init.d/apache2 restart"
+    end
+
     task :safety_check, :roles => :staging_server do
         times = 0;
         while times < 3
-            wgetresult = system "wget --spider http://#{staging_server}:8080/sukrupa-website"
+            wgetresult = system "wget --spider http://#{staging_server}:80"
             if wgetresult
                 break
             else
