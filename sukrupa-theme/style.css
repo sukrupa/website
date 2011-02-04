@@ -76,3 +76,35 @@ hr{ background-color: #4991C9; color: #4991C9; width: 30%; }
 .newsthumbnail { float:right; }
 #newspost{ min-height:163px;height:auto!important; height: 163px; margin-bottom: 10px; }
 .statistic strong{ color: #F7C321; }
+
+
+/** Page-specific **/
+
+#panelWrapper { padding: 20px 0 }
+#panel { background: #ebebeb }
+/* .coda-slider-no-js .coda-slider { height: 200px; overflow: auto !important; padding-right: 20px } */
+.coda-slider, .coda-slider .panel { width: 600px } 
+	
+	/* Change margin and width of the slider (with dynamic arrows) */
+	#panelWrapper.arrows #panel, #panelWrapper.arrows #panel .panel { width: 600px }
+	.coda-slider-wrapper.arrows .coda-slider { margin: 0 10px }
+	
+	/* Arrow styling */
+	.coda-nav-left a, .coda-nav-right a { background: #000; color: #fff; padding: 5px; width: 100px }
+	
+	/* Tab nav */
+	.coda-nav ul li a.current { background: #39c }
+	
+	/* Panel padding */
+	.coda-slider .panel-wrapper { padding: 20px }
+	
+	/* Preloader */
+	.coda-slider p.loading { padding: 20px; text-align: center }
+
+/* Don't change anything below here unless you know what you're doing */
+
+	/* Tabbed nav */
+	.coda-nav ul { clear: both; display: block; margin: auto; overflow: hidden }
+	.coda-nav ul li { display: inline }
+	.coda-nav ul li a { background: #000; color: #fff; display: block; float: left; margin-right: 1px; padding: 3px 6px; text-decoration: none }
+	

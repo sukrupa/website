@@ -1,4 +1,4 @@
-<?php if( is_user_logged_in() === false ) { auth_redirect(); } ?><!DOCTYPE html> 
+<?php //if( is_user_logged_in() === false ) { auth_redirect(); } ?><!DOCTYPE html> 
  
 <html dir="ltr" lang="en-US" xmlns="http://www.w3.org/1999/xhtml"> 
  
