@@ -4,3 +4,4 @@ sukrupa_wordpress.backupdump*sql
 nbproject
 local-apache-sukrupa-dev.conf
 .DS_Store
+lib/local_sukrupa_wordpress.dump.sql

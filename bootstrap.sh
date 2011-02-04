@@ -3,11 +3,7 @@ echo "PREREQUISITES: "
 echo "1) You need to install MySQL community edition server"
 echo "2) You need to enable on apache the php module."
 echo "   (On mac, uncomment in /etc/apache2/httpd.conf: LoadModule php5_module libexec/apache2/libphp5.so)"
-echo "3) Create a conf/local-apache-sukrupa-dev.conf with appropriate paths for your environment, and" 
-echo "   link it to apache. This is likely done through a symlink. i.e. on linux:"
-echo "     sudo ln -s <ABSOLUTE path to>/conf/local-apache-sukrupa-dev.conf /etc/apache2/sites-enabled/"
-echo "     sudo ln -s <ABSOLUTE path to>/conf/local-apache-sukrupa-dev.conf /etc/apache2/other/"
-echo "4) Edit /etc/hosts to include: 127.0.0.1 sukrupa.localhost"
+echo "3) The go user must be able to run '/bin/ln' and '/etc/init.d/apache2 restart' as sudo without a password."
 echo "************************************************************************************************************"
 
 die () {
@@ -43,20 +39,20 @@ mkdir -p logs/
 # TODO: add step to clean (and back up) any existing installed-wordpress/ directory, and then initialize the template directory
 
 echo "extracting wordpress binary"
-unzip -q lib/wordpress-3.0.4.zip -d installed-wordpress
-mv installed-wordpress/wordpress/* installed-wordpress
-rm -fr installed-wordpress/wordpress
+rm -rf installed-wordpress/
+unzip -qo lib/wordpress-3.0.4.zip -d .
+mv wordpress installed-wordpress
 
-cp lib/wp-config.php installed-wordpress/
+cp -f lib/wp-config.php installed-wordpress/
 
 echo "first creating backup of old database tables before dropping everything"
 timestamp=$(date "+%Y-%m-%d_%H-%M-%S")
 mysqldump sukrupa_wordpress -uroot -p$ROOT_MYSQL_PASSWORD > sukrupa_wordpress.backupdump.$timestamp.sql   
 die_if_errors
 
-echo "now dropping everything from the database and recreating tables"
-mysql -uroot -p$ROOT_MYSQL_PASSWORD sukrupa_wordpress < lib/sukrupa_wordpress.dump.sql
-die_if_errors
+#echo "now dropping everything from the database and recreating tables"
+#mysql -uroot -p$ROOT_MYSQL_PASSWORD sukrupa_wordpress < lib/local_sukrupa_wordpress.dump.sql
+#die_if_errors
 
 echo ""
 echo "(If the database migration was successful, you may want to remove the backup db dump.)"

@@ -11,20 +11,33 @@ namespace :staging do
 
     task :default, :roles => :staging_server do
         upload_artifact
+        update_sql_dump
         bootstrap
         create_config_file
         create_symlink
+        update_theme_symlink
         restart_apache
         safety_check
     end 
 
     task :upload_artifact, :roles => :staging_server do
-        upload "#{local_path}/bootstrap.sh", "#{staging_deploy_path}", :via => :scp, :recursive => true
-        upload "#{local_path}/conf", "#{staging_deploy_path}", :via => :scp, :recursive => true
-        upload "#{local_path}/lib", "#{staging_deploy_path}", :via => :scp, :recursive => true
-        upload "#{local_path}/README", "#{staging_deploy_path}", :via => :scp, :recursive => true
-        upload "#{local_path}/scripts", "#{staging_deploy_path}", :via => :scp, :recursive => true
-        upload "#{local_path}/sukrupa-theme", "#{staging_deploy_path}", :via => :scp, :recursive => true
+        run "mkdir -p #{staging_deploy_path}"
+        upload "#{local_path}/bootstrap.sh", "#{staging_deploy_path}/", :via => :scp, :recursive => true
+        upload "#{local_path}/conf", "#{staging_deploy_path}/", :via => :scp, :recursive => true
+        upload "#{local_path}/lib", "#{staging_deploy_path}/", :via => :scp, :recursive => true
+        upload "#{local_path}/README", "#{staging_deploy_path}/", :via => :scp, :recursive => true
+        upload "#{local_path}/scripts", "#{staging_deploy_path}/", :via => :scp, :recursive => true
+        upload "#{local_path}/sukrupa-theme", "#{staging_deploy_path}/", :via => :scp, :recursive => true
+    end
+
+    task :update_sql_dump, :roles => :staging_server do
+        system "cp -f lib/sukrupa_wordpress.dump.sql lib/local_sukrupa_wordpress.dump.sql"
+        system "sed -i 's_http://sukrupa.localhost_http://#{staging_server}_g' lib/local_sukrupa_wordpress.dump.sql"
+        system "sed -i 's_twentyten_sukrupa_g' lib/local_sukrupa_wordpress.dump.sql"
+    end
+
+    task :update_theme_symlink, :roles => :staging_server do
+        run "ln -sf #{staging_deploy_path}/sukrupa-theme/ #{staging_deploy_path}/installed-wordpress/wp-content/themes/sukrupa" 
     end
 
     task :bootstrap, :roles => :staging_server do
