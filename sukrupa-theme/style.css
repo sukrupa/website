@@ -15,7 +15,8 @@ body{background-color: #24333D; font-size: 14px; font-family: "century gothic",v
 a{text-decoration: none;}
 a.hover{}
 h1{}
-h2{text-align: center; color: #254965; font-size: 16px; display: block; margin: 5px 0 10px; border-bottom: 2px solid silver;}
+h2{text-align: center; color: #254965; font-size: 1.2em; display: block; margin: 5px 0 10px; border-bottom: 2px solid silver;}
+h3{color: #254965; font-size: 1.1em; font-weight: bold; letter-spacing: .05em;}
 h4 { color: #254965; text-align: center; }
 #wrapper{ clear: both; margin: 0 auto; position: relative; width: 960px;}
 #site{ float: left; overflow: none;}
@@ -58,10 +59,15 @@ a#yt{ background: url(img/18px_sprites.png) no-repeat -36px left; }
 #sidebar{width: 220px; float: left;}
 #sidebar .grid_6{width: 210px;}
 .sidebarHeader { background-color: #4991C9; color: #F9DD85; padding: 5px; font-size: 1.1em; text-indent: 5px;}
-.sidebarGuts{background: #e6E7E8; padding: 10px;}
+.sidebarGuts{background: #e6E7E8; padding: 10px; float: left; width: 200px;}
 .sidebarEntry{width: 220px; float: left; margin-bottom: 10px;}
+.baseMeter{width:193px; padding:5px 7px 0 0; background: #9DC4AE; height: 20px; float:left; position: relative; z-index: 1; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; font-weight: bold; letter-spacing: .03em; color: #6D6E71; text-align: right; font-size: .9em;}
 
-#footer {float: left; background: #f7f7f5; width: 915px; padding:15px;}
+/*** More negative margin ***/
+.progressMeter{height:25px; float: left; background: #396D51; position: relative; z-index: 5; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; margin-top: -5px;}
+
+
+#footer {float: left; background: #f7f7f5; width: 915px; padding:15px; -webkit-border-bottom-left-radius: 4px; -webkit-border-bottom-right-radius: 4px; -moz-border-radius-bottomleft: 4px; -moz-border-radius-bottomright: 4px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;}
 .statistic{ text-align: center; font-size: 17pt; font-weight: bold; color: white; background-color: #231F20; opacity:0.75;filter:alpha(opacity=75); }
 #footerinfo{ float: left; width: 100%; text-align: center; font-size: 11px; line-height: 13px; }
 hr{ background-color: #4991C9; color: #4991C9; width: 30%; }
