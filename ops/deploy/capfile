@@ -11,17 +11,24 @@ namespace :staging do
 
     task :default, :roles => :staging_server do
         upload_artifact
-        update_sql_dump
-        bootstrap
-        create_config_file
-        create_symlink
-        update_theme_symlink
+        setup_wordpress
         restart_apache
         safety_check
     end 
 
+    task :setup_wordpress, :roles => :staging_server do
+        update_sql_dump_for_server
+        run_bootstrap
+        update_content_symlink
+        update_theme_symlink
+        create_apache_config_file
+        create_apache_symlink
+    end
+
     task :upload_artifact, :roles => :staging_server do
         run "mkdir -p #{staging_deploy_path}"
+        run "mkdir -p #{staging_deploy_path}/content"
+        run "mkdir -p #{staging_deploy_path}/database-backups"
         upload "#{local_path}/bootstrap.sh", "#{staging_deploy_path}/", :via => :scp, :recursive => true
         upload "#{local_path}/conf", "#{staging_deploy_path}/", :via => :scp, :recursive => true
         upload "#{local_path}/lib", "#{staging_deploy_path}/", :via => :scp, :recursive => true
@@ -30,7 +37,7 @@ namespace :staging do
         upload "#{local_path}/sukrupa-theme", "#{staging_deploy_path}/", :via => :scp, :recursive => true
     end
 
-    task :update_sql_dump, :roles => :staging_server do
+    task :update_sql_dump_for_server, :roles => :staging_server do
         system "cp -f lib/sukrupa_wordpress.dump.sql lib/local_sukrupa_wordpress.dump.sql"
         system "sed -i 's_http://sukrupa.localhost_http://#{staging_server}_g' lib/local_sukrupa_wordpress.dump.sql"
         system "sed -i 's_twentyten_sukrupa_g' lib/local_sukrupa_wordpress.dump.sql"
@@ -40,17 +47,22 @@ namespace :staging do
         run "ln -sf #{staging_deploy_path}/sukrupa-theme/ #{staging_deploy_path}/installed-wordpress/wp-content/themes/sukrupa" 
     end
 
-    task :bootstrap, :roles => :staging_server do
-        run "cd #{staging_deploy_path} && sh bootstrap.sh" 
+    task :update_content_symlink, :roles => :staging_server do
+        run "ln -sf #{staging_deploy_path}/content/ #{staging_deploy_path}/installed-wordpress/content"
     end
 
-    task :create_config_file, :roles => :staging_server do
+    task :run_bootstrap, :roles => :staging_server do
+        run "cd #{staging_deploy_path} && sh bootstrap.sh" 
+        run "cd #{staging_deploy_path} && rm bootstrap.sh" 
+    end
+
+    task :create_apache_config_file, :roles => :staging_server do
         run "cd #{staging_deploy_path} && cp conf/apache-sukrupa-dev.conf conf/local-apache-sukrupa-dev.conf"
         run "cd #{staging_deploy_path} && sed -i 's:##sukrupa-website-path##:#{staging_deploy_path}:g' conf/local-apache-sukrupa-dev.conf"
         run "cd #{staging_deploy_path} && sed -i 's:##server-name##:#{staging_server}:g' conf/local-apache-sukrupa-dev.conf"
     end
 
-    task :create_symlink, :roles => :staging_server do
+    task :create_apache_symlink, :roles => :staging_server do
         run "#{sudo} ln -sf #{staging_deploy_path}/conf/local-apache-sukrupa-dev.conf /etc/apache2/sites-enabled/apache-sukrupa.conf"
     end
 

@@ -47,7 +47,7 @@ cp -f lib/wp-config.php installed-wordpress/
 
 echo "first creating backup of old database tables before dropping everything"
 timestamp=$(date "+%Y-%m-%d_%H-%M-%S")
-mysqldump sukrupa_wordpress -uroot -p$ROOT_MYSQL_PASSWORD > sukrupa_wordpress.backupdump.$timestamp.sql   
+mysqldump sukrupa_wordpress -uroot -p$ROOT_MYSQL_PASSWORD > database-backups/sukrupa_wordpress.backupdump.$timestamp.sql   
 die_if_errors
 
 #echo "now dropping everything from the database and recreating tables"
