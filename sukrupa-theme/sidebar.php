@@ -4,7 +4,7 @@
 	<div class="sidebarEntry"> 
 		<?php $query = new WP_Query('showposts=1&meta_key=donormeter&post_type=page');
 			  if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
-		<div class="sidebarHeader"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
+		<div class="sidebarHeader"><a href="<?php bloginfo('home'); ?>/donate/"><?php the_title(); ?></a></div>
 		<div class="sidebarGuts">
 		<?php $donormeter = get_post_meta($post->ID,'donormeter',true);
 			  $donormeter = explode('/', $donormeter);
