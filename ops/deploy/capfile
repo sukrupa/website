@@ -1,0 +1,64 @@
+set :application, "sukrupa-website"
+set :user, "go"
+
+set :staging_server, "twu-staging" 
+set :local_path, "."
+set :staging_deploy_path, "/var/opt/sukrupa/#{application}"
+
+role :staging_server, "#{staging_server}"
+
+namespace :staging do
+
+    task :default, :roles => :staging_server do
+        upload_artifact
+        bootstrap
+        create_config_file
+        create_symlink
+        restart_apache
+        safety_check
+    end 
+
+    task :upload_artifact, :roles => :staging_server do
+        upload "#{local_path}/bootstrap.sh", "#{staging_deploy_path}", :via => :scp, :recursive => true
+        upload "#{local_path}/conf", "#{staging_deploy_path}", :via => :scp, :recursive => true
+        upload "#{local_path}/lib", "#{staging_deploy_path}", :via => :scp, :recursive => true
+        upload "#{local_path}/README", "#{staging_deploy_path}", :via => :scp, :recursive => true
+        upload "#{local_path}/scripts", "#{staging_deploy_path}", :via => :scp, :recursive => true
+        upload "#{local_path}/sukrupa-theme", "#{staging_deploy_path}", :via => :scp, :recursive => true
+    end
+
+    task :bootstrap, :roles => :staging_server do
+        run "cd #{staging_deploy_path} && sh bootstrap.sh" 
+    end
+
+    task :create_config_file, :roles => :staging_server do
+        run "cd #{staging_deploy_path} && cp conf/apache-sukrupa-dev.conf conf/local-apache-sukrupa-dev.conf"
+        run "cd #{staging_deploy_path} && sed -i 's:##sukrupa-website-path##:#{staging_deploy_path}:g' conf/local-apache-sukrupa-dev.conf"
+        run "cd #{staging_deploy_path} && sed -i 's:##server-name##:#{staging_server}:g' conf/local-apache-sukrupa-dev.conf"
+    end
+
+    task :create_symlink, :roles => :staging_server do
+        run "#{sudo} ln -sf #{staging_deploy_path}/conf/local-apache-sukrupa-dev.conf /etc/apache2/sites-enabled/apache-sukrupa.conf"
+    end
+
+    task :restart_apache, :roles => :staging_server do
+        run "#{sudo} /etc/init.d/apache2 restart"
+    end
+
+    task :safety_check, :roles => :staging_server do
+        times = 0;
+        while times < 3
+            wgetresult = system "wget --spider http://#{staging_server}:80"
+            if wgetresult
+                break
+            else
+                times = times + 1
+                sleep 2
+            end
+        end
+        unless wgetresult
+            fail "Could not contact webserver."
+        end
+    end
+end
+

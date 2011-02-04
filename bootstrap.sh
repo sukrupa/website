@@ -17,11 +17,11 @@ die () {
 }
 
 die_if_errors() {
-  if [[  $? -gt 0 ]]; then die; fi
+  if [  $? -gt 0 ]; then die; fi
 }
 
 die_if_not_on_path() {
-  if [[ -z $(which $1) ]] ; then
+  if [ -z $(which $1) ] ; then
     die "!!  Is $1 installed? It is not found on your path. Exiting... !!";
   fi
 }
