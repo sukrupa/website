@@ -44,6 +44,7 @@ unzip -qo lib/wordpress-3.0.4.zip -d .
 mv wordpress installed-wordpress
 
 cp -f lib/wp-config.php installed-wordpress/
+cp -f lib/.htaccess installed-wordpress/
 
 echo "first creating backup of old database tables before dropping everything"
 timestamp=$(date "+%Y-%m-%d_%H-%M-%S")
