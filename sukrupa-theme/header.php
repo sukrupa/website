@@ -32,7 +32,7 @@
 			<h1><a href="<?php echo get_option('home'); ?>/">SUKRUPA</a></h1>
 		</div>
         <div class="prefix_20 cornerlinks">
-           <a href="<?php bloginfo('home'); ?>/">HOME</a> | <a href="<?php bloginfo('home'); ?>/#">Contact Us</a> | <a href="<?php bloginfo('home'); ?>/#">Login</a>
+           <a href="<?php bloginfo('home'); ?>/">HOME</a> | <a href="<?php bloginfo('home'); ?>/#">Contact Us</a> | <a href="<?php bloginfo('home'); ?>/wp-admin/">Login</a>
         </div>
 
 		<div id="search" class="prefix_7">
@@ -40,18 +40,18 @@
 		    	<input id="searchInput" class="grid_4" type="text" name="s" value="Search Sukrupa" onfocus="if (this.value == 'Search Sukrupa') {this.value = '';}" />
 		    	<input type="submit" id="searchSubmit" value="Submit" alt="Submit">
 		    </form>
-			<a href="http://www.facebook.com/#" id="fb">Facebook</a>
+			<a href="http://www.facebook.com/pages/SUKRUPA/105019592871618" id="fb">Facebook</a>
             <a href="http://www.twitter.com/#" id="twi">Twitter</a>
             <a href="http://www.youtube.com/#" id="yt">YouTube</a>
 		</div>
 		
 		<div id="navigation" class="grid_24" style="margin: 0;">
     		<a id="homeLink" href="<?php bloginfo('home'); ?>/" style="margin-left: 5px;">home</a>
-    		<a href="<?php bloginfo('home'); ?>/" class="">who we are</a>
-    		<a href="<?php bloginfo('home'); ?>/#" class="">volunteer with us</a>
+    		<a href="<?php bloginfo('home'); ?>/about/" class="">who we are</a>
+    		<a href="<?php bloginfo('home'); ?>/what-we-do/" class="">what we do</a>
     		<a href="<?php bloginfo('home'); ?>/#" class="">blog</a>
-    		<a href="<?php bloginfo('home'); ?>/#" class="">sponsorship</a>
-    		<a href="<?php bloginfo('home'); ?>/#" class="">events</a>
+    		<a href="<?php bloginfo('home'); ?>/#" class="">blog</a>
+    		<a href="<?php bloginfo('home'); ?>/#" class="">blog</a>
     	    <a href="<?php bloginfo('home'); ?>/#" id="donateLink" style="line-height:1em; color:#ececec; font-weight:bold; font-size: 1em; letter-spacing: .04em">donate now</a>
     	</div>
 	</div><!-- /header -->

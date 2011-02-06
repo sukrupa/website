@@ -30,10 +30,10 @@ h4 { color: #254965; text-align: center; }
 #search a{height: 18px; width: 20px;text-indent: -9999px !important; float: left;}
 #searchForm{padding-left: 31px;}
 #searchInput{ background-color: #24333D; color: #ececec; font-size: 9px; border: 1px solid #ececec; height: 13px; width: 163px; margin: 0;}
-#searchSubmit{ background: url(img/18px_sprites.png) no-repeat -54px left; height: 18px; width: 18px; text-indent: 9999px; border: none; margin: 0;}
-a#fb{background: url(img/18px_sprites.png) no-repeat -17px left; margin-right: 7px;}
-a#twi{ background: url(img/18px_sprites.png) no-repeat top left; margin-right: 7px; }
-a#yt{ background: url(img/18px_sprites.png) no-repeat -36px left; }
+#searchSubmit{ background: url(img/18px_sprites.png) no-repeat 0% 59%; height: 18px; width: 18px; text-indent: -9999px; border: none; margin: 0;}
+a#fb{background: url(img/18px_sprites.png) no-repeat 0% 19%; margin-right: 7px;}
+a#twi{ background: url(img/18px_sprites.png) no-repeat 0% 0%; margin-right: 7px; }
+a#yt{ background: url(img/18px_sprites.png) no-repeat 0% 39%; }
 
 #navigation { width: 100%; background-color: #254965; height: 25px; padding-top: 5px; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px;}
 #navigation a{ font-weight: 500; margin-left: 50px; color:white; letter-spacing: .09em}
@@ -48,7 +48,7 @@ a#yt{ background: url(img/18px_sprites.png) no-repeat -36px left; }
 #photocarousel{ height:350px; float:left; width: 100%;}
 .carouselEntry{max-height: 350px; position: relative;}
 .carouselImage{ z-index:0; left:40px; position:relative; color:blue;}
-.carouselText{ position:absolute; bottom: 0px; z-index:10; opacity:0.6;filter:alpha(opacity=60); background-color: black; color:white; max-width: 330px; max-height: 125px; padding:10px; }
+.carouselText{ position:absolute; bottom: 0px; left:0; z-index:10; opacity:0.6;filter:alpha(opacity=60); background-color: black; color:white; max-width: 330px; max-height: 125px; padding:10px; }
 .carouselText a{color: #405dff;}
 
 .container{margin-left: 0; margin-right: 0;}
