@@ -74,7 +74,7 @@ a#yt{ background: url(img/18px_sprites.png) no-repeat 0% 39%; }
 #footerinfo{ float: left; width: 100%; text-align: center; font-size: 11px; line-height: 13px; }
 hr{ background-color: #4991C9; color: #4991C9; width: 30%; }
 .newsthumbnail { float:right; }
-#newspost{ min-height:163px;height:auto!important; height: 163px; margin-bottom: 10px; }
+#newspost{ height:auto!important; margin-bottom: 10px; }
 .statistic strong{ color: #F7C321; }
 
 .inset { background-color: #ebe8e5; margin-top: -1px; border-top: 1px solid #dcdad8; border-bottom: 1px solid #dcdad8; -moz-box-shadow: inset 0px 2px 4px rgba(220,218,216,0.75);  -webkit-box-shadow: inset 0px 2px 4px rgba(220,218,216,0.75); box-shadow: inset 0px 2px 4px rgba(220,218,216,0.75); padding-bottom: 1.6429em; padding: 20px; }
