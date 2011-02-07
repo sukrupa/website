@@ -4,8 +4,15 @@
     ServerName ##server-name##
     
     <Location />
-      Order Deny,Allow
+        Order Deny,Allow
+                            
+        # Must have mod_substitute installed so website content served from the twu-staging server
+        # is rewritten to use the local css, etc assets.
+        # UNCOMMENT FOR LOCAL DEVELOPMENT!
+        #AddOutputFilterByType SUBSTITUTE text/html       
+        #Substitute s/twu-staging/sukrupa.localhost/ni
     </Location>
+
     ErrorLog "##sukrupa-website-path##/logs/##server-name##-access_log"
     CustomLog "##sukrupa-website-path##/logs/##server-name##-error_log" common
 
