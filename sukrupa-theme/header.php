@@ -17,6 +17,8 @@
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="../js/ourAmmado.js"></script>
+
 <!--[if lte IE 7]>
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/ie.css" type="text/css" media="screen" />
 <![endif]-->
@@ -24,6 +26,9 @@
 </head>
 
 <body>
+
+<div style="visibility:hidden; position:absolute; top: 50%; left: 45%" id="ammadoGivingWidget"></div><script type="text/javascript">var s = document.createElement('script'); s.type='text/javascript'; s.async=true;s.src='https://www.ammado.com/nonprofit/118838/givingwidget/embed.js?renderTo=ammadoGivingWidget';var f = document.getElementsByTagName('script')[0]; f.parentNode.insertBefore(s, f);</script></div>
+
 <div id="wrapper">
 
 <div id="site" class="container_24">
@@ -51,7 +56,7 @@
     		<a href="<?php bloginfo('home'); ?>/about/" class="">who we are</a>
     		<a href="<?php bloginfo('home'); ?>/help-out/" class="">how you can help</a>
     		<a href="<?php bloginfo('home'); ?>/news/" class="">current news &amp; blog</a>
-    	    <a href="<?php bloginfo('home'); ?>/#/" id="donateLink" style="line-height:1em; color:#ececec; font-weight:bold; font-size: 1em; letter-spacing: .04em">donate now</a>
+    	    <a href="<?php bloginfo('home'); ?>/#/" id="donateLink" onClick="clickAmmado()" style="line-height:1em; color:#ececec; font-weight:bold; font-size: 1em; letter-spacing: .04em">donate now</a>
     	</div>
 	</div><!-- /header -->
 
