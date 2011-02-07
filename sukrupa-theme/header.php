@@ -18,7 +18,7 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <!--[if lte IE 7]>
-<link rel="stylesheet" href="<?php echo get_option('home'); ?>/wp-content/themes/sukrupa/iestyle.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/ie.css" type="text/css" media="screen" />
 <![endif]-->
 
 </head>
@@ -38,7 +38,7 @@
 		<div id="search" class="prefix_7">
 		    <form id="searchForm" action="<?php echo get_option('home'); ?>" method="get" class="grid_5">
 		    	<input id="searchInput" class="grid_4" type="text" name="s" value="Search Sukrupa" onfocus="if (this.value == 'Search Sukrupa') {this.value = '';}" />
-		    	<input type="submit" id="searchSubmit" value="Submit" alt="Submit">
+		    	<input type="submit" id="searchSubmit" value="&nbsp;" alt="Submit">
 		    </form>
 			<a href="http://www.facebook.com/pages/SUKRUPA/105019592871618" id="fb">Facebook</a>
             <a href="http://www.twitter.com/#" id="twi">Twitter</a>

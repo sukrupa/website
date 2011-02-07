@@ -50,5 +50,7 @@
 </div><!-- site -->
 </div><!-- wrapper -->
 
+<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery.easing.js"></script>
+
 </body>
 </html>

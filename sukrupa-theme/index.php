@@ -16,7 +16,7 @@ $(document).ready(function() {
 	<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 	<?php the_content(); 
 	
-	endwhile; endif;
+	endwhile; endif; //this is a test comment
 	?>
 	
 </div>

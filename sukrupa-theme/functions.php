@@ -73,7 +73,21 @@ function my_custom_login_logo() {
     </style>';
 }
 
-add_action('login_head', 'my_custom_login_logo');
+function include_jquery() {
+    echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>';
+}
+
+add_action('admin_head', 'include_jquery');
+
+function jquery_hide_send_password() {
+    echo "<script type=\"text/javascript\">
+$(document).ready(function() {
+    $('label[for=\"send_password\"]').hide();
+});
+</script>";
+}
+
+add_action('admin_footer', 'jquery_hide_send_password');
 
 
 /*
