@@ -47,12 +47,11 @@
 		
 		<div id="navigation" class="grid_24" style="margin: 0;">
     		<a id="homeLink" href="<?php bloginfo('home'); ?>/" style="margin-left: 5px;">home</a>
+    		<a href="<?php bloginfo('home'); ?>/activities/" class="">what we do</a>
     		<a href="<?php bloginfo('home'); ?>/about/" class="">who we are</a>
-    		<a href="<?php bloginfo('home'); ?>/what-we-do/" class="">what we do</a>
-    		<a href="<?php bloginfo('home'); ?>/#" class="">blog</a>
-    		<a href="<?php bloginfo('home'); ?>/#" class="">blog</a>
-    		<a href="<?php bloginfo('home'); ?>/#" class="">blog</a>
-    	    <a href="<?php bloginfo('home'); ?>/#" id="donateLink" style="line-height:1em; color:#ececec; font-weight:bold; font-size: 1em; letter-spacing: .04em">donate now</a>
+    		<a href="<?php bloginfo('home'); ?>/help-out/" class="">how you can help</a>
+    		<a href="<?php bloginfo('home'); ?>/news/" class="">current news &amp; blog</a>
+    	    <a href="<?php bloginfo('home'); ?>/#/" id="donateLink" style="line-height:1em; color:#ececec; font-weight:bold; font-size: 1em; letter-spacing: .04em">donate now</a>
     	</div>
 	</div><!-- /header -->
 
