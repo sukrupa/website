@@ -15,9 +15,10 @@
 
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/ourAmmado.js"></script>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="../js/ourAmmado.js"></script>
+
 <!--[if lte IE 7]>
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/ie.css" type="text/css" media="screen" />
 <![endif]-->
@@ -26,7 +27,7 @@
 
 <body>
 
-<div style="visibility:hidden; position:absolute; top: 25%; left: 45%" id="ammadoGivingWidget"></div><script type="text/javascript">var s = document.createElement('script'); s.type='text/javascript'; s.async=true;s.src='https://www.ammado.com/nonprofit/118838/givingwidget/embed.js?renderTo=ammadoGivingWidget';var f = document.getElementsByTagName('script')[3]; f.parentNode.insertBefore(s, f);</script></div>
+<div style="visibility:hidden; position:absolute; top: 50%; left: 45%" id="ammadoGivingWidget"></div><script type="text/javascript">var s = document.createElement('script'); s.type='text/javascript'; s.async=true;s.src='https://www.ammado.com/nonprofit/118838/givingwidget/embed.js?renderTo=ammadoGivingWidget';var f = document.getElementsByTagName('script')[0]; f.parentNode.insertBefore(s, f);</script></div>
 
 <div id="wrapper">
 
@@ -55,7 +56,7 @@
     		<a href="<?php bloginfo('home'); ?>/about/" class="">who we are</a>
     		<a href="<?php bloginfo('home'); ?>/help-out/" class="">how you can help</a>
     		<a href="<?php bloginfo('home'); ?>/news/" class="">current news &amp; blog</a>
-    	    <a href onClick="clickAmmado()" id="donateLink" style="line-height:1em; color:#ececec; font-weight:bold; font-size: 1em; letter-spacing: .04em">donate now</a>
+    	    <a href="<?php bloginfo('home'); ?>/#/" id="donateLink" onClick="clickAmmado()" style="line-height:1em; color:#ececec; font-weight:bold; font-size: 1em; letter-spacing: .04em">donate now</a>
     	</div>
 	</div><!-- /header -->
 
