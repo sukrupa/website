@@ -25,7 +25,7 @@
 </head>
 
 <body>
-<div id="ammadoHolder" style="position:absolute; top: 25%; left: 33%; z-index: 5;">
+<div id="ammadoHolder" style="position:absolute; top: 25%; left: 33%; z-index: -1;">
 <div id="ammadoGivingWidget"></div>
 <script type="text/javascript">
     var s = document.createElement('script');
