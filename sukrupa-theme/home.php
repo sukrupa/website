@@ -24,21 +24,22 @@ $(document).ready(function() {
 	<?php endwhile; endif; ?>
 	</div>
 	
-	<div id="masonry" class="grid_9 container col">
+	<div class="grid_9 container col">
 	    <h2>Photos and Media</h2>
 	    <?php $query = new WP_Query('category_name=media&showposts=5');
 	    if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
 	        the_title('<li>', '</li>', true);
 	    endwhile;
 	    endif;?>
-	    <img src="<?php bloginfo('home'); ?>/content/download.jpeg" width="160" height="176" />
-	    <img src="<?php bloginfo('home'); ?>/content/group.jpeg" width="345" height="259" />
-	    <img src="<?php bloginfo('home'); ?>/content/kids.jpeg" width="160" height="240" />
-	    <img src="<?php bloginfo('home'); ?>/content/village.jpeg" width="345" height="259" />
-	    <img src="<?php bloginfo('home'); ?>/content/krupa.jpeg" width="160" height="240" />
-	    <img src="<?php bloginfo('home'); ?>/content/krupaandkids.jpeg" width="160" height="120" />
-	    <img src="<?php bloginfo('home'); ?>/content/sports.png" width="345" height="230" />
-
+	    <div id="masonry">
+	    	<img src="<?php bloginfo('home'); ?>/content/kids.jpeg" width="160" height="240" />
+	    	<img src="<?php bloginfo('home'); ?>/content/download.jpeg" width="160" height="176" />
+	    	<!-- <img src="<?php bloginfo('home'); ?>/content/village.jpeg" width="345" height="259" /> -->
+	    	<img src="<?php bloginfo('home'); ?>/content/krupa.jpeg" width="160" height="185" />
+	    	<img src="<?php bloginfo('home'); ?>/content/krupaandkids.jpeg" width="160" height="120" />
+	    	<img src="<?php bloginfo('home'); ?>/content/sports.png" width="330" height="230" />
+			<!-- <img src="<?php bloginfo('home'); ?>/content/group.jpeg" width="345" height="259" /> -->
+	    </div>
 	</div>
 	
 	<div class="grid_9 container col" style="margin-left: 15px;">

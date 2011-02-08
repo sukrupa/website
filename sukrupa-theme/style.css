@@ -50,7 +50,7 @@ a#yt{ background: url(img/18px_sprites.png) no-repeat 0% 39%; }
 .carouselImage{ z-index:0; left:40px; position:relative; color:blue;}
 .carouselText{ position:absolute; bottom: 0px; left:0; z-index:10; opacity:0.6;filter:alpha(opacity=60); background-color: black; color:white; max-width: 330px; max-height: 125px; padding:10px; }
 .carouselText a{color: #405dff;}
-
+#masonry img{margin: 5px;}
 .container{margin-left: 0; margin-right: 0;}
 .col{ min-height:250px; float: left; margin-top: 15px;}
 .statisticmargin{margin-left:3px; margin-right: 3px;}

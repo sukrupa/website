@@ -1,3 +1,3 @@
 $(document).ready(function(){
-  $('#masonry').masonry({ columnWidth: 345 });
+  $('#masonry').masonry({ singleMode: true });
 });
