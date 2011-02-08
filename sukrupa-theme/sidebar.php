@@ -26,15 +26,15 @@
 	<div class="sidebarEntry">
 	    <div class="sidebarHeader">Create an Opportunity</div>
 	    <div class="sidebarGuts">
-	    	<a href="#">Donate Now to Sukrupa</a><br/>
-	    	<a href="#">Volunteer with Us</a><br/>
-	    	<a href="#">View our Shop</a><br/>
+	    	<a href="<?php bloginfo('home'); ?>/donate/">Donation Information</a><br/>
+	    	<a href="<?php bloginfo('home'); ?>/help-out/">Volunteer with Us</a><br/>
+	    	<a href="http://etsy.com">View our Shop</a><br/>
 	    </div>
 	</div>
 
 
     <div class="sidebarEntry">
-        <?php $query = new WP_Query('showposts=4&category=events');?>
+        <?php $query = new WP_Query('showposts=4&category_name=events');?>
 	    <div class="sidebarHeader">Events</div>
 	    <div class="sidebarGuts">
 	    	<?php if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
