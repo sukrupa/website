@@ -2,6 +2,7 @@ logs
 installed-wordpress
 sukrupa_wordpress.backupdump*sql
 nbproject
+conf/apache-sukrupa-dev.conf
 local-apache-sukrupa-dev.conf
 .DS_Store
 lib/local_sukrupa_wordpress.dump.sql
