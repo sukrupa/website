@@ -8,11 +8,19 @@
 		<div class="sidebarGuts">
 		<?php $donormeter = get_post_meta($post->ID,'donormeter',true);
 			  $donormeter = explode('/', $donormeter);
-			  $percentage = $donormeter[0]/$donormeter[1];
-			  $width = 200 * $percentage; ?>
+			  $moneyRaised = (int) str_ireplace(",", "", $donormeter[0] );
+			  $moneyNeeded = (int) str_ireplace(",", "", $donormeter[1] );
+			  
+			  if ( !is_int( $moneyRaised ) || !is_int( $moneyNeeded ) ) { continue; }
+			  if ( $moneyRaised < 0 || $moneyNeeded < 0 ) {continue;}
+			  
+			  $percentage = $moneyRaised/$moneyNeeded;
+			  $width = 200 * $percentage; 
+			  if ( $width > 200 ) { $width = 200; }
+			  ?>
 			<div class="baseMeter">
 				<!-- <a href="<?php the_permalink(); ?>" id="capitalCampaign"><?php the_title(); ?></a> -->
-				<span>Rs. <?php echo $donormeter[1];?></span>
+				<p>Rs. <?php echo number_format( $moneyNeeded );?></p>
 				<div style="width:<?php echo $width; ?>px;" class="progressMeter"></div>
 			</div>
 
@@ -28,7 +36,7 @@
 	    <div class="sidebarGuts">
 	    	<a href="<?php bloginfo('home'); ?>/donate/">Donation Information</a><br/>
 	    	<a href="<?php bloginfo('home'); ?>/help-out/">Volunteer with Us</a><br/>
-	    	<a href="http://etsy.com">View our Shop</a><br/>
+	    	<a href="http://www.etsy.com">View our Shop</a><br/>
 	    </div>
 	</div>
 

@@ -38,10 +38,10 @@
           <?php echo date('Y'); ?> &copy; Sukrupa Foundation
         </p>
         <p>
-            <a href="<?php bloginfo('home'); ?>">Terms & Conditions</a> | <a href="<?php bloginfo('home'); ?>">Privacy Policy</a > | <a href="<?php bloginfo('home'); ?>">Login</a> | <a href="<?php bloginfo('home'); ?>">Register</a>
+            <a href="<?php bloginfo('home'); ?>/terms/">Terms & Conditions</a> | <a href="<?php bloginfo('home'); ?>/wp-admin/">Login</a>
         </p>
         <p>
-          The Sukrupa Foundation is a non-profit, charitable organization in Bangalore, India.
+          The Sukrupa Foundation is a non-profit charitable organization in Bangalore, India.
         </p>
     </div>
 
