@@ -27,7 +27,7 @@
 
 <body>
 <div id="ammadoHolder">
-<img src="<?php bloginfo('home'); ?>/content/icons/closeAmmado.png" id="closeAmmado"/>
+<a href="#"><img src="<?php bloginfo('home'); ?>/content/icons/closeAmmado.png" id="closeAmmado"/></a>
 <div id="ammadoGivingWidget"></div>
 <script type="text/javascript">
     var s = document.createElement('script');
