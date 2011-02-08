@@ -76,7 +76,7 @@ function include_jquery() {
 
 //hook the administrative header output
 add_action('admin_head', 'my_custom_logo');
-add_action('admin_head', 'my_custom_login_logo');
+add_action('login_head', 'my_custom_login_logo');
 add_action('admin_head', 'include_jquery');
 
 function jquery_hide_send_password() {
