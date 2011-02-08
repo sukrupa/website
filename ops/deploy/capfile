@@ -31,6 +31,7 @@ namespace :staging do
         run "mkdir -p #{staging_deploy_path}"
         run "mkdir -p #{staging_deploy_path}/content"
         run "mkdir -p #{staging_deploy_path}/database-backups"
+        upload "#{local_path}/content", "#{staging_deploy_path}/", :via => :scp, :recursive => true
         upload "#{local_path}/bootstrap.sh", "#{staging_deploy_path}/", :via => :scp, :recursive => true
         upload "#{local_path}/conf", "#{staging_deploy_path}/", :via => :scp, :recursive => true
         upload "#{local_path}/lib", "#{staging_deploy_path}/", :via => :scp, :recursive => true
