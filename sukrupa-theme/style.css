@@ -96,7 +96,7 @@ hr{ background-color: #4991C9; color: #4991C9; width: 30%; }
 }
 #the_content{padding: 15px; font-family: Palatino, Georgia, serif; line-height: 1.4em;}
 #the_content p{margin: 10px 0}
-.subarea{ border-top: 4px solid #4991C9; padding: 10px; font-size: .9em; float: left; display: block; max-width:305px; text-align: justify; margin: 15px; line-height: 1.2em;}
+.subarea{ border-top: 4px solid #4991C9;  border-bottom: 4px solid #4991C9; padding: 10px; font-size: .9em; float: left; display: block; max-width:305px; text-align: justify; margin: 15px; line-height: 1.2em;}
 .subarea img{margin: 15px; float:left;}
 .lhside{margin-left: 0 !important;}
 .rhside{margin-right: 0 !important;}
