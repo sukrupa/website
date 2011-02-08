@@ -26,7 +26,8 @@
 </head>
 
 <body>
-<div id="ammadoHolder" style="position:absolute; top: 25%; left: 33%; display: none; z-index: 5;">
+<div id="ammadoHolder">
+<img src="<?php bloginfo('home'); ?>/content/icons/closeAmmado.png" id="closeAmmado"/>
 <div id="ammadoGivingWidget"></div>
 <script type="text/javascript">
     var s = document.createElement('script');

@@ -105,3 +105,20 @@ hr{ background-color: #4991C9; color: #4991C9; width: 30%; }
 
 /*  FIRST CHILD */
 #the_content:first-child p{margin-top: 0;}
+
+/* ammado related css*/
+#ammadoHolder {
+    position: absolute;
+    top: 25%;
+    left: 33%;
+    display: none;
+    z-index: 5;
+}
+
+#closeAmmado {
+    position: absolute;
+    top: -13px;
+    right: -13px;
+    width: 25px;
+    height: 25px;
+}
