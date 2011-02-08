@@ -4,7 +4,7 @@
 $(document).ready(function() {
     $('#photocarousel').cycle({
 		fx:'fade',
-		timeout:2000
+		timeout:5000
 	});
 });
 </script>

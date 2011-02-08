@@ -37,7 +37,7 @@
 			<h1><a href="<?php echo get_option('home'); ?>/">SUKRUPA</a></h1>
 		</div>
         <div class="prefix_20 cornerlinks">
-           <a href="<?php bloginfo('home'); ?>/">HOME</a> | <a href="<?php bloginfo('home'); ?>/#">Contact Us</a> | <a href="<?php bloginfo('home'); ?>/wp-admin/">Login</a>
+           <a href="<?php bloginfo('home'); ?>/">HOME</a> | <a href="<?php bloginfo('home'); ?>/contact/">Contact Us</a> | <a href="<?php bloginfo('home'); ?>/wp-admin/">Login</a>
         </div>
 
 		<div id="search" class="prefix_7">
@@ -54,9 +54,9 @@
     		<a id="homeLink" href="<?php bloginfo('home'); ?>/" style="margin-left: 5px;">home</a>
     		<a href="<?php bloginfo('home'); ?>/activities/" class="">what we do</a>
     		<a href="<?php bloginfo('home'); ?>/about/" class="">who we are</a>
-    		<a href="<?php bloginfo('home'); ?>/help-out/" class="">how you can help</a>
+    		<a href="<?php bloginfo('home'); ?>/help-out/" class="">supporting sukrupa</a>
     		<a href="<?php bloginfo('home'); ?>/news/" class="">current news &amp; blog</a>
-    	    <a href="<?php bloginfo('home'); ?>/#/" id="donateLink" onClick="clickAmmado()" style="line-height:1em; color:#ececec; font-weight:bold; font-size: 1em; letter-spacing: .04em">donate now</a>
+    	    <a href="<?php bloginfo('home'); ?>/#" id="donateLink" onClick="clickAmmado()" style="line-height:1em; color:#ececec; font-weight:bold; font-size: 1em; letter-spacing: .04em">donate now</a>
     	</div>
 	</div><!-- /header -->
 
