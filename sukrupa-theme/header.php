@@ -56,7 +56,7 @@
 		    	<input type="submit" id="searchSubmit" value="&nbsp;" alt="Submit">
 		    </form>
 			<a href="http://www.facebook.com/pages/SUKRUPA/105019592871618" id="fb">Facebook</a>
-            <a href="http://www.twitter.com/#" id="twi">Twitter</a>
+            <a href="http://twitter.com/#" id="twi">Twitter</a>
             <a href="http://www.youtube.com/#" id="yt">YouTube</a>
 		</div>
 		
