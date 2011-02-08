@@ -56,9 +56,6 @@ add_action('wp_dashboard_setup', 'editDashboard' );
 add_action( 'init', create_function( '$a', "remove_action( 'init', 'wp_version_check' );" ), 2 );
 add_filter( 'pre_option_update_core', create_function( '$a', "return null;" ) );
 
-//hook the administrative header output
-add_action('admin_head', 'my_custom_logo');
-
 function my_custom_logo() {
    echo '
       <style type="text/css">
@@ -77,6 +74,9 @@ function include_jquery() {
     echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>';
 }
 
+//hook the administrative header output
+add_action('admin_head', 'my_custom_logo');
+add_action('admin_head', 'my_custom_login_logo');
 add_action('admin_head', 'include_jquery');
 
 function jquery_hide_send_password() {
