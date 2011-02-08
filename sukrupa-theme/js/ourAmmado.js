@@ -1,14 +1,20 @@
-var bool = new Boolean(true);
+var bool = new Boolean(false);
+var trueVal= new Boolean(true);
+var falseVal= new Boolean(false);
+
+
 window.onload = function(){
- alert("hey girl hey");
+alert("loaded");
  }
 
-function clickAmmado(){
-    if(bool){
-        document.getElementById("ammadoGivingWidget").style.visibility = "visible";
-        bool = false;
+function toggleAmmado(){
+
+    if($('ammadoHolder').css("z-index").equals("-1")){
+        $('ammadoHolder').css({"z-index": "5"});
+
     }else {
-        document.getElementById("ammadoGivingWidget").style.visibility = "hidden";
-        bool = true;
+        $('ammadoHolder').css({"z-index": "-1"});
     }
 }
+
+

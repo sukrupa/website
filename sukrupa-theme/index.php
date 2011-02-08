@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
     $('#photocarousel').cycle({
