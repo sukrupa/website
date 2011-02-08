@@ -117,8 +117,6 @@ hr{ background-color: #4991C9; color: #4991C9; width: 30%; }
 
 #closeAmmado {
     position: absolute;
-    top: -13px;
-    right: -13px;
-    width: 25px;
-    height: 25px;
+    top: -8px;
+    right: -8px;
 }
