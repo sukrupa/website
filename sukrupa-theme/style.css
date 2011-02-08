@@ -23,7 +23,7 @@ h4 { color: #254965; text-align: center; }
 
 
 #header {font-family: 'Myriad Pro', Arial, Helvetica, Tahoma, sans-serif; height: 95px;}
-#logo h1 a{height:60px; width: 230px; background: url(img/opportunities_logo.png) no-repeat 0 0; margin: 10px 0 0 45px; float: left; text-indent: -9999px;}
+#logo h1 a{height:60px; width: 230px; background: url(img/opportunities_logo.png) no-repeat 0 0; margin: 10px 0 0 20px; float: left; text-indent: -9999px;}
 .cornerlinks { font-family: 'Arial Narrow', Arial, sans-serif; font-size: 10px; color: #cecece; text-align: right; margin-top: 10px;}
 .cornerlinks a{color: #ececec; padding: 3px;}
 #search{float: left; margin-top: 15px;}

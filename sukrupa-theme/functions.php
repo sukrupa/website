@@ -69,7 +69,7 @@ function my_custom_logo() {
 
 function my_custom_login_logo() {
     echo '<style type="text/css">
-        h1 a { background-image:url('.get_bloginfo('template_directory').'/img/logo.png) !important; }
+        h1 a { background-image:url('.get_bloginfo('template_directory').'/img/opportunities_logo.png) !important; }
     </style>';
 }
 
