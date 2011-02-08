@@ -75,6 +75,7 @@ install_wordpress(){
 	cp -f lib/wp-config.php installed-wordpress/
 	cp -f lib/.htaccess installed-wordpress/
 	ln -sf `pwd`/sukrupa-theme/ ./installed-wordpress/wp-content/themes/sukrupa
+	ln -sf `pwd`/content/ ./installed-wordpress/content
 }
 
 reset_db() {
