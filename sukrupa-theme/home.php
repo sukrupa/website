@@ -56,7 +56,7 @@ $(document).ready(function() {
 	    	<h3><a style="color:inherit;" href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
 	    	<?php // Change to thumbnail to support naming conventions.
                 $thumbnail = get_post_meta($post->ID,'thumbnail',true);
-                if($thumbnail): ?><p><img src=" <?php echo $thumbnail; ?>" class="newsthumbnail" alt="Featured Photo" width="100"/><?php endif;
+                if($thumbnail): ?><p><img src=" <?php echo $thumbnail; ?>" class="thumbnail" alt="Featured Photo" width="100"/><?php endif;
 	        the_excerpt();
                 ?></p></div><br/><?php
                 endwhile;
