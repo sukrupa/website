@@ -1,31 +1,7 @@
 <div id="footer" class="grid_24">
 
-    <div class="statistic grid_5 statisticmargin">
-        <?php $query = new WP_Query('showposts=1&meta_key=statistic1');
-        if ($query->have_posts() ) : while ( $query->have_posts() ): $query->the_post();
-            the_content();
-        endwhile;
-        endif; ?>
-    </div>
-
-    <div class="statistic grid_7 statisticmargin">
-        <?php $query = new WP_Query('showposts=1&meta_key=statistic2');
-        if ($query->have_posts() ) : while ( $query->have_posts() ): $query->the_post();
-            the_content();
-        endwhile;
-        endif; ?>
-    </div>
-
-    <div class="statistic grid_6 statisticmargin">
-        <?php $query = new WP_Query('showposts=1&meta_key=statistic3');
-        if ($query->have_posts() ) : while ( $query->have_posts() ): $query->the_post();
-            the_content();
-        endwhile;
-        endif; ?>
-    </div>
-
-    <div class="statistic grid_6 statisticmargin">
-        <?php $query = new WP_Query('showposts=1&meta_key=statistic4');
+    <div class="statistic grid_23 statisticmargin">
+        <?php $query = new WP_Query('showposts=4&category_name=statistics');
         if ($query->have_posts() ) : while ( $query->have_posts() ): $query->the_post();
             the_content();
         endwhile;
