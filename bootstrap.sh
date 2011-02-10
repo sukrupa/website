@@ -79,13 +79,14 @@ install_wordpress(){
 }
 
 reset_db() {
+    mkdir -p database-backups
     echo "- first creating backup of old database tables before dropping everything"
     timestamp=$(date "+%Y-%m-%d_%H-%M-%S")
     mysqldump sukrupa_wordpress -uroot -p$ROOT_MYSQL_PASSWORD > database-backups/sukrupa_wordpress.backupdump.$timestamp.sql   
     die_if_errors
     echo "  (If the database migration was successful, you may want to remove the backup db dump.)"
     echo "- now dropping everything from the database and recreating tables"
-    mysql -uroot -p$ROOT_MYSQL_PASSWORD sukrupa_wordpress < lib/local_sukrupa_wordpress.dump.sql
+    mysql -uroot -p$ROOT_MYSQL_PASSWORD sukrupa_wordpress < lib/sukrupa_wordpress.dump.sql
     die_if_errors
 }
 
