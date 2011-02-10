@@ -128,4 +128,48 @@ ul.lined li{padding: 3px 10px; margin: 5px 0px;border-left: 8px solid #4991C9; }
     position: absolute;
     top: -8px;
     right: -8px;
+    height: 14px;
+    width: 14px;
+}
+
+#ammadoHolderPersistent {
+    float:left; 
+    padding:0;
+}
+
+#ammadoDonation {
+    margin-left:9px;
+}
+
+#manualDonation {
+    float:left; 
+    padding:0;
+    margin:0;
+}
+#manualContent p {
+    font: 12px "century gothic",verdana,arial,helvetica,sans-serif;
+}
+#manualContent h2 {
+    font: 16px "century gothic",verdana,arial,helvetica,sans-serif;
+    text-decoration: none;
+}
+.donateContentHeader h1{
+    text-align: center;
+    font: 20px "century gothic",verdana,arial,helvetica,sans-serif;
+}
+.donateContentHeader p{
+    text-align: center;
+    font: 14px "century gothic",verdana,arial,helvetica,sans-serif;
+}
+.donateContentHeader {
+    padding-bottom: 10px;
+}
+#donationTable{
+    width: 322px;
+    margin-left: 9px;
+    padding: 0px;
+    border: 1px solid;
+}
+#donationTable td {
+    padding:5px;
 }
