@@ -39,7 +39,7 @@ get_header();
 	<div id="manualDonation" class="grid_9">
 	    	<div class="donateContentHeader">
 				<h1>Donate Manually</h1>
-				<p>Cheque/Demand Draft or Wire Transfer</p>
+				<p>Cheque, Demand Draft, or Wire Transfer</p>
 		</div>
 		<div id="manualContent">
 			<?php the_content(); ?>
