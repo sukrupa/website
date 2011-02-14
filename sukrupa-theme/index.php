@@ -1,25 +1,18 @@
 <?php get_header(); ?>
 
-<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.min.js"></script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#photocarousel').cycle({
-		fx:'fade',
-		timeout:2000
-	});
-});
-</script>
-
-<div class="grid_18 guts">
-	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<div class="grid_18">
+	<?php if ( have_posts() ) : ?>
+	<div class="inset">
+		<h2 style="margin-bottom:0;"><?php foreach( ( get_the_category() ) as $category ) { echo $category->cat_name . ' '; } ?></h2>
+		<p><?php echo category_description(); ?></p>
+	</div>	
 	
-	<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-	<?php the_content(); 
-	
-	endwhile; endif; //this is a test comment
-	?>
-	
+	<?php while ( have_posts() ) : the_post(); ?>	
+		<div id="the_content" style="border-bottom: 1px dotted silver;">
+		<h3><?php the_title(); ?></h3>
+		<?php the_excerpt(); ?>
+		</div>
+	<?php endwhile; endif; ?>
 </div>
 
 <?php get_sidebar(); get_footer(); ?>

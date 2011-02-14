@@ -16,7 +16,7 @@ get_header();
 		<p><?php the_excerpt(); ?></p>
 	</div>	
 		
-    <div id="donateContent">
+	<div id="donateContent">
         <div id="ammadoHolderPersistent" class="grid_9">
 	    	<div class="donateContentHeader">
 				<h1>Donate Online</h1>
@@ -45,7 +45,9 @@ get_header();
 			<?php the_content(); ?>
 		</div>
 	</div>
-	<?php endwhile; endif; ?>
+	
+    <?php 
+    endwhile; endif; ?>
     </div>
 </div>
 
