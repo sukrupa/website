@@ -70,7 +70,7 @@ install_wordpress(){
 	echo "- extracting wordpress binary"
 	mkdir -p logs/
 	rm -rf installed-wordpress/
-	unzip -qo lib/wordpress-*.zip -d .
+	unzip -qo lib/wordpress.zip -d .
 	mv wordpress installed-wordpress
 	cp -f lib/wp-config.php installed-wordpress/
 	cp -f lib/.htaccess installed-wordpress/
