@@ -47,7 +47,7 @@
 			<h1><a href="<?php echo get_option('home'); ?>/">SUKRUPA</a></h1>
 		</div>
         <div class="prefix_20 cornerlinks">
-           <a href="<?php bloginfo('home'); ?>/">HOME</a> | <a href="<?php bloginfo('home'); ?>/contact/">Contact Us</a> | <a href="<?php bloginfo('home'); ?>/wp-admin/">Login</a>
+          <a href="<?php bloginfo('home'); ?>/contact/">Contact Us</a> | <a href="<?php bloginfo('home'); ?>/wp-admin/">Login</a>
         </div>
 
 		<div id="search" class="prefix_7">
