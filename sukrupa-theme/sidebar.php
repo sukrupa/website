@@ -36,7 +36,7 @@
 	    <div class="sidebarGuts">
 	    	<a href="<?php bloginfo('home'); ?>/donate/">Donation Information</a><br/>
 	    	<a href="<?php bloginfo('home'); ?>/help-out/">Volunteer with Us</a><br/>
-	    	<a href="http://www.etsy.com">View our Shop</a><br/>
+	    	<a href="http://sukrupacreations.bigcartel.com">View our Shop</a><br/>
 	    </div>
 	</div>
 
