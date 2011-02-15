@@ -64,7 +64,7 @@ namespace :deploy do
     task :create_apache_config_file do
         run "cd #{deploy_to} && cp conf/apache-sukrupa-dev.conf.sample conf/apache-sukrupa-dev.conf"
         run "cd #{deploy_to} && sed -i 's:##sukrupa-website-path##:#{deploy_to}:g' conf/apache-sukrupa-dev.conf"
-        run "cd #{deploy_to} && sed -i 's:##server-name##:#{deploy_to}:g' conf/apache-sukrupa-dev.conf"
+        run "cd #{deploy_to} && sed -i 's:##server-name##:#{target_server}:g' conf/apache-sukrupa-dev.conf"
     end
     task :restart_apache do
         run "#{sudo} /etc/init.d/apache2 restart"
