@@ -1,6 +1,6 @@
 namespace :deploy do
     wgetresult = "1"
-    task :staging_env do 
+    task :staging do 
         set :bootstrap_servertype, "-d"
         set :target_server, "twu-staging" 
         server "#{server}"
@@ -12,7 +12,7 @@ namespace :deploy do
         restart_apache    
     end
 
-    task :beta_env do
+    task :beta do
         set :bootstrap_servertype, "-b"
         set :target_server, "beta.sukrupa.org"
         server "#{target_server}", :abcd
