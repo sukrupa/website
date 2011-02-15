@@ -1,84 +1,81 @@
-set :application, "sukrupa-website"
-set :user, "go"
-
-set :staging_server, "twu-staging" 
-set :ci_server, "twu-ci" 
-set :local_path, "."
-
-set :staging_deploy_path, "/var/opt/sukrupa/#{application}"
-set :ci_deploy_path, "/var/opt/sukrupa/#{application}"
-
-role :staging_server, "#{staging_server}"
-role :ci_server, "#{ci_server}"
-
-namespace :staging do
-
-    task :default, :roles => :staging_server do
-        upload_artifact
-        setup_wordpress
-        restart_apache
-        safety_check
-    end 
-
-    task :setup_wordpress, :roles => :staging_server do
-        run_bootstrap
-        update_content_symlink
+namespace :deploy do
+    wgetresult = "1"
+    task :staging_env do 
+        set :bootstrap_servertype, "-d"
+        set :target_server, "twu-staging" 
+        server "#{server}"
+        set :user, "go"
+        set :deploy_to, "/var/opt/sukrupa/sukrupa-website"
+        default
         create_apache_config_file
         create_apache_symlink
+        restart_apache    
     end
 
-    task :upload_artifact, :roles => :staging_server do
-        run "mkdir -p #{staging_deploy_path}"
-        run "mkdir -p #{staging_deploy_path}/content"
-        run "mkdir -p #{staging_deploy_path}/database-backups"
-        upload "#{local_path}/content", "#{staging_deploy_path}/", :via => :scp, :recursive => true
-        upload "#{local_path}/bootstrap.sh", "#{staging_deploy_path}/", :via => :scp, :recursive => true
-        upload "#{local_path}/conf", "#{staging_deploy_path}/", :via => :scp, :recursive => true
-        upload "#{local_path}/lib", "#{staging_deploy_path}/", :via => :scp, :recursive => true
-        upload "#{local_path}/README", "#{staging_deploy_path}/", :via => :scp, :recursive => true
-        upload "#{local_path}/scripts", "#{staging_deploy_path}/", :via => :scp, :recursive => true
-        upload "#{local_path}/sukrupa-theme", "#{staging_deploy_path}/", :via => :scp, :recursive => true
+    task :beta_env do
+        set :bootstrap_servertype, "-b"
+        set :target_server, "beta.sukrupa.org"
+        server "#{target_server}", :abcd
+        set :user, "sukrupaweb"
+        set :deploy_to, "/home/sukrupaweb/beta.sukrupa.org"
+        default
+        move_in_wp_config
     end
 
-    task :update_content_symlink, :roles => :staging_server do
-        run "ln -sf #{staging_deploy_path}/content/ #{staging_deploy_path}/installed-wordpress/content"
+    task :beta_env_no_upload do
+        set :bootstrap_servertype, "-b"
+        set :target_server, "beta.sukrupa.org"
+        server "#{target_server}", :abcd
+        set :user, "sukrupaweb"
+        set :deploy_to, "/home/sukrupaweb/beta.sukrupa.org"
+        run_bootstrap
+        move_in_wp_config
     end
 
-    task :run_bootstrap, :roles => :staging_server do
-        run "cd #{staging_deploy_path} && sh bootstrap.sh -d" 
-        run "cd #{staging_deploy_path} && rm bootstrap.sh" 
+    task :default do
+        setup_wordpress
+        safety_check
     end
 
-    task :create_apache_config_file, :roles => :staging_server do
-        run "cd #{staging_deploy_path} && cp conf/apache-sukrupa-dev.conf.sample conf/apache-sukrupa-dev.conf"
-        run "cd #{staging_deploy_path} && sed -i 's:##sukrupa-website-path##:#{staging_deploy_path}:g' conf/apache-sukrupa-dev.conf"
-        run "cd #{staging_deploy_path} && sed -i 's:##server-name##:#{staging_server}:g' conf/apache-sukrupa-dev.conf"
+    task :setup_wordpress do
+        upload_artifact
+        run_bootstrap
+    end
+    task :upload_artifact do
+        run "mkdir -p #{deploy_to}/content #{deploy_to}/database-backups"
+        %w(./content ./bootstrap.sh ./conf ./lib ./scripts ./sukrupa-theme).each do |folder| 
+          upload folder, "#{deploy_to}/", :via => :scp, :recursive => true
+        end
+    end
+    task :run_bootstrap do
+        run "cd #{deploy_to} && sh bootstrap.sh #{bootstrap_servertype}" 
+        run "rm #{deploy_to}/bootstrap.sh" 
+        # TODO, you need to later edit permissions to block these files
+        run "rm -r #{deploy_to}/lib" 
+    end
+    
+    task :move_in_wp_config do
+      run "cp #{deploy_to}/../conf/wp-config-beta.php #{deploy_to}/installed-wordpress/wp-config.php"
     end
 
-    task :create_apache_symlink, :roles => :staging_server do
-        run "#{sudo} ln -sf #{staging_deploy_path}/conf/apache-sukrupa-dev.conf /etc/apache2/sites-enabled/apache-sukrupa.conf"
+    task :create_apache_symlink do
+        run "#{sudo} ln -sf #{deploy_to}/conf/apache-sukrupa-dev.conf /etc/apache2/sites-enabled/apache-sukrupa.conf"
     end
-
-    task :restart_apache, :roles => :staging_server do
+    task :create_apache_config_file do
+        run "cd #{deploy_to} && cp conf/apache-sukrupa-dev.conf.sample conf/apache-sukrupa-dev.conf"
+        run "cd #{deploy_to} && sed -i 's:##sukrupa-website-path##:#{deploy_to}:g' conf/apache-sukrupa-dev.conf"
+        run "cd #{deploy_to} && sed -i 's:##server-name##:#{deploy_to}:g' conf/apache-sukrupa-dev.conf"
+    end
+    task :restart_apache do
         run "#{sudo} /etc/init.d/apache2 restart"
     end
 
-    task :safety_check, :roles => :staging_server do
-        times = 0;
-        while times < 3
-            wgetresult = system "wget --spider http://#{staging_server}:80"
-            if wgetresult
-                break
-            else
-                times = times + 1
-                sleep 2
-            end
+    task :safety_check do
+        (1..3).each do
+            wgetresult = system "wget --spider http://#{target_server}"
+            break if wgetresult
+            sleep 2        
         end
-        unless wgetresult
-            fail "Could not contact webserver."
-        end
+        fail "Could not contact webserver: #{target_server}" unless wgetresult
     end
 end
-
-
-
