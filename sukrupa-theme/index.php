@@ -9,7 +9,7 @@
 	
 	<?php while ( have_posts() ) : the_post(); ?>	
 		<div id="the_content" style="border-bottom: 1px dotted silver;">
-		<h3><?php the_title(); ?></h3>
+		<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 		<?php the_excerpt(); ?>
 		</div>
 	<?php endwhile; endif; ?>
