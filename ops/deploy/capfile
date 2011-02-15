@@ -22,16 +22,6 @@ namespace :deploy do
         move_in_wp_config
     end
 
-    task :beta_env_no_upload do
-        set :bootstrap_servertype, "-b"
-        set :target_server, "beta.sukrupa.org"
-        server "#{target_server}", :abcd
-        set :user, "sukrupaweb"
-        set :deploy_to, "/home/sukrupaweb/beta.sukrupa.org"
-        run_bootstrap
-        move_in_wp_config
-    end
-
     task :default do
         setup_wordpress
         safety_check
