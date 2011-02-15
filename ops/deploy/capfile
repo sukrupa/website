@@ -3,7 +3,7 @@ namespace :deploy do
     task :staging do 
         set :bootstrap_servertype, "-d"
         set :target_server, "twu-staging" 
-        server "#{server}"
+        server "#{target_server}"
         set :user, "go"
         set :deploy_to, "/var/opt/sukrupa/sukrupa-website"
         default
