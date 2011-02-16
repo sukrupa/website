@@ -1,28 +1,43 @@
 namespace :deploy do
+ 
+    # This MUST be run from the root project directory. 
+    # e.g.  cap -f ops/deploy/capfile  -T    
+
     wgetresult = "1"
-    task :staging do 
-        set :bootstrap_servertype, "-d"
+
+    def work_with_staging
         set :target_server, "twu-staging" 
         server "#{target_server}", :staging_server
         set :user, "go"
         set :deploy_to, "/var/opt/sukrupa/sukrupa-website"
+    end
+
+    def work_with_beta
+        set :target_server, "beta.sukrupa.org"
+        server "#{target_server}", :beta_server
+        set :user, "sukrupaweb"
+        set :deploy_to, "/home/sukrupaweb/beta.sukrupa.org"
+    end
+
+    desc "deploy to twu-staging"
+    task :staging do 
+        work_with_staging
+        set :bootstrap_servertype, "-d"      
         default
         create_apache_config_file
         create_apache_symlink
         restart_apache    
     end
 
+    desc "deploy to beta.sukrupa.org"
     task :beta do
+    	work_with_beta
         set :bootstrap_servertype, "-b"
-        set :target_server, "beta.sukrupa.org"
-        server "#{target_server}", :beta_server
-        set :user, "sukrupaweb"
-        set :deploy_to, "/home/sukrupaweb/beta.sukrupa.org"
         setup_wordpress
         move_in_wp_config
      	safety_check
     end
-
+ 
     task :default do
         setup_wordpress
         safety_check
