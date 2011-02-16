@@ -1,6 +1,5 @@
 <?php get_header(); ?>
-
-<div class="grid_18">
+<div class="grid_18" style="min-height: 500px;">
 	<?php if ( have_posts() ) : ?>
 	<div class="inset">
 		<h2 style="margin-bottom:0;"><?php foreach( ( get_the_category() ) as $category ) { echo $category->cat_name . ' '; } ?></h2>

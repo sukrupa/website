@@ -33,7 +33,7 @@ p{font-family: Palatino, Georgia, serif; line-height: 1.4em; margin: 5px 5px 0 0
 #searchSubmit{ background: url(img/18px_sprites.png) no-repeat 0% 59%; height: 18px; width: 18px; text-indent: -9999px; border: none; margin: 0;}
 a#fb{background: url(img/18px_sprites.png) no-repeat 0% 19%; margin-right: 7px;}
 a#twi{ background: url(img/18px_sprites.png) no-repeat 0% 0%; margin-right: 7px; }
-a#yt{ background: url(img/18px_sprites.png) no-repeat 0% 39%; }
+a#fl{ background: url(img/18px_sprites.png) no-repeat 0% 39%; }
 
 #navigation { width: 100%; background-color: #254965; height: 25px; padding-top: 5px; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px;}
 #navigation a{ font-weight: 500; margin-left: 50px; color:white; letter-spacing: .09em}
