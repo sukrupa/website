@@ -1,6 +1,23 @@
 #!/bin/bash
 
-ROOT_MYSQL_PASSWORD='root'
+MYSQL_PASSWORD='root'
+DATABASE_NAME=sukrupa_wordpress
+DATABASE_HOST=localhost
+DATABASE_USER=root
+MYSQL_ARGS=" -u$DATABASE_USER -p$MYSQL_PASSWORD $DATABASE_NAME -h$DATABASE_HOST "
+
+set_beta_db_vars() {
+    if [[ -f ~/.mysql_beta_env ]]; then 
+        source ~/.mysql_beta_env 
+    else
+        echo "Missing ~/.mysql_beta_env, exiting"
+        exit 1
+    fi
+    DATABASE_NAME=sukrupa_wordpress_beta
+    DATABASE_HOST=db.sukrupa.org
+    DATABASE_USER=sukrupadb
+    MYSQL_ARGS=" -u$DATABASE_USER -p$MYSQL_PASSWORD $DATABASE_NAME -h$DATABASE_HOST "
+}
 
 usage() {
 cat <<EOF
@@ -10,6 +27,7 @@ OPTIONS:
   -R	reset, totally wipe out local database and installed files
   -d	configure ci and staging deployment environments
   -l    configure local development environments (including to use staging server db)
+  -b    configure beta environment, overwriting database
 EOF
 }
 
@@ -55,18 +73,18 @@ prerequisites() {
 	echo "************************************************************************************************************"
 }
 
-create_database_if_missing(){
+create_database_if_missing() {
     die_if_not_on_path 'mysql'
     die_if_not_on_path 'mysqladmin'
 
-	echo "- Bootstraping wordpress configuration. (With default mysql 'root' user and password '$ROOT_MYSQL_PASSWORD') Creating database."
+	echo "- Bootstraping wordpress configuration. (With default mysql 'root' user and password '$MYSQL_PASSWORD') Creating database."
 	echo "  If you do not have the mysql root password correct, run this command: mysqladmin -u root password root"
 
-	mysql -uroot -p$ROOT_MYSQL_PASSWORD --verbose --execute="create database if not exists sukrupa2_wordpress default character set 'utf8';" 
+	mysql $MYSQL_ARGS --verbose --execute="create database if not exists sukrupa2_wordpress default character set 'utf8';" 
 	die_if_errors
 }
 
-install_wordpress(){
+install_wordpress() {
 	echo "- extracting wordpress binary"
 	mkdir -p logs/
 	rm -rf installed-wordpress/
@@ -82,35 +100,59 @@ reset_db() {
     mkdir -p database-backups
     echo "- first creating backup of old database tables before dropping everything"
     timestamp=$(date "+%Y-%m-%d_%H-%M-%S")
-    mysqldump sukrupa_wordpress -uroot -p$ROOT_MYSQL_PASSWORD > database-backups/sukrupa_wordpress.backupdump.$timestamp.sql   
+    mysqldump $MYSQL_ARGS > database-backups/sukrupa_wordpress.backupdump.$timestamp.sql   
     die_if_errors
     echo "  (If the database migration was successful, you may want to remove the backup db dump.)"
     echo "- now dropping everything from the database and recreating tables"
-    mysql -uroot -p$ROOT_MYSQL_PASSWORD sukrupa_wordpress < lib/sukrupa_wordpress.dump.sql
+    mysql $MYSQL_ARGS < lib/sukrupa_wordpress.dump.sql
     die_if_errors
 }
 
+reset_db_beta() {    
+    mkdir -p database-backups
+    echo "- *********************************************************************************"
+    echo "- ** WARNING: this imports the db as it is currently checked into the lib/ dir. **"
+    echo "- ** If in error, restore the backup which we are creating now.                 **"
+    echo "- *********************************************************************************"
+    timestamp=$(date "+%Y-%m-%d_%H-%M-%S")
+    mysqldump $MYSQL_ARGS > database-backups/sukrupa_wordpress_beta.dump.$timestamp.sql   
+    die_if_errors
+    
+    sed 's/twu-staging/beta.sukrupa.org/g' lib/sukrupa_wordpress.dump.sql > lib/sukrupa_wordpress_beta.dump.sql
+    die_if_errors
 
+    echo "  (If the database migration was successful, you may want to remove the backup db dump.)"
+    echo "- now dropping everything from the beta database and recreating tables"
+    mysql $MYSQL_ARGS < $HOME/beta.sukrupa.org/lib/sukrupa_wordpress_beta.dump.sql
+    die_if_errors
+}
 
-while getopts "Rdl" OPTION
+while getopts "Rdlb" OPTION
 do
 	case $OPTION in
 		R)
 		    reset_db
+            exit
 			;;
 		d)
 			prerequisites		
 			create_database_if_missing
 			install_wordpress
+            exit
 			;;
-	    l)
+		l)
 	        prerequisites
-	        install_wordpress
-	        ;;	
-	    *)
-	        usage
-	        ;;        
+	        install_wordpress           
+            exit
+	        ;;
+		b)
+		    prerequisites
+		    install_wordpress
+            set_beta_db_vars
+            reset_db_beta
+            exit
+    		;;	
 	esac
 done
 
-
+usage
