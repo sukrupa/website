@@ -18,8 +18,9 @@ namespace :deploy do
         server "#{target_server}", :beta_server
         set :user, "sukrupaweb"
         set :deploy_to, "/home/sukrupaweb/beta.sukrupa.org"
-        default
+        setup_wordpress
         move_in_wp_config
+     	safety_check
     end
 
     task :default do
