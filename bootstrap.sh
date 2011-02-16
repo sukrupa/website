@@ -92,6 +92,7 @@ install_wordpress() {
 	mv wordpress installed-wordpress
 	cp -f lib/wp-config.php installed-wordpress/
 	cp -f lib/.htaccess installed-wordpress/
+	cp -f content/favicon.ico installed-wordpress/
 	ln -sf `pwd`/sukrupa-theme/ ./installed-wordpress/wp-content/themes/sukrupa
 	ln -sf `pwd`/content/ ./installed-wordpress/content
 }

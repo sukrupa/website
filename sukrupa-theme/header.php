@@ -12,6 +12,7 @@
 <?php wp_head(); wp_print_scripts(); ?>
 
 <title><?php wp_title( '|', true, 'right' ); ?></title>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
