@@ -7,10 +7,10 @@ DATABASE_USER=root
 MYSQL_ARGS=" -u$DATABASE_USER -p$MYSQL_PASSWORD $DATABASE_NAME -h$DATABASE_HOST "
 
 set_beta_db_vars() {
-    if [[ -f ~/.mysql_beta_env ]]; then 
-        source ~/.mysql_beta_env 
+    if [[ -f ../conf/.mysql_beta_env ]]; then 
+        source ../conf/.mysql_beta_env 
     else
-        echo "Missing ~/.mysql_beta_env, exiting"
+        echo "Missing ../conf/.mysql_beta_env, exiting"
         exit 1
     fi
     DATABASE_NAME=sukrupa_wordpress_beta
@@ -92,6 +92,7 @@ install_wordpress() {
 	mv wordpress installed-wordpress
 	cp -f lib/wp-config.php installed-wordpress/
 	cp -f lib/.htaccess installed-wordpress/
+	cp -f content/favicon.ico installed-wordpress/
 	ln -sf `pwd`/sukrupa-theme/ ./installed-wordpress/wp-content/themes/sukrupa
 	ln -sf `pwd`/content/ ./installed-wordpress/content
 }
@@ -148,7 +149,7 @@ do
 		b)
 		    prerequisites
 		    install_wordpress
-            set_beta_db_vars
+             set_beta_db_vars
             reset_db_beta
             exit
     		;;	
