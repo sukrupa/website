@@ -35,7 +35,7 @@
 	    <div class="sidebarHeader">Create an Opportunity</div>
 	    <div class="sidebarGuts">
 	    	<a href="<?php bloginfo('home'); ?>/donate/">Donation Information</a><br/>
-	    	<a href="<?php bloginfo('home'); ?>/support/#volunteers">Volunteer with Us</a><br/>
+	    	<a href="<?php bloginfo('home'); ?>/supporting-sukrupa/#volunteers">Volunteer with Us</a><br/>
 	    	<a href="http://sukrupacreations.bigcartel.com">View our Shop</a><br/>
 	    </div>
 	</div>
