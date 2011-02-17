@@ -56,9 +56,9 @@
 		    	<input id="searchInput" class="grid_4" type="text" name="s" value="Search Sukrupa" onfocus="if (this.value == 'Search Sukrupa') {this.value = '';}" />
 		    	<input type="submit" id="searchSubmit" value="&nbsp;" alt="Submit">
 		    </form>
-			<a href="http://www.facebook.com/pages/SUKRUPA/105019592871618" id="fb">Facebook</a>
-            <a href="http://twitter.com/sukrupa/" id="twi">Twitter</a>
-            <a href="http://www.flickr.com/sukrupa/" id="fl">Flickr</a>
+			<a href="http://www.facebook.com/pages/SUKRUPA/105019592871618" target="_blank" id="fb">Facebook</a>
+            <a href="http://twitter.com/sukrupa/" id="twi" target="_blank">Twitter</a>
+            <a href="http://www.flickr.com/sukrupa/" id="fl" target="_blank">Flickr</a>
 		</div>
 		
 		<div id="navigation" class="grid_24" style="margin: 0;">
