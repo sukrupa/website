@@ -12,7 +12,7 @@ echo "backing up..."
 mysqldump -uroot -proot -htwu-staging sukrupa_wordpress > lib/sukrupa_wordpress.dump.sql
 
 echo "syncing the staging server to your local machine"
-rsync --verbose --backup --progress --stats --compress --recursive --times --perms --links twu@twu-staging:/var/opt/sukrupa/sukrupa-website/content/ ./contentTemp/
+rsync --verbose --backup --archive --progress --stats --compress --recursive --times --perms twu@twu-staging:/var/opt/sukrupa/sukrupa-website/content/ ./content/
 
 
 echo ''
