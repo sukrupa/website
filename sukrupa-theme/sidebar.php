@@ -36,7 +36,7 @@
 	    <div class="sidebarGuts">
 	    	<a href="<?php bloginfo('home'); ?>/donate/">Donation Information</a><br/>
 	    	<a href="<?php bloginfo('home'); ?>/supporting-sukrupa/#volunteers">Volunteer with Us</a><br/>
-	    	<a href="http://www.sukrupa.org/creations.html" target="_blank">View our Shop</a><br/>
+	    	<!-- <a href="http://www.sukrupa.org/creations.html" target="_blank">View our Shop</a><br/> -->
 	    </div>
 	</div>
 
