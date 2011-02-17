@@ -21,7 +21,8 @@ namespace :deploy do
     task :staging do 
         work_with_staging
         set :bootstrap_servertype, "-d"      
-        default
+        setup_wordpress
+        safety_check(target_server, 200)
         create_apache_config_file
         create_apache_symlink
         restart_apache    
@@ -34,12 +35,7 @@ namespace :deploy do
         setup_wordpress
         move_in_wp_config
         protect_beta
-     	safety_check
-    end
- 
-    task :default do
-        setup_wordpress
-        safety_check
+     	safety_check(target_server, 401)
     end
 
     task :setup_wordpress do
@@ -69,6 +65,7 @@ EOF
         system ("rm toUpload.tar.gz")
         run "cd #{deploy_to}; tar xzf toUpload.tar.gz --overwrite; rm toUpload.tar.gz"        
     end
+
     task :run_bootstrap do
         run "cd #{deploy_to} && sh bootstrap.sh #{bootstrap_servertype}" 
         run "rm #{deploy_to}/bootstrap.sh" 
@@ -92,14 +89,12 @@ EOF
         run "#{sudo} /etc/init.d/apache2 restart"
     end
 
-    task :safety_check do
-        work_with_beta
-        wgetresult=0
+    def safety_check(target_server, expected_response)       
         (1..3).each do
-            wgetresult = system "wget --spider http://#{target_server} 2>&1 | grep 401"
-            break if wgetresult
+            wgetresult = system "wget --spider http://#{target_server} 2>&1 | grep #{expected_response}"
+            return if wgetresult
             sleep 2        
         end
-        fail "Could not contact webserver: #{target_server}" unless wgetresult
+        fail "Could not contact webserver: #{target_server}"
     end
 end
