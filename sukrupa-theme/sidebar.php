@@ -1,6 +1,5 @@
 <div id="sidebar">
-
-
+<div id="slider">
 	<div class="sidebarEntry"> 
 		<?php $query = new WP_Query('showposts=1&meta_key=donormeter&post_type=page');
 			  if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
@@ -70,6 +69,5 @@
 
 
 
-
-
+</div>
 </div>

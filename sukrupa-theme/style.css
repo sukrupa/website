@@ -19,7 +19,7 @@ h2{text-align: center; color: #254965; font-size: 1.2em; display: block; margin:
 h3{margin-top:5px; color: #254965; font-size: 1.1em; font-weight: bold; letter-spacing: .05em; font-family: "century gothic",verdana,arial,helvetica,sans-serif;}
 h4 { color: #254965; text-align: center; }
 #wrapper{ clear: both; margin: 0 auto; position: relative; width: 960px;}
-#site{ float: left; overflow: none;}
+#site{ float: left; overflow: hidden;}
 p{font-family: Palatino, Georgia, serif; line-height: 1.4em; margin: 5px 5px 0 0;}
 
 #header {font-family: 'Myriad Pro', Arial, Helvetica, Tahoma, sans-serif; height: 95px;}
@@ -57,7 +57,8 @@ a#fl{ background: url(img/18px_sprites.png) no-repeat 0% 39%; }
 .statisticmargin{margin-left:3px; margin-right: 3px;}
 .guts{min-height: 400px;}
 
-#sidebar{width: 220px; float: left;}
+#sidebar{width: 220px; float: left; height: auto; visibility: visible; overflow: hidden;}
+.fixed{position: fixed; top:0px; width:220px; padding-top: 5px;margin-top: 0px;}
 #sidebar .grid_6{width: 210px;}
 .sidebarHeader { background-color: #4991C9; color: #F9DD85; padding: 5px; font-size: 1.1em; text-indent: 5px;}
 .sidebarHeader a{color: inherit;}
