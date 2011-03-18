@@ -40,18 +40,17 @@
 	</div>
 
 
+	<?php $query = new WP_Query('showposts=4&category_name=events'); if ( $query->have_posts() ) :?>
     <div class="sidebarEntry">
-        <?php $query = new WP_Query('showposts=4&category_name=events');?>
 	    <div class="sidebarHeader">Events</div>
 	    <div class="sidebarGuts">
-	    	<?php if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
+	    	<?php while ( $query->have_posts() ) : $query->the_post();
                     the_title('<h3>', '</h3>');
                 endwhile;
-                endif;
                 ?>
 	    </div>
     </div>
-
+	<?php endif; ?>
 
     <div class="sidebarEntry">
         <?php $query = new WP_Query('showposts=3&meta_key=studentdisplay');?>
