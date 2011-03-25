@@ -51,6 +51,9 @@ EOF
 while getopts "ps" OPTION; do
     case $OPTION in
 	p)
+	    # TODO: jaw, does not work (yet) b/c disallows connections from all but 
+	    # sukrupa.org server IP. To fix by sshing into sukrupa.org, source ~/conf/.mysql_beta_env
+	    # use that password, and make dump. Then scp that to my local machine.
 	    ENV=prod
 	    DB_HOST=db.sukrupa.org
 	    DB_USER=sukrupadb
@@ -81,4 +84,4 @@ while getopts "ps" OPTION; do
     esac
 done
 
-if [[ $# == 0 ]]; then usage; fi
+if [[ $# == 0 ]]; then usage; fi 
