@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#uncomment for debugging script
+#set -x
+
 MYSQL_PASSWORD='root'
 DATABASE_NAME=sukrupa_wordpress
 DATABASE_HOST=localhost
@@ -28,6 +31,8 @@ OPTIONS:
   -d	configure ci and staging deployment environments
   -l    configure local development environments (including to use staging server db)
   -b    configure beta environment, overwriting database
+
+Note: Options execute in the order given, so do -Rl, not -lR or it will reset last.
 EOF
 }
 
@@ -48,53 +53,52 @@ die_if_not_on_path() {
 }
 
 prerequisites() {
-    ls `pwd`/sukrupa-theme
     die_if_errors "You must run this from the root directory of the project"
 
-	echo "************************************************************************************************************"
-	echo "PREREQUISITES: "
-	echo "*) You need to enable apache's mod_php5, mod_rewrite, and mod_substitute."
-	echo ""
-	echo "FOR CI AND STAGING SERVERS:"
-	echo "*) You need to install MySQL community edition server, sudo apt-get install mysql-server php5mysql"
-	echo "*) The go user must be able to run '/bin/ln' and '/etc/init.d/apache2 restart' as sudo without a password."
-	echo "   i.e. in /etc/sudoers:  go ALL = (root) NOPASSWD: /bin/ln, /etc/init.d/apache2 restart"
-	echo ""
-	echo "FOR LOCAL DEVELOPMENT:"
-	echo "*) Create a conf/apache-sukrupa-dev.conf with appropriate paths for your environment."
-	echo "   Enable the 'Substitute' lines in module or it will show the wrong content (!! IMPORTANT !!)"
-	echo "   Link it to apache. "
-	echo "   i.e. on linux:"
-	echo " 		sudo ln -s <ABSOLUTE path to>/conf/apache-sukrupa-dev.conf /etc/apache2/sites-enabled/"
-	echo "   i.e. on mac:"
-	echo "		sudo ln -s <ABSOLUTE path to>/conf/apache-sukrupa-dev.conf /etc/apache2/other/"
-	echo "   and then on both, restart apache"
-	echo "*) Edit /etc/hosts to include: 127.0.0.1 sukrupa.localhost"	
-	echo "************************************************************************************************************"
+    echo "************************************************************************************************************"
+    echo "PREREQUISITES: "
+    echo "*) You need to enable apache's mod_php5, mod_rewrite, and mod_substitute."
+    echo ""
+    echo "FOR CI AND STAGING SERVERS:"
+    echo "*) You need to install MySQL community edition server, sudo apt-get install mysql-server php5mysql"
+    echo "*) The go user must be able to run '/bin/ln' and '/etc/init.d/apache2 restart' as sudo without a password."
+    echo "   i.e. in /etc/sudoers:  go ALL = (root) NOPASSWD: /bin/ln, /etc/init.d/apache2 restart"
+    echo ""
+    echo "FOR LOCAL DEVELOPMENT:"
+    echo "*) Create a conf/apache-sukrupa-dev.conf with appropriate paths for your environment."
+    echo "   Enable the 'Substitute' lines in module or it will show the wrong content (!! IMPORTANT !!)"
+    echo "   Link it to apache. "
+    echo "   i.e. on linux:"
+    echo " 		sudo ln -s <ABSOLUTE path to>/conf/apache-sukrupa-dev.conf /etc/apache2/sites-enabled/"
+    echo "   i.e. on mac:"
+    echo "		sudo ln -s <ABSOLUTE path to>/conf/apache-sukrupa-dev.conf /etc/apache2/other/"
+    echo "   and then on both, restart apache"
+    echo "*) Edit /etc/hosts to include: 127.0.0.1 sukrupa.localhost"	
+    echo "************************************************************************************************************"
 }
 
 create_database_if_missing() {
     die_if_not_on_path 'mysql'
     die_if_not_on_path 'mysqladmin'
 
-	echo "- Bootstraping wordpress configuration. (With default mysql 'root' user and password '$MYSQL_PASSWORD') Creating database."
-	echo "  If you do not have the mysql root password correct, run this command: mysqladmin -u root password root"
+    echo "- Bootstraping wordpress configuration. (With default mysql 'root' user and password '$MYSQL_PASSWORD') Creating database."
+    echo "  If you do not have the mysql root password correct, run this command: mysqladmin -u root password root"
 
-	mysql $MYSQL_ARGS --verbose --execute="create database if not exists sukrupa2_wordpress default character set 'utf8';" 
-	die_if_errors
+    mysql -u$DATABASE_USER -p$MYSQL_PASSWORD -h$DATABASE_HOST --verbose --execute="create database if not exists $DATABASE_NAME default character set 'utf8';" 
+    die_if_errors
 }
 
 install_wordpress() {
-	echo "- extracting wordpress binary"
-	mkdir -p logs/
-	rm -rf installed-wordpress/
-	unzip -qo lib/wordpress.zip -d .
-	mv wordpress installed-wordpress
-	cp -f lib/wp-config.php installed-wordpress/
-	cp -f lib/.htaccess installed-wordpress/
-	cp -f content/favicon.ico installed-wordpress/
-	ln -sf `pwd`/sukrupa-theme/ ./installed-wordpress/wp-content/themes/sukrupa
-	ln -sf `pwd`/content/ ./installed-wordpress/content
+    echo "- extracting wordpress binary"
+    mkdir -p logs/
+    rm -rf installed-wordpress/
+    unzip -qo lib/wordpress.zip -d .
+    mv wordpress installed-wordpress
+    cp -f lib/wp-config.php installed-wordpress/
+    cp -f lib/.htaccess installed-wordpress/
+    cp -f content/favicon.ico installed-wordpress/
+    ln -sf `pwd`/sukrupa-theme/ ./installed-wordpress/wp-content/themes/sukrupa
+    ln -sf `pwd`/content/ ./installed-wordpress/content
 }
 
 reset_db() {
@@ -103,6 +107,7 @@ reset_db() {
     timestamp=$(date "+%Y-%m-%d_%H-%M-%S")
     mysqldump $MYSQL_ARGS > database-backups/sukrupa_wordpress.backupdump.$timestamp.sql   
     die_if_errors
+
     echo "  (If the database migration was successful, you may want to remove the backup db dump.)"
     echo "- now dropping everything from the database and recreating tables"
     mysql $MYSQL_ARGS < lib/sukrupa_wordpress.dump.sql
@@ -130,30 +135,30 @@ reset_db_beta() {
 
 while getopts "Rdlb" OPTION
 do
-	case $OPTION in
-		R)
-		    reset_db
-            exit
-			;;
-		d)
-			prerequisites		
-			create_database_if_missing
-			install_wordpress
-            exit
-			;;
-		l)
-	        prerequisites
-	        install_wordpress           
-            exit
-	        ;;
-		b)
-		    prerequisites
-		    install_wordpress
-             set_beta_db_vars
+    case $OPTION in
+	R)
+	    create_database_if_missing
+	    reset_db
+	    ;;
+	d)
+	    prerequisites		
+	    create_database_if_missing
+	    install_wordpress
+	    ;;
+	l)
+	    prerequisites
+	    install_wordpress           
+      	    ;;
+	b)
+	    prerequisites
+	    install_wordpress
+            set_beta_db_vars
             reset_db_beta
-            exit
-    		;;	
-	esac
+    	    ;;	
+	*)
+	    usage
+	    ;;
+    esac
 done
 
-usage
+if [[ $# == 0 ]]; then usage; fi
