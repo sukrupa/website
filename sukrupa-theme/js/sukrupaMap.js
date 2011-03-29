@@ -4,10 +4,7 @@ function initSukrupaMap(mapCanvasId) {
 "    #15, G.R.Layout, Cholanayakanahalli,<br />" +
 "    R.T.Nagar<br />" +
 "    Bangalore 560 032 INDIA<br />" +
-"    (Near Rajiv Gandhi Dental College)<br /><br />" +
-"    <a href='http://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&msid=216247863675364510664.00049bfa2f612c40ff053&ll=13.036105,77.596478&spn=0.007003,0.007188&z=16&iwloc=00049bfa340a434b5d788&f=d&daddr=Sukrupa+School+%4013.032656,77.596478' target='_blank'>" +
-"        Directions"+
-"    </a>"+
+"    (Near Rajiv Gandhi Dental College)" +
 "</div>";
 
     var sukrupaMarkerPosition = new google.maps.LatLng(13.032656,77.596478);

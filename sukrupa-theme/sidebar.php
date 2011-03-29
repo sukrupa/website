@@ -73,7 +73,7 @@
         <div class="sidebarHeader">Visit Sukrupa</div>
         <div id="mapCanvas"></div>
         <div class="sidebarGuts">
-            <a href="http://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&msid=216247863675364510664.00049bfa2f612c40ff053&ll=13.034746,77.596264&spn=0.007003,0.007167&z=16&iwloc=00049bfa340a434b5d788" target="_blank">View larger map</a>
+            <a href="http://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&msid=216247863675364510664.00049bfa2f612c40ff053&ll=13.036105,77.596478&spn=0.007003,0.007188&z=16&iwloc=00049bfa340a434b5d788&f=d&daddr=Sukrupa+School+%4013.032656,77.596478" target="_blank">Get directions</a>
         </div>
     </div>
     

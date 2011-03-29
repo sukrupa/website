@@ -179,7 +179,6 @@ ul.lined li{padding: 3px 10px; margin: 5px 0px;border-left: 8px solid #4991C9; }
 #mapInfoDiv {
     font-size: 12px;
     font-family: "century gothic",verdana,arial,helvetica,sans-serif;
-    height: 110px;
 }
 #mapCanvas {
     width:218px;
