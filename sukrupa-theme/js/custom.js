@@ -3,7 +3,7 @@ $(document).ready(function(){
 	
 	//var theLoc = $('#slider').position().top;
 	// now 105
-	$(window).scroll(function() {
+	/*$(window).scroll(function() {
 		if(105 >= $(window).scrollTop()) {
 			if($('#slider').hasClass('fixed')) {
 				$('#slider').removeClass('fixed');
@@ -13,5 +13,5 @@ $(document).ready(function(){
 				$('#slider').addClass('fixed');
 			}
 		}
-	});
+	});*/
 });

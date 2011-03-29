@@ -64,9 +64,18 @@
 	    </div>
     </div>
 
+    <script type="text/javascript">
+    $(document).ready(function() {
+       initSukrupaMap('mapCanvas');
+    });
+    </script>
+    <div class="sidebarEntry">
+        <div class="sidebarHeader">Visit Sukrupa</div>
+        <div id="mapCanvas"></div>
+        <div class="sidebarGuts">
+            <a href="http://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&msid=216247863675364510664.00049bfa2f612c40ff053&ll=13.034746,77.596264&spn=0.007003,0.007167&z=16&iwloc=00049bfa340a434b5d788" target="_blank">View larger map</a>
+        </div>
+    </div>
     
-
-
-
 </div>
 </div>
