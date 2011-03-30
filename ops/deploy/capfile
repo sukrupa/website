@@ -60,7 +60,7 @@ EOF
 
     task :upload_artifact do
         run "mkdir -p #{deploy_to}/content #{deploy_to}/database-backups"
-        system ("tar cfz toUpload.tar.gz content bootstrap.sh conf lib scripts sukrupa-theme")
+        system ("tar cfz toUpload.tar.gz content bootstrap.sh conf lib scripts sukrupa-theme plugins")
         upload "toUpload.tar.gz", "#{deploy_to}/", :via => :scp, :recursive => true
         system ("rm toUpload.tar.gz")
         run "cd #{deploy_to}; tar xzf toUpload.tar.gz --overwrite; rm toUpload.tar.gz"        
