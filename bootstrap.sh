@@ -99,7 +99,7 @@ install_wordpress() {
     cp -f content/favicon.ico installed-wordpress/
     ln -sf `pwd`/sukrupa-theme/ ./installed-wordpress/wp-content/themes/sukrupa
     ln -sf `pwd`/content/ ./installed-wordpress/content
-    ln -sf `pwd`/plugins/sukrupa-volunteer-form ./installed-wordpress/wp-content/plugins/sukrupa-volunteer-form
+    cp -fr `pwd`/plugins/sukrupa-volunteer-form ./installed-wordpress/wp-content/plugins/
 }
 
 reset_db() {
