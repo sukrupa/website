@@ -196,3 +196,7 @@ blockquote:before, blockquote:after { display: inline; color: #e5e5e5; font-size
 blockquote:before {content: '\D \201C';}
 blockquote:after { content: '\201D'; }
 table, form, pre > code, .shadow {-moz-box-shadow: 2px 2px 12px rgba(0,0,0,.15); -webkit-box-shadow: 2px 2px 12px rgba(0,0,0,0.15); box-shadow: 2px 2px 12px rgba(0,0,0,.15);}
+
+ul.volunteerAttachments{
+    list-style:inside;
+}

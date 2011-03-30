@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+-- Sukrupa plugins
+-------------------------------------------------------------------------------
+
+  Place required plugins for Sukrupa website on this folder and add information
+on how to configure it on this file.
+
+  You should also remember to add a step on bootstrap.sh to create a symlink on 
+wp-content/plugins pointing to you plugin folder
+
+
+-------------------------------------------------------------------------------
+
+** sukrupa-volunteer-form
+    -> Allows to add a volunteer form on pages or posts, just need to add the
+    code below to the content:
+           <!-- ddfm9 -->
+       
