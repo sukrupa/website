@@ -16,6 +16,13 @@ namespace :deploy do
         set :user, "sukrupaweb"
         set :deploy_to, "/home/sukrupaweb/beta.sukrupa.org"
     end
+    
+    def work_with_ci
+        set :target_server, "ci.sukrupa.org"
+        server "#{target_server}", :ci_server
+        set :user, "sukrupaweb"
+        set :deploy_to, "/home/sukrupaweb/ci.sukrupa.org"
+    end
 
     desc "deploy to twu-staging"
     task :staging do 
@@ -37,6 +44,16 @@ namespace :deploy do
         protect_beta
      	safety_check(target_server, 401)
     end
+    
+    desc "deploy to ci.sukrupa.org"
+    task :ci do
+    	work_with_ci
+        set :bootstrap_servertype, "-c"
+        setup_wordpress
+        move_in_wp_config_ci
+        protect_ci
+     	safety_check(target_server, 401)
+   	end
 
     task :setup_wordpress do
         upload_artifact
@@ -49,6 +66,21 @@ namespace :deploy do
             # don't use it accidentally. We don't want duplicate content indexed \\n
             # by google, nor do we want comments added to 'fake posts.' \\n
             AuthName \\"Restricted Beta Area\\" \\n
+            AuthType Basic \\n
+            AuthUserFile /home/sukrupaweb/conf/.htpasswd \\n
+            AuthGroupFile /dev/null \\n
+            require valid-user \\n
+EOF
+        run "echo -e \"#{to_append}\" >> #{deploy_to}/installed-wordpress/.htaccess"
+        run "echo -e \"User-agent: *\\nDisallow: /\" >> #{deploy_to}/installed-wordpress/robots.txt"
+    end
+    
+    def protect_ci
+        to_append = <<EOF
+            # This restricts the ci site for so search engines or other people \\n
+            # don't use it accidentally. We don't want duplicate content indexed \\n
+            # by google, nor do we want comments added to 'fake posts.' \\n
+            AuthName \\"Restricted CI Area\\" \\n
             AuthType Basic \\n
             AuthUserFile /home/sukrupaweb/conf/.htpasswd \\n
             AuthGroupFile /dev/null \\n
@@ -76,6 +108,10 @@ EOF
     task :move_in_wp_config do
       run "cp #{deploy_to}/../conf/wp-config-beta.php #{deploy_to}/installed-wordpress/wp-config.php"
     end
+    
+    task :move_in_wp_config_ci do
+      run "cp #{deploy_to}/../conf/wp-config-ci.php #{deploy_to}/installed-wordpress/wp-config.php"
+    end
 
     task :create_apache_symlink do
         run "#{sudo} ln -sf #{deploy_to}/conf/apache-sukrupa-dev.conf /etc/apache2/sites-enabled/apache-sukrupa.conf"
@@ -98,3 +134,4 @@ EOF
         fail "Could not contact webserver: #{target_server}"
     end
 end
+

@@ -22,6 +22,19 @@ set_beta_db_vars() {
     MYSQL_ARGS=" -u$DATABASE_USER -p$MYSQL_PASSWORD $DATABASE_NAME -h$DATABASE_HOST "
 }
 
+set_ci_db_vars() {
+    if [[ -f ../conf/.mysql_ci_env ]]; then 
+        source ../conf/.mysql_ci_env 
+    else
+        echo "Missing ../conf/.mysql_ci_env, exiting"
+        exit 1
+    fi
+    DATABASE_NAME=sukrupa_wordpress_ci
+    DATABASE_HOST=db.sukrupa.org
+    DATABASE_USER=sukrupadb
+    MYSQL_ARGS=" -u$DATABASE_USER -p$MYSQL_PASSWORD $DATABASE_NAME -h$DATABASE_HOST "
+}
+
 usage() {
 cat <<EOF
 usage: $0 [options]
@@ -31,6 +44,7 @@ OPTIONS:
   -d	configure ci and staging deployment environments
   -l    configure local development environments (including to use staging server db)
   -b    configure beta environment, overwriting database
+  -c    configure ci server, overwriting database
 
 Note: Options execute in the order given, so do -Rl, not -lR or it will reset last.
 EOF
@@ -134,7 +148,26 @@ reset_db_beta() {
     die_if_errors
 }
 
-while getopts "Rdlb" OPTION
+reset_db_ci() {    
+    mkdir -p database-backups
+    echo "- *********************************************************************************"
+    echo "- ** WARNING: this imports the db as it is currently checked into the lib/ dir. **"
+    echo "- ** If in error, restore the backup which we are creating now.                 **"
+    echo "- *********************************************************************************"
+    timestamp=$(date "+%Y-%m-%d_%H-%M-%S")
+    mysqldump $MYSQL_ARGS > database-backups/sukrupa_wordpress_ci.dump.$timestamp.sql   
+    die_if_errors
+    
+    sed 's/twu-staging/ci.sukrupa.org/g' lib/sukrupa_wordpress.dump.sql > lib/sukrupa_wordpress_ci.dump.sql
+    die_if_errors
+
+    echo "  (If the database migration was successful, you may want to remove the backup db dump.)"
+    echo "- now dropping everything from the beta database and recreating tables"
+    mysql $MYSQL_ARGS < $HOME/ci.sukrupa.org/lib/sukrupa_wordpress_ci.dump.sql
+    die_if_errors
+}
+
+while getopts "Rdlbc" OPTION
 do
     case $OPTION in
 	R)
@@ -155,7 +188,14 @@ do
 	    install_wordpress
             set_beta_db_vars
             reset_db_beta
-    	    ;;	
+    	    ;;
+
+	c)
+		set_ci_db_vars
+		create_database_if_missing
+		install_wordpress
+		reset_db_ci
+		;;
 	*)
 	    usage
 	    ;;
