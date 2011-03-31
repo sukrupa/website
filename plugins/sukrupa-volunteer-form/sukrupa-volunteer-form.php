@@ -2427,7 +2427,7 @@ function ddfm_main_options() {
 
 /* Initialize instances */
 for ($i = 1; $i <= (int)get_option('ddfm_instances'); $i++) {
-	$ddfm{$i} = &New ddfmClass($i, $ddfm_version); 
+	$ddfm{$i} = new ddfmClass($i, $ddfm_version); 
 }
 
 
