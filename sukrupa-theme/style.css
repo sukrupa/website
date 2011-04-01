@@ -199,4 +199,6 @@ table, form, pre > code, .shadow {-moz-box-shadow: 2px 2px 12px rgba(0,0,0,.15);
 
 ul.volunteerAttachments{
     list-style:inside;
+    font-family: Palatino,Georgia,serif;
+    line-height: 1.4em;
 }

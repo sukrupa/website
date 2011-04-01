@@ -3,7 +3,7 @@
 /*
 Plugin Name: Sukrupa Volunteer Form (based on Dagon Design Form Mailer v5.8)
 Plugin URI: http://www.dagondesign.com/articles/secure-form-mailer-plugin-for-wordpress/
-Description: A modified version of Dagon Design Form Mailer that has Sukrupa's volunteer form as the default instances
+Description: A modified version of Dagon Design Form Mailer that has Sukrupa's volunteer form as the default instances. <b>Please read the README file inside the plugin folder to find out how to use the plugin for the first time</b>.
 Author: Dagon Design
 Version: 1.0
 Author URI: http://www.dagondesign.com
@@ -574,10 +574,6 @@ type=checkbox|class=fmcheck|label=Preferred Days to Volunteer|data=Mon,Mon,false
 type=textarea|class=fmtextarea|label=Please let us know if AM or PM suits you better and possible time blocks|fieldname=fm_suitabletime|max=1000|rows=6
 type=radio|class=fmradio|label=Do you currently work in Bangalore?|fieldname=fm_workinbangalore|data=Yes,No
 type=text|class=fmtext|label=If yes, which company?|fieldname=fm_workcompany|max=50
-
-type=file|class=fmfile|label=Photo|fieldname=fm_photo|allowed=jpg,jpeg,gif,png
-type=file|class=fmfile|label=Passport|fieldname=fm_passport|allowed=jpg,jpeg,gif,png,html,pdf
-type=file|class=fmfile|label=Foreigners Registration|fieldname=fm_fregistration|allowed=jpg,jpeg,gif,png,html,pdf
 
 type=checkbox|class=fmcheck|label=Agreement|data=fm_agree,You must agree that the information you have provided is true before submitting your registration.,false,true
 
@@ -1361,6 +1357,7 @@ function ddfm_gen_select($item) {
 						}
 					}
 			
+
 				} else {
 
 					if (trim($form_input[$item['fieldname']]) == $data[$i]) {
@@ -1663,6 +1660,7 @@ function ddfm_gen_selrecip($item) {
 					} else if (ddfm_injection_chars($t)) {
 
 						$errors[] = DDFM_INVALIDINPUT . " '" . $fs['label'] . "'";
+
 
 					} 
 
@@ -2052,16 +2050,16 @@ function ddfm_gen_selrecip($item) {
 
 
 
-
+		$errorHtml = '';
 		
 		if ($errors) {
 
-			$o .= '<div class="ddfmwrap"><div class="ddfmerrors">' . DDFM_ERRORMSG . '</div>';
-			$o .= '<div class="errorlist">';
+			$errorHtml = '<div class="ddfmwrap"><div class="ddfmerrors">' . DDFM_ERRORMSG . '</div>';
+			$errorHtml .= '<div class="errorlist">';
 			foreach ($errors as $err) {
-				$o .= $err . '<br />';
+				$errorHtml .= $err . '<br />';
 			}
-			$o .= '</div><div style="clear:both;"><!-- --></div></div>';
+			$errorHtml .= '</div><div style="clear:both;"><!-- --></div></div>';
 	
 		} else {
 
@@ -2175,6 +2173,20 @@ function ddfm_gen_selrecip($item) {
 		if (trim($manual_form_code) == '') {	// ** Use normal form generation
 
 			$o .= '<div class="ddfmwrap">';
+			
+			$o .= '<p>Please fill in the below form to register your interest in becoming a volunteer at Sukrupa.</p>
+
+<p>Once your registration has been received we will be in touch to discuss your registration. We ask that you provide us with as much details as possible so that we can follow up with your registration.</p>
+
+<p>Once your registration has been accepted you will also need to provide the following:</p>
+<ul class="volunteerAttachments">
+	<li>A copy of your current passport</li>
+	<li>A copy of your <a href="http://chandigarhpolice.gov.in/foreign.htm" target="_blank">foreigners registration form</a></li>
+	<li>A photograph of you</li>
+</ul><br/>';
+			
+			$o .= $errorHtml;
+			
 			$o .= '<form class="ddfm" method="post" action="' . $path_contact_page . '" enctype="multipart/form-data">' . "\n\n";
 	
 			// Loop through form items

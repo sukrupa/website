@@ -1,0 +1,19 @@
+========================================================================================================= 
+| The following manual changes are needed the first time that we deploy the sukrupa volunteer form    ===
+========================================================================================================= 
+
+1. Create a new page in wordpress
+   1. Pages -> add new
+   2. Fill the tiltle of the new page as “Volunteer”
+   3. Fill the content of the page with <!-- ddfm1 -->
+   4. Put a space in the excerpt field.
+   
+2. Publish the page (click on the “publish” button)
+
+3. Fix the volunteer anchor on Supporting Sukrupa
+   1. Go to Pages (left-side menu) -> Supporting Sukrupa
+   2. At the HTML field, delete the <a name="volunteers"></a> content
+   3. Replace <h3>Volunteer Opportunities</h3> with <h3 id="volunteers">Volunteer Opportunities</h3>
+   4. Insert <p>To volunteer with us, please fill in the <a href="http://www.sukrupa.org/volunteer/">volunteer form</a>.</p> above the text For more information, please <a href="http://www.sukrupa.org/contact/">contact us</a>.
+   5. Click on the update button to publish the page
+
