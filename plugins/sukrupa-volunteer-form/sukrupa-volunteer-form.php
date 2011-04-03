@@ -549,13 +549,12 @@ class ddfmClass {
 		add_option($this->var_pre . 'show_ip_hostname', TRUE);
 		add_option($this->var_pre . 'recipients', 'volunteer@sukrupa.org');
 		add_option($this->var_pre . 'form_struct', '
-
 type=text|class=fmtext|label=Name|fieldname=fm_name|max=100|req=true
 type=text|class=fmtext|label=Home Phone No.|fieldname=fm_homephone|max=25
 type=text|class=fmtext|label=Mobile Phone No.|fieldname=fm_mobilephone|max=25
 type=text|class=fmtext|label=Email|fieldname=fm_email|max=100|req=false|ver=email
 
-type=select|class=fmselect|label=Month of Birth|fieldname=fm_month|data=(select),January, February, March, April, May, June, July, August, September, October, November, December
+type=select|class=fmselect|label=Month of Birth|fieldname=fm_month|data=(select),January,February,March,April,May,June,July,August,September,October,November,December
 type=select|class=fmselect|label=Day of Birth|fieldname=fm_day|data=(select),1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
 type=select|class=fmselect|label=Year of Birth|fieldname=fm_year|data=(select),1920,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1931,1932,1933,1934,1935,1936,1937,1938,1939,1940,1941,1942,1943,1944,1945,1946,1947,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011
 
@@ -565,17 +564,16 @@ type=text|class=fmtext|label=Home Country|fieldname=fm_homecountry|max=25
 type=text|class=fmtext|label=Length of time you will be in Bangalore|fieldname=fm_lengthtime|max=50
 type=radio|class=fmradio|label=Previous Volunteer Experience|fieldname=fm_previousexperience|data=No,Yes
 
-type=widetextarea|class=fmtextwide|label=Please give details of any previous volunteer experience: <br>(Include: Organization / Country / Length of time as a volunteer / Volunteer Experience)|fieldname=prevexinfo|rows=10
+type=widetextarea|class=fmtextwide|label=Please give details of any previous volunteer experience: <br>(Include: Organization / Country / Length of time as a volunteer / Volunteer Experience)|fieldname=fm_prevmessage|max=1000|rows=10
 
+type=textarea|class=fmtextarea|label=Area of Interest / Subject Interested|fieldname=fm_interest|max=100|rows=6|req=false
 
-type=textarea|class=fmtextarea|label=Area of Interest / Subject Interested|fieldname=fm_interest|max=1000|rows=6
-
-type=checkbox|class=fmcheck|label=Preferred Days to Volunteer|data=Mon,Mon,false,false,Tues,Tues,false,false,Wed,Wed,false,false,Thurs,Thurs,false,false,Fri,Fri,false,false,Sat,Sat,false,false
+type=checkbox|class=fmcheck|label=Preferred days to volunteer|data=fm_mon,Mon,false,false,fm_datetues,Tues,false,false,fm_dateted,Wed,false,false,fm_datethurs,Thurs,false,false,fm_datetri,Fri,false,false,fm_datetat,Sat,false,false
 type=textarea|class=fmtextarea|label=Please let us know if AM or PM suits you better and possible time blocks|fieldname=fm_suitabletime|max=1000|rows=6
 type=radio|class=fmradio|label=Do you currently work in Bangalore?|fieldname=fm_workinbangalore|data=Yes,No
 type=text|class=fmtext|label=If yes, which company?|fieldname=fm_workcompany|max=50
 
-type=checkbox|class=fmcheck|label=Agreement|data=fm_agree,You must agree that the information you have provided is true before submitting your registration.,false,true
+type=checkbox|class=fmcheck|label=Agreement|data=fm_agree,I agree that the information I have provided is true.,false,true
 
 type=verify|class=fmverify|label=Verify
 ');

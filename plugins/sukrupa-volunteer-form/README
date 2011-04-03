@@ -17,3 +17,12 @@
    4. Insert <p>To volunteer with us, please fill in the <a href="http://www.sukrupa.org/volunteer/">volunteer form</a>.</p> above the text For more information, please <a href="http://www.sukrupa.org/contact/">contact us</a>.
    5. Click on the update button to publish the page
 
+
+========================================================================================================= 
+| Known issues                                                                                        ===
+========================================================================================================= 
+
+* Apparently the plugin does not work if the form fields use an upper case letter. Ex: fm_dayMonday
+
+* Select fields get reset if the list of options contains spaces.
+   Ex: type=select|label=...|fieldname=...|data=January, February, March, April, May, June, July...
