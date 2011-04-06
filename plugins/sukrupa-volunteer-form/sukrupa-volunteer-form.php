@@ -56,7 +56,7 @@ function ddfm_get_bool_from_post($id) {
 if (isset($_GET['v'])) {
 	if ($_GET['v'] == '1') {
 
-		// find wp-blog-header.php to access WP stuff
+		/*// find wp-blog-header.php to access WP stuff
 		$testpath = (string)$_SERVER['PHP_SELF'];
 		$s = strpos($testpath, '/wp-content/');
 		$e = strpos($testpath, '/sukrupa-volunteer-form.php');
@@ -66,8 +66,9 @@ if (isset($_GET['v'])) {
 		while ($slashc > 0) {
 			$wpcp = '../' . $wpcp;
 			$slashc--;
-		}		
-		include $wpcp;
+		}*/		
+		//include '/home/fabio/work/sukrupa-website/installed-wordpress/wp-blog-header.php';
+		include realpath(dirname(__FILE__).'/../../../wp-blog-header.php');
 	
 		$this_domain = preg_replace("/^www\./", "", $_SERVER['HTTP_HOST']);
 
@@ -501,21 +502,6 @@ function ddfm_send_mail($recipients, $sender_name, $sender_email, $email_subject
 
 
 
-add_option('ddfm_instances', 1);
-
-
-add_option('ddfm_verify_method', 'basic'); // off, basic, recaptcha
-
-// for basic method
-add_option('ddfm_verify_background', 'F0F0F0');
-add_option('ddfm_verify_text', '005ABE');
-add_option('ddfm_force_type', '');
-
-// for recaptcha method
-add_option('ddfm_re_public', '');
-add_option('ddfm_re_private', '');
-
-
 
 
 $form_input = array();
@@ -552,7 +538,7 @@ class ddfmClass {
 type=text|class=fmtext|label=Name|fieldname=fm_name|max=100|req=true
 type=text|class=fmtext|label=Home Phone No.|fieldname=fm_homephone|max=25
 type=text|class=fmtext|label=Mobile Phone No.|fieldname=fm_mobilephone|max=25
-type=text|class=fmtext|label=Email|fieldname=fm_email|max=100|req=false|ver=email
+type=text|class=fmtext|label=Email|fieldname=fm_email|max=100|req=true|ver=email
 
 type=select|class=fmselect|label=Month of Birth|fieldname=fm_month|data=(select),January,February,March,April,May,June,July,August,September,October,November,December
 type=select|class=fmselect|label=Day of Birth|fieldname=fm_day|data=(select),1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
@@ -702,6 +688,7 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 
 			update_option($this->var_pre . 'language', (string) $_POST[$this->var_pre . 'language']);
 			update_option($this->var_pre . 'desc', (string) $_POST[$this->var_pre . 'desc']);
+			update_option($this->var_pre . 'form_header', (string) ddfm_stripslashes($_POST[$this->var_pre . 'form_header']));
 			update_option($this->var_pre . 'path_contact_page', (string) ddfm_stripslashes($_POST[$this->var_pre . 'path_contact_page']));
 			update_option($this->var_pre . 'wrap_messages', ddfm_get_bool_from_post($this->var_pre . 'wrap_messages'));
 			update_option($this->var_pre . 'attach_save', ddfm_get_bool_from_post($this->var_pre . 'attach_save'));
@@ -795,6 +782,16 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 
 		</table>
 
+
+        <h3>Form Header</h3>
+
+		<table class="form-table">
+	    	<tr valign="top">
+		       <td>
+		        	<textarea style="width:98%;" name="<?php echo $this->var_pre; ?>form_header" cols="110" rows="12"><?php echo htmlspecialchars(get_option($this->var_pre . 'form_header')) ?></textarea>
+		    </td>
+		    </tr>
+		</table>
 
 
 
@@ -950,8 +947,8 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 
 
 		<div class="submit">
-			<input type="submit" name="set_defaults" value="<?php _e('Load Default Options'); ?> &raquo;" />
 			<input type="submit" name="info_update" value="<?php _e('Update options'); ?> &raquo;" />
+			<input type="submit" name="set_defaults" value="<?php _e('Load Default Options'); ?> &raquo;" />
 		</div>
 		</form>
 
@@ -2172,16 +2169,7 @@ function ddfm_gen_selrecip($item) {
 
 			$o .= '<div class="ddfmwrap">';
 			
-			$o .= '<p>Please fill in the below form to register your interest in becoming a volunteer at Sukrupa.</p>
-
-<p>Once your registration has been received we will be in touch to discuss your registration. We ask that you provide us with as much details as possible so that we can follow up with your registration.</p>
-
-<p>Once your registration has been accepted you will also need to provide the following:</p>
-<ul class="volunteerAttachments">
-	<li>A copy of your current passport</li>
-	<li>A copy of your <a href="http://chandigarhpolice.gov.in/foreign.htm" target="_blank">foreigners registration form</a></li>
-	<li>A photograph of you</li>
-</ul><br/>';
+			$o .= get_option($this->var_pre . 'form_header');
 			
 			$o .= $errorHtml;
 			
@@ -2432,13 +2420,198 @@ function ddfm_main_options() {
 	<?php
 }
 
+class VolunteerForm extends ddfmClass {
+
+    function VolunteerForm($i, $ver) {
+        $this->ver = $ver;
+	    $this->inst = $i;
+	    $this->var_pre = "ddfm{$i}_";
+    
+        // Setup default options if they do not exist
+	    add_option($this->var_pre . 'language', 'English');
+	    add_option($this->var_pre . 'desc', 'Volunteer Application Form');
+	    add_option($this->var_pre . 'path_contact_page', (get_option('siteurl') . '/volunteer/'));
+	    add_option($this->var_pre . 'wrap_messages', TRUE);
+	    add_option($this->var_pre . 'attach_save', FALSE);
+	    add_option($this->var_pre . 'attach_path', '');
+	    add_option($this->var_pre . 'show_required', TRUE);
+	    add_option($this->var_pre . 'show_url', FALSE);
+	    add_option($this->var_pre . 'show_ip_hostname', TRUE);
+	    add_option($this->var_pre . 'recipients', 'volunteer@sukrupa.org');
+	    add_option($this->var_pre . 'form_header', '<p>Please fill in the below form to register your interest in becoming a volunteer at Sukrupa.</p>
+
+<p>Once your registration has been received we will be in touch to discuss your registration. We ask that you provide us with as much details as possible so that we can follow up with your registration.</p>
+
+<p>Once your registration has been accepted you will also need to provide the following:</p>
+<ul class="volunteerAttachments">
+	<li>A copy of your current passport</li>
+	<li>A copy of your <a href="http://chandigarhpolice.gov.in/foreign.htm" target="_blank">foreigners registration form</a></li>
+	<li>A photograph of you</li>
+</ul><br>');
+	    add_option($this->var_pre . 'form_struct', '
+type=text|class=fmtext|label=Name|fieldname=fm_name|max=100|req=true
+type=text|class=fmtext|label=Home Phone No.|fieldname=fm_homephone|max=25
+type=text|class=fmtext|label=Mobile Phone No.|fieldname=fm_mobilephone|max=25
+type=text|class=fmtext|label=Email|fieldname=fm_email|max=100|req=true|ver=email
+
+type=select|class=fmselect|label=Month of Birth|fieldname=fm_month|data=(select),January,February,March,April,May,June,July,August,September,October,November,December
+type=select|class=fmselect|label=Day of Birth|fieldname=fm_day|data=(select),1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+type=select|class=fmselect|label=Year of Birth|fieldname=fm_year|data=(select),1920,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1931,1932,1933,1934,1935,1936,1937,1938,1939,1940,1941,1942,1943,1944,1945,1946,1947,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011
+
+type=textarea|class=fmtextarea|label=Address in Bangalore|fieldname=fm_address|max=100|rows=3
+type=text|class=fmtext|label=PIN (post code): 560 |fieldname=fm_pin|max=10
+type=text|class=fmtext|label=Home Country|fieldname=fm_homecountry|max=25
+type=text|class=fmtext|label=Length of time you will be in Bangalore|fieldname=fm_lengthtime|max=50
+type=radio|class=fmradio|label=Previous Volunteer Experience|fieldname=fm_previousexperience|data=No,Yes
+
+type=widetextarea|class=fmtextwide|label=Please give details of any previous volunteer experience: <br>(Include: Organization / Country / Length of time as a volunteer / Volunteer Experience)|fieldname=fm_prevmessage|max=1000|rows=10
+
+type=textarea|class=fmtextarea|label=Area of Interest / Subject Interested|fieldname=fm_interest|max=100|rows=6|req=false
+
+type=checkbox|class=fmcheck|label=Preferred days to volunteer|data=fm_mon,Mon,false,false,fm_datetues,Tues,false,false,fm_dateted,Wed,false,false,fm_datethurs,Thurs,false,false,fm_datetri,Fri,false,false,fm_datetat,Sat,false,false
+type=textarea|class=fmtextarea|label=Please let us know if AM or PM suits you better and possible time blocks|fieldname=fm_suitabletime|max=1000|rows=6
+type=radio|class=fmradio|label=Do you currently work in Bangalore?|fieldname=fm_workinbangalore|data=Yes,No
+type=text|class=fmtext|label=If yes, which company?|fieldname=fm_workcompany|max=50
+
+type=checkbox|class=fmcheck|label=Agreement|data=fm_agree,I agree that the information I have provided is true.,false,true
+
+type=verify|class=fmverify|label=Verify
+');
+	    add_option($this->var_pre . 'manual_form_code', '');
+	    add_option($this->var_pre . 'sender_name', 'fm_name');
+	    add_option($this->var_pre . 'sender_email', 'fm_email');
+	    add_option($this->var_pre . 'email_subject', 'fm_name');
+	    add_option($this->var_pre . 'max_file_size', 1000000);
+	    add_option($this->var_pre . 'message_structure', '');
+	    add_option($this->var_pre . 'sent_message', '<br /><p>Thank you for registering as a volunteer. The team at Sukrupa will be in touch with you soon.</p>');
+	    add_option($this->var_pre . 'auto_reply_name', '');
+	    add_option($this->var_pre . 'auto_reply_email', '');
+	    add_option($this->var_pre . 'auto_reply_subject', '');
+	    add_option($this->var_pre . 'auto_reply_message', '');
+
+	    add_option($this->var_pre . 'save_to_file', FALSE);
+	    add_option($this->var_pre . 'save_email', TRUE);
+	    add_option($this->var_pre . 'save_path', '');
+	    add_option($this->var_pre . 'save_delimiter', '|');
+	    add_option($this->var_pre . 'save_newlines', '<br>');
+	    add_option($this->var_pre . 'save_timestamp', 'm-d-Y h:i:s A');
 
 
+	    // Setup actions/hooks
+
+	    add_action('admin_menu', Array(&$this, 'add_options'));
+	    add_filter('the_content', Array(&$this, 'check_content'));
+	}
+}
+
+class SponsorshipForm extends ddfmClass {
+    /* Initialize instance */
+	function SponsorshipForm($i, $ver) {
+		$this->ver = $ver;
+		$this->inst = $i;
+		$this->var_pre = "ddfm{$i}_";
+
+		// Setup default options if they do not exist
+		add_option($this->var_pre . 'language', 'English');
+		add_option($this->var_pre . 'desc', 'Sponsorship Application Form');
+		add_option($this->var_pre . 'path_contact_page', (get_option('siteurl') . '/sponsor/'));
+		add_option($this->var_pre . 'wrap_messages', TRUE);
+		add_option($this->var_pre . 'attach_save', FALSE);
+		add_option($this->var_pre . 'attach_path', '');
+		add_option($this->var_pre . 'show_required', TRUE);
+		add_option($this->var_pre . 'show_url', FALSE);
+		add_option($this->var_pre . 'show_ip_hostname', TRUE);
+		add_option($this->var_pre . 'recipients', 'sponsorship@sukrupa.org');
+		add_option($this->var_pre . 'form_header', '<p>Please fill in the below form to register your interest in sponsoring a child at Sukrupa</p><br>');
+		add_option($this->var_pre . 'form_struct', '
+type=text|class=fmtext|label=Name|fieldname=fm_name|max=100|req=true
+type=text|class=fmtext|label=Home Phone No.|fieldname=fm_homephone|max=25|req=false
+type=text|class=fmtext|label=Mobile Phone No.|fieldname=fm_mobilephone|max=25|req=false
+type=text|class=fmtext|label=Email|fieldname=fm_email|max=100|req=true|ver=email
+type=text|class=fmtext|label=Location|fieldname=fm_location|max=50|req=false
+
+type=verify|class=fmverify|label=Verify
+');
+		add_option($this->var_pre . 'manual_form_code', '');
+		add_option($this->var_pre . 'sender_name', 'fm_name');
+		add_option($this->var_pre . 'sender_email', 'fm_email');
+		add_option($this->var_pre . 'email_subject', 'fm_name');
+		add_option($this->var_pre . 'max_file_size', 1000000);
+		add_option($this->var_pre . 'message_structure', '');
+		add_option($this->var_pre . 'sent_message', '<br /><p>Thank you for your interest in Sponsoring a child. The team at Sukrupa will be in touch with you soon.</p>');
+		add_option($this->var_pre . 'auto_reply_name', '');
+		add_option($this->var_pre . 'auto_reply_email', '');
+		add_option($this->var_pre . 'auto_reply_subject', '');
+		add_option($this->var_pre . 'auto_reply_message', '');
+
+		add_option($this->var_pre . 'save_to_file', FALSE);
+		add_option($this->var_pre . 'save_email', TRUE);
+		add_option($this->var_pre . 'save_path', '');
+		add_option($this->var_pre . 'save_delimiter', '|');
+		add_option($this->var_pre . 'save_newlines', '<br>');
+		add_option($this->var_pre . 'save_timestamp', 'm-d-Y h:i:s A');
+
+
+		// Setup actions/hooks
+
+		add_action('admin_menu', Array(&$this, 'add_options'));
+		add_filter('the_content', Array(&$this, 'check_content'));
+
+	}
+}
+
+function activate_sukrupa_forms() {
+    add_option('ddfm_instances', 2);
+
+    add_option('ddfm_verify_method', 'basic'); // off, basic, recaptcha
+
+    // for basic method
+    add_option('ddfm_verify_background', 'F0F0F0');
+    add_option('ddfm_verify_text', '005ABE');
+    add_option('ddfm_force_type', '');
+
+    // for recaptcha method
+    add_option('ddfm_re_public', '');
+    add_option('ddfm_re_private', '');
+    
+    new VolunteerForm(1, $ddfm_version); 
+    new SponsorshipForm(2, $ddfm_version);
+    
+    global $user_ID;
+    $volunteer_page = array(
+        'post_title' => 'Volunteer',
+        'post_content' => '<!-- ddfm1 -->',
+        'post_status' => 'publish',
+        'post_date' => date('Y-m-d H:i:s'),
+        'post_author' => $user_ID,
+        'post_type' => 'page',
+        'post_category' => array(0),
+        'post_excerpt' => ' ',
+        'post_name' => 'volunteer'
+    );
+    
+    $sponsorship_page = array(
+        'post_title' => 'Sponsor',
+        'post_content' => '<!-- ddfm2 -->',
+        'post_status' => 'publish',
+        'post_date' => date('Y-m-d H:i:s'),
+        'post_author' => $user_ID,
+        'post_type' => 'page',
+        'post_category' => array(0),
+        'post_excerpt' => ' ',
+        'post_name' => 'sponsor'
+    );
+    
+    wp_insert_post($volunteer_page);
+    wp_insert_post($sponsorship_page);
+}
 
 /* Initialize instances */
 for ($i = 1; $i <= (int)get_option('ddfm_instances'); $i++) {
-	$ddfm{$i} = new ddfmClass($i, $ddfm_version); 
-}
+    $ddfm{$i} = new ddfmClass($i, $ddfm_version); 
+}   
+
+register_activation_hook(__FILE__, 'activate_sukrupa_forms');
 
 
 ?>
