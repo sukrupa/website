@@ -13,7 +13,10 @@ get_header();
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	<div class="inset" style="margin-bottom:20px;">
 		<h2 style="margin-bottom:0;"><?php the_title(); ?></h2>
-		<p><?php the_excerpt(); ?></p>
+		<p>
+		    <?php the_excerpt(); ?>
+		    <a style='float:right;' href='<?php bloginfo('home'); ?>/sponsor'>Register your interest to Sponsor a child</a>
+		</p>
 	</div>	
 		
 	<div id="donateContent">
