@@ -1,12 +1,12 @@
 <?php
 
 /*
-Plugin Name: Sukrupa Volunteer Form (based on Dagon Design Form Mailer v5.8)
+Plugin Name: Sukrupa Forms (based on Dagon Design Form Mailer v5.8)
 Plugin URI: http://www.dagondesign.com/articles/secure-form-mailer-plugin-for-wordpress/
-Description: A modified version of Dagon Design Form Mailer that has Sukrupa's volunteer form as the default instances. <b>Please read the README file inside the plugin folder to find out how to use the plugin for the first time</b>.
-Author: Dagon Design
+Description: A modified version of Dagon Design Form Mailer that has Sukrupa's volunteer and sponsorship forms as the default instances. <b>Please read the README file inside the plugin folder to find out how to use the plugin for the first time</b>.
+Author: ThoughtWorks
 Version: 1.0
-Author URI: http://www.dagondesign.com
+Author URI: http://www.thoughtworks.com
 */
 // error_reporting(E_ALL);
 
@@ -59,7 +59,7 @@ if (isset($_GET['v'])) {
 		/*// find wp-blog-header.php to access WP stuff
 		$testpath = (string)$_SERVER['PHP_SELF'];
 		$s = strpos($testpath, '/wp-content/');
-		$e = strpos($testpath, '/sukrupa-volunteer-form.php');
+		$e = strpos($testpath, '/sukrupa-forms.php');
 		$testpath = substr($testpath, $s+1, $e-$s);
 		$slashc = substr_count($testpath, "/");
 		$wpcp = 'wp-blog-header.php';			
@@ -595,7 +595,7 @@ type=verify|class=fmverify|label=Verify
 	function add_options() {
 		if (function_exists('add_options_page')) {
 
-			add_options_page("Sukrupa Volunteer Form v{$this->ver} (Instance {$this->inst})", 
+			add_options_page("Sukrupa Forms v{$this->ver} (Instance {$this->inst})", 
 			"DDFM{$this->inst}", 8, "DDFM{$this->inst}", Array(&$this, 'options_page'));
 
 
@@ -726,7 +726,7 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 
 		?>
 		<div class="wrap">
-		<h2>Sukrupa Volunteer Form v<?php echo $ddfm_version; ?> (Instance <?php echo $this->inst; ?>)</h2>
+		<h2>Sukrupa Forms v<?php echo $ddfm_version; ?> (Instance <?php echo $this->inst; ?>)</h2>
 
 		<p>For information and updates, please visit:<br />
 		<a href="http://www.dagondesign.com/articles/secure-form-mailer-plugin-for-wordpress/">http://www.dagondesign.com/articles/secure-form-mailer-plugin-for-wordpress/</a></p>
@@ -1142,7 +1142,7 @@ function ddfm_gen_verify($item) {
 	if (ddfm_check_gd_support()) {
 		$gen .= '<p class="fieldwrap"><label for="fm_verify">' . $req_text . $item['label'] . '</label>' . "\n";
 		$gen .= '<input class="'. $item['class'] . '" type="text" name="fm_verify" id="fm_verify" />' . "\n";
-		$gen .= '<img width="60" height="24" src="' . rtrim(get_settings('siteurl'), '/') . '/wp-content/plugins/sukrupa-volunteer-form/sukrupa-volunteer-form.php?v=1" alt="' . $item['label'] . '" title="' . $item['label'] . '" /></p>' . "\n\n";
+		$gen .= '<img width="60" height="24" src="' . rtrim(get_settings('siteurl'), '/') . '/wp-content/plugins/sukrupa-forms/sukrupa-forms.php?v=1" alt="' . $item['label'] . '" title="' . $item['label'] . '" /></p>' . "\n\n";
 	}
 
 	return $gen;
@@ -1882,6 +1882,7 @@ function ddfm_gen_selrecip($item) {
 						$mail_message .= $fs['label'] . $msg_field_sep . $t . $msg_field_line_end;
 						$message_structure = ddfm_str_replace($fs['fieldname'], $t, $message_structure);
 						$auto_reply_message = ddfm_str_replace($fs['fieldname'], $t, $auto_reply_message);
+
 						$sent_message = ddfm_str_replace($fs['fieldname'], ddfm_bsafe($t), $sent_message);
 
 
@@ -2257,8 +2258,8 @@ function ddfm_gen_selrecip($item) {
 add_action('wp_head', 'ddfm_add_css');
 
 function ddfm_add_css() {
-	echo "\n" . '<link rel="stylesheet" href="' . rtrim(get_settings('siteurl'), '/') . '/wp-content/plugins/sukrupa-volunteer-form/sukrupa-volunteer-form.css" type="text/css" media="screen" />' . "\n";
-	echo "\n" . '<script type="text/javascript" src="' . rtrim(get_settings('siteurl'), '/') . '/wp-content/plugins/sukrupa-volunteer-form/date_chooser.js"></script>' . "\n";
+	echo "\n" . '<link rel="stylesheet" href="' . rtrim(get_settings('siteurl'), '/') . '/wp-content/plugins/sukrupa-forms/sukrupa-forms.css" type="text/css" media="screen" />' . "\n";
+	echo "\n" . '<script type="text/javascript" src="' . rtrim(get_settings('siteurl'), '/') . '/wp-content/plugins/sukrupa-forms/date_chooser.js"></script>' . "\n";
 }
 
 
@@ -2273,7 +2274,7 @@ add_action('admin_menu', 'ddfm_add_main_options');
 function ddfm_add_main_options() {
 	global $ddfm_version;
 	if (function_exists('add_options_page')) {
-			add_options_page("Sukrupa Volunteer Form v{$ddfm_version} - Main", 
+			add_options_page("Sukrupa Forms v{$ddfm_version} - Main", 
 			"DDFM-Main", 8, "DDFM-Main", 'ddfm_main_options');
 	}		
 }
@@ -2326,7 +2327,7 @@ function ddfm_main_options() {
 
 	?>
 	<div class="wrap">
-	<h2>Sukrupa Volunteer Form v<?php echo $ddfm_version; ?></h2>
+	<h2>Sukrupa Forms v<?php echo $ddfm_version; ?></h2>
 
 	<p>For information and updates, please visit:<br />
 	<a href="http://www.dagondesign.com/articles/secure-form-mailer-plugin-for-wordpress/">http://www.dagondesign.com/articles/secure-form-mailer-plugin-for-wordpress/</a></p>
