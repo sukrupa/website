@@ -2465,7 +2465,7 @@ type=text|class=fmtext|label=Home Country|fieldname=fm_homecountry|max=25
 type=text|class=fmtext|label=Length of time you will be in Bangalore|fieldname=fm_lengthtime|max=50
 type=radio|class=fmradio|label=Previous Volunteer Experience|fieldname=fm_previousexperience|data=No,Yes
 
-type=widetextarea|class=fmtextwide|label=Please give details of any previous volunteer experience: <br>(Include: Organization / Country / Length of time as a volunteer / Volunteer Experience)|fieldname=fm_prevmessage|max=1000|rows=10
+type=widetextarea|class=fmtextwide|label=Please give details of any previous volunteer experience: (Include: Organization / Country / Length of time as a volunteer / Volunteer Experience)|fieldname=fm_prev_experience|max=10000|rows=10
 
 type=textarea|class=fmtextarea|label=Area of Interest / Subject Interested|fieldname=fm_interest|max=100|rows=6|req=false
 
@@ -2483,7 +2483,48 @@ type=verify|class=fmverify|label=Verify
 	    add_option($this->var_pre . 'sender_email', 'fm_email');
 	    add_option($this->var_pre . 'email_subject', 'fm_name');
 	    add_option($this->var_pre . 'max_file_size', 1000000);
-	    add_option($this->var_pre . 'message_structure', '');
+	    add_option($this->var_pre . 'message_structure', '
+----------------------------------------------------------------------------
+Name: fm_name
+----------------------------------------------------------------------------
+Home Phone No.: fm_homephone
+----------------------------------------------------------------------------
+Mobile Phone No.: fm_mobilephone
+----------------------------------------------------------------------------
+Email: fm_email
+----------------------------------------------------------------------------
+Date of Birth: fm_day / fm_month / fm_year
+----------------------------------------------------------------------------
+Address in Bangalore: fm_address
+----------------------------------------------------------------------------
+PIN (post code): 560: fm_pin
+----------------------------------------------------------------------------
+Home Country: fm_homecountry
+----------------------------------------------------------------------------
+Length of time you will be in Bangalore: fm_lengthtime
+----------------------------------------------------------------------------
+Previous Volunteer Experience: fm_previousexperience
+----------------------------------------------------------------------------
+Please give details of any previous volunteer experience: (Include: Organization / Country / Length of time as a volunteer / Volunteer Experience):
+
+fm_prev_experience
+----------------------------------------------------------------------------
+Area of Interest / Subject Interested: fm_interest
+----------------------------------------------------------------------------
+Preferred days to volunteer:
+fm_mon
+fm_datetues
+fm_dateted
+fm_datethurs
+fm_datetat
+----------------------------------------------------------------------------
+Please let us know if AM or PM suits you better and possible time blocks: fm_suitabletime
+----------------------------------------------------------------------------
+Do you currently work in Bangalore?: fm_workinbangalore
+----------------------------------------------------------------------------
+If yes, which company?: fm_workcompany
+----------------------------------------------------------------------------
+');
 	    add_option($this->var_pre . 'sent_message', '<br /><p>Thank you for registering as a volunteer. The team at Sukrupa will be in touch with you soon.</p>');
 	    add_option($this->var_pre . 'auto_reply_name', '');
 	    add_option($this->var_pre . 'auto_reply_email', '');
