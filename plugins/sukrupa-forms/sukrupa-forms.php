@@ -596,7 +596,7 @@ type=verify|class=fmverify|label=Verify
 		if (function_exists('add_options_page')) {
 
 			add_options_page("Sukrupa Forms v{$this->ver} (Instance {$this->inst})", 
-			"DDFM{$this->inst}", 8, "DDFM{$this->inst}", Array(&$this, 'options_page'));
+			get_option($this->var_pre . 'link_text'), 8, "DDFM{$this->inst}", Array(&$this, 'options_page'));
 
 
 		}		
@@ -688,6 +688,7 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 
 			update_option($this->var_pre . 'language', (string) $_POST[$this->var_pre . 'language']);
 			update_option($this->var_pre . 'desc', (string) $_POST[$this->var_pre . 'desc']);
+			update_option($this->var_pre . 'link_text', (string) $_POST[$this->var_pre . 'link_text']);
 			update_option($this->var_pre . 'form_header', (string) ddfm_stripslashes($_POST[$this->var_pre . 'form_header']));
 			update_option($this->var_pre . 'path_contact_page', (string) ddfm_stripslashes($_POST[$this->var_pre . 'path_contact_page']));
 			update_option($this->var_pre . 'wrap_messages', ddfm_get_bool_from_post($this->var_pre . 'wrap_messages'));
@@ -726,11 +727,9 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 
 		?>
 		<div class="wrap">
-		<h2>Sukrupa Forms v<?php echo $ddfm_version; ?> (Instance <?php echo $this->inst; ?>)</h2>
-
-		<p>For information and updates, please visit:<br />
-		<a href="http://www.dagondesign.com/articles/secure-form-mailer-plugin-for-wordpress/">http://www.dagondesign.com/articles/secure-form-mailer-plugin-for-wordpress/</a></p>
-
+		<h2>Sukrupa Forms v<?php echo $ddfm_version; ?> (<?php echo get_option($this->var_pre . 'desc'); ?>)</h2>
+        
+        
 		<?php 
 		// Get list of available languages
 		$language_list = array();
@@ -780,6 +779,7 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 
 		<?php //echo $this->options_page_add_text('Instance Description', 'desc', 60, 'Description to help keep instances separate'); ?>
 		<?php //echo $this->options_page_add_text('Contact page', 'path_contact_page', 60, 'The full URL that this form will be displayed on'); ?>
+		<?php //echo $this->options_page_add_text('Link text', 'link_text', 60, ''); ?>
 		<?php echo $this->options_page_add_text('Recipients', 'recipients', 60, 'For single recipients, enter the email address. For multiple recipients, see the documentation'); ?>
 
 		</table>
@@ -2434,6 +2434,7 @@ class VolunteerForm extends ddfmClass {
         // Setup default options if they do not exist
 	    add_option($this->var_pre . 'language', 'English');
 	    add_option($this->var_pre . 'desc', 'Volunteer Application Form');
+	    add_option($this->var_pre . 'link_text', 'Volunteer Form');
 	    add_option($this->var_pre . 'path_contact_page', (get_option('siteurl') . '/volunteer/'));
 	    add_option($this->var_pre . 'wrap_messages', TRUE);
 	    add_option($this->var_pre . 'attach_save', FALSE);
@@ -2559,6 +2560,7 @@ class SponsorshipForm extends ddfmClass {
 		// Setup default options if they do not exist
 		add_option($this->var_pre . 'language', 'English');
 		add_option($this->var_pre . 'desc', 'Sponsorship Application Form');
+		add_option($this->var_pre . 'link_text', 'Sponsorship Form');
 		add_option($this->var_pre . 'path_contact_page', (get_option('siteurl') . '/sponsor/'));
 		add_option($this->var_pre . 'wrap_messages', TRUE);
 		add_option($this->var_pre . 'attach_save', FALSE);
