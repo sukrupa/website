@@ -2273,16 +2273,14 @@ function ddfm_add_css() {
 
 
 /* Show main options page */
-add_action('admin_menu', 'ddfm_add_main_options');
-
-
+/*add_action('admin_menu', 'ddfm_add_main_options');
 function ddfm_add_main_options() {
 	global $ddfm_version;
 	if (function_exists('add_options_page')) {
 			add_options_page("Sukrupa Forms v{$ddfm_version} - Main", 
 			"DDFM-Main", 8, "DDFM-Main", 'ddfm_main_options');
 	}		
-}
+}*/
 
 
 
