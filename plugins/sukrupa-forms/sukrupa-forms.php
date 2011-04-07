@@ -757,27 +757,29 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 
 		<table class="form-table">
 
-		<tr valign="top">
+		<!--tr valign="top">
+		UNCOMMENT THIS TO BE ABLE TO CHANGE THE LANGUAGE OF THE FORM
+		
 		<th scope="row">Language</th>
 		<td>
-			<select name="<?php echo $this->var_pre; ?>language">
+			<select name="<?php /*echo $this->var_pre;*/ ?>language">
 			<?php 
-			$slang = trim(get_option($this->var_pre . 'language'));
+			/*$slang = trim(get_option($this->var_pre . 'language'));
 			foreach ($language_list as $lang) {
 				echo '<option';
 				if ($lang == ($slang . '.php')) {
 					echo ' selected="selected"';
 				}
 				echo '>' . substr($lang, 0, strlen($lang)-4) . '</option>';
-			}
+			}*/
 			?>
 			</select>
 			<br />Language files are located in the <strong>dd-formmailer/lang</strong> directory.	
 		</td>
-		</tr>
+		</tr-->
 
-		<?php echo $this->options_page_add_text('Instance Description', 'desc', 60, 'Description to help keep instances separate'); ?>
-		<?php echo $this->options_page_add_text('Contact page', 'path_contact_page', 60, 'The full URL that this form will be displayed on'); ?>
+		<?php //echo $this->options_page_add_text('Instance Description', 'desc', 60, 'Description to help keep instances separate'); ?>
+		<?php //echo $this->options_page_add_text('Contact page', 'path_contact_page', 60, 'The full URL that this form will be displayed on'); ?>
 		<?php echo $this->options_page_add_text('Recipients', 'recipients', 60, 'For single recipients, enter the email address. For multiple recipients, see the documentation'); ?>
 
 		</table>
@@ -794,7 +796,9 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 		</table>
 
 
-
+        <!--
+        UNCOMMENT THIS TO BE ABLE TO CHANGE THE FORM STRUCTURE, MANUAL FORM CODE, MAIL GENERATION AND MESSAGE STRUCTURE
+        
 		<h3>Form Structure</h3>
 
 		<table class="form-table">
@@ -807,7 +811,6 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 		</tr>
 
 		</table>
-
 
 
 		<h3>Manual Form Code</h3>
@@ -864,7 +867,7 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 		</table>
 
 
-
+        -->
 
 		<h3>Success Message</h3>
 
@@ -904,6 +907,8 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 
 
 
+        <!--
+        UNCOMMENT THIS TO BE ABLE TO ALLOW SAVING ATTACHMENTS AND UPDATE OTHER OPTIONS
 
 		<h3>Save Attachments</h3>
 
@@ -915,7 +920,7 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 		</table>
 	
 
-
+        
 
 		<h3>Other Options</h3>
 
@@ -929,7 +934,7 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 
 		</table>
 
-
+        -->
 
 		<h3>Save Data to File</h3>
 
