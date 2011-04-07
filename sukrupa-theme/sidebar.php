@@ -33,8 +33,10 @@
 	<div class="sidebarEntry">
 	    <div class="sidebarHeader">Create an Opportunity</div>
 	    <div class="sidebarGuts">
-	    	<a href="<?php bloginfo('home'); ?>/donate/">Donation Information</a><br/>
-	    	<a href="<?php bloginfo('home'); ?>/supporting-sukrupa/#volunteers">Volunteer with Us</a><br/>
+	    	<a style='margin-bottom:5px; display:block' href="<?php bloginfo('home'); ?>/donate/">Donation Information</a>
+	    	<a style='margin-bottom:5px; display:block' href="<?php bloginfo('home'); ?>/sponsor">Sponsor a child</a>
+	    	<a style='margin-bottom:5px; display:block' href="<?php bloginfo('home'); ?>/supporting-sukrupa/#volunteers">Volunteer information</a>
+	    	<a style='margin-bottom:5px; display:block' href="<?php bloginfo('home'); ?>/volunteer">Apply as a volunteer</a>
 	    	<!-- <a href="http://www.sukrupa.org/creations.html" target="_blank">View our Shop</a><br/> -->
 	    </div>
 	</div>

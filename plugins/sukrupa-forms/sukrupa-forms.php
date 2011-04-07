@@ -729,6 +729,18 @@ type=textarea|class=fmtextarea|label=Message|fieldname=fm_message|max=1000|rows=
 		<div class="wrap">
 		<h2>Sukrupa Forms v<?php echo $ddfm_version; ?> (<?php echo get_option($this->var_pre . 'desc'); ?>)</h2>
         
+        <p>To add a link to the <?php echo get_option($this->var_pre . 'desc'); ?>, add the following to your page content:</p>
+       
+        <code>
+            &lt;a href="<?php echo get_option($this->var_pre . 'path_contact_page'); ?>"><?php echo get_option($this->var_pre . 'desc'); ?>&lt;/a&gt;
+        </code>
+        
+        
+        <p>For example:</p>
+        
+        <code>
+            &lt;p&gt;Please fill in the &lt;a href="<?php echo get_option($this->var_pre . 'path_contact_page'); ?>"><?php echo get_option($this->var_pre . 'desc'); ?>&lt;/a&gt;.&lt;/p&gt;
+        </code>
         
 		<?php 
 		// Get list of available languages
