@@ -3,7 +3,7 @@
 /*
 Plugin Name: Sukrupa Forms (based on Dagon Design Form Mailer v5.8)
 Plugin URI: http://www.dagondesign.com/articles/secure-form-mailer-plugin-for-wordpress/
-Description: A modified version of Dagon Design Form Mailer that has Sukrupa's volunteer and sponsorship forms as the default instances. <b>Please read the README file inside the plugin folder to find out how to use the plugin for the first time</b>.
+Description: A modified version of Dagon Design Form Mailer that has Sukrupa's volunteer and sponsorship forms as the default instances. <b>Please read the <a href="/wp-content/plugins/sukrupa-forms/README">README</a> file inside the plugin folder to find out how to use the plugin for the first time</b>.
 Author: ThoughtWorks
 Version: 1.0
 Author URI: http://www.thoughtworks.com
