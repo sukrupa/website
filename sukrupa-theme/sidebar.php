@@ -66,17 +66,34 @@
 	    </div>
     </div>
 
-    <script type="text/javascript">
+    <!--script type="text/javascript">
     $(document).ready(function() {
        initSukrupaMap('mapCanvas');
     });
-    </script>
+    </script-->
     <div class="sidebarEntry">
         <div class="sidebarHeader">Visit Sukrupa</div>
-        <div id="mapCanvas"></div>
-        <div class="sidebarGuts">
-            <a href="http://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&msid=216247863675364510664.00049bfa2f612c40ff053&ll=13.036105,77.596478&spn=0.007003,0.007188&z=16&iwloc=00049bfa340a434b5d788&f=d&daddr=Sukrupa+School+%4013.032656,77.596478" target="_blank">Get directions</a>
+		<div class="sidebarContent">
+			Map shows directions from RT Neger Police Station to Sukrupa. For custom directions from a different location, click 'Get Directions' below.
+		</div>
+        <div id="mapCanvas">
+			<a href="http://maps.google.com/maps/ms?source=s_q&hl=en&geocode=&ie=UTF8&hq=&hnear=&msa=0&msid=215314882308192951750.0004a02a58dd0f0b83b28&ll=13.028788,77.594719&spn=0.016662,0.02326&z=16&iwloc=0004a02a6f59e763ba1a9">
+        	<img src="<?php bloginfo('template_directory'); ?>/img/sukrupa_map.jpg" />
+			</a>
         </div>
+        <div class="sidebarGuts">
+            <a href="http://maps.google.com/maps/ms?source=s_q&hl=en&geocode=&ie=UTF8&hq=&hnear=&msa=0&msid=215314882308192951750.0004a02a58dd0f0b83b28&ll=13.028788,77.594719&spn=0.016662,0.02326&z=16&iwloc=0004a02a6f59e763ba1a9" target="_blank">Get Directions</a>
+        </div>
+		<div class="sidebarContent">
+			FROM THE R.T. NAGAR POLICE STATION
+			<ul>
+				<li>- Head towards Dinnur Main Road (north) on R.T. Nagar Main Road (600 m)</li>
+				<li>- Turn RIGHT at end of road (200 m)</li>
+				<li>- Turn LEFT at end of road (350 m)</li>
+				<li>- Cross bridge over drainage and turn RIGHT at end of road (60 m)</li>
+				<li>- Arrive at Sukrupa School on LEFT.</li>
+			<ul>
+		</div>
     </div>
     
 </div>

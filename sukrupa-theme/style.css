@@ -61,6 +61,7 @@ a#fl{ background: url(img/18px_sprites.png) no-repeat 0% 39%; }
 .fixed{position: fixed; top:0px; width:220px; padding-top: 5px;margin-top: 0px;}
 #sidebar .grid_6{width: 210px;}
 .sidebarHeader { background-color: #4991C9; color: #F9DD85; padding: 5px; font-size: 1.1em; text-indent: 5px;}
+.sidebarContent{font-size: 0.7em}
 .sidebarHeader a{color: inherit;}
 .sidebarGuts{background: #EBE8E5; padding: 10px; float: left; width: 200px;}
 .sidebarEntry{width: 220px; float: left; margin-bottom: 10px;}
