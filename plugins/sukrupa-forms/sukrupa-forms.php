@@ -1641,6 +1641,9 @@ function ddfm_gen_selrecip($item) {
 
 		$fsindex = -1;
 
+		$fs_email = '';
+		$fs_confirmemail = '';
+		
 		// Validate input
 		foreach ($form_struct as $fs) {
 		
@@ -1656,6 +1659,12 @@ function ddfm_gen_selrecip($item) {
 				$sender_email = ddfm_str_replace($fs['fieldname'], ddfm_stripslashes($form_input[$fs['fieldname']]), $sender_email);
 				$email_subject = ddfm_str_replace($fs['fieldname'], ddfm_stripslashes($form_input[$fs['fieldname']]), $email_subject);
 			}
+			
+			if ($fs['fieldname'] == 'fm_email')
+				$fs_email = $form_input[$fs['fieldname']];
+				
+			if ($fs['fieldname'] == 'fm_confirmemail')
+				$fs_confirmemail = $form_input[$fs['fieldname']];
 
 			switch ($fs['type']) {
 
@@ -2046,7 +2055,7 @@ function ddfm_gen_selrecip($item) {
 
 		}
 
-
+		
 
 		// make sure no un-used fieldnames are left in template
 		foreach ($form_struct as $fs) {
@@ -2062,8 +2071,13 @@ function ddfm_gen_selrecip($item) {
 		if (ddfm_injection_chars($email_subject)) $errors[] = DDFM_INVALIDINPUT;
 
 
-
+		// This is the error bit!
 		$errorHtml = '';
+		
+		if( $fs_email != $fs_confirmemail)
+		{
+			$errors[] = "Emails don't match";
+		}
 		
 		if ($errors) {
 
@@ -2472,7 +2486,7 @@ type=text|class=fmtext|label=Home Phone No.|fieldname=fm_homephone|max=25
 type=text|class=fmtext|label=Mobile:|fieldname=fm_mobilephone|max=25
 type=text|class=fmtext|label=Email|fieldname=fm_email|max=100|req=true|ver=email
 type=text|class=fmtext|label=Confirm Email|fieldname=fm_confirmemail|max=100|req=true|ver=email
-type=text|class=fmtext|label=DOB(dd/mm/yyyy)|fieldname=fm_dob|max=10|req=true
+type=text|class=fmtext|label=DOB(dd/mm/yyyy)|fieldname=fm_dob|max=50|req=true
 type=text|class=fmtext|label=Occupation|fieldname=fm_occupation|max=100|req=true
 type=text|class=fmtext|label=Company|fieldname=fm_company|max=100
 type=text|class=fmtext|label=Nationality|fieldname=fm_nationality|max=20|req=true

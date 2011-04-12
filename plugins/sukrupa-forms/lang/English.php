@@ -18,7 +18,7 @@ define('DDFM_ERRORMSG', 'Errors!');
 
 define('DDFM_MAXCHARLIMIT', 'character limit for');
 
-define('DDFM_MISSINGFIELD', 'Missing required field ');
+define('DDFM_MISSINGFIELD', 'Please fill in required field ');
 
 define('DDFM_INVALIDINPUT', 'Invalid input for');
 
@@ -28,7 +28,7 @@ define('DDFM_INVALIDURL', 'Invalid URL for');
 
 define('DDFM_NOMATCH', 'Fields do not match for');
 
-define('DDFM_MISSINGVER', 'Enter the verification code');
+define('DDFM_MISSINGVER', 'Please enter the verification code');
 
 define('DDFM_NOVERGEN', 'No verification code generated');
 
