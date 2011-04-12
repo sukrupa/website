@@ -2466,32 +2466,27 @@ class VolunteerForm extends ddfmClass {
 	<li>A photograph of you</li>
 </ul><br>');
 	    add_option($this->var_pre . 'form_struct', '
+type=html|text=<p><h2>Personal Information</h2></p> 
 type=text|class=fmtext|label=Name|fieldname=fm_name|max=100|req=true
 type=text|class=fmtext|label=Home Phone No.|fieldname=fm_homephone|max=25
-type=text|class=fmtext|label=Mobile Phone No.|fieldname=fm_mobilephone|max=25
+type=text|class=fmtext|label=Mobile:|fieldname=fm_mobilephone|max=25
 type=text|class=fmtext|label=Email|fieldname=fm_email|max=100|req=true|ver=email
+type=text|class=fmtext|label=Confirm Email|fieldname=fm_confirmemail|max=100|req=true|ver=email
+type=text|class=fmtext|label=DOB(dd/mm/yyyy)|fieldname=fm_dob|max=10|req=true
+type=text|class=fmtext|label=Occupation|fieldname=fm_occupation|max=100|req=true
+type=text|class=fmtext|label=Company|fieldname=fm_company|max=100
+type=text|class=fmtext|label=Nationality|fieldname=fm_nationality|max=20|req=true
 
-type=select|class=fmselect|label=Month of Birth|fieldname=fm_month|data=(select),January,February,March,April,May,June,July,August,September,October,November,December
-type=select|class=fmselect|label=Day of Birth|fieldname=fm_day|data=(select),1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
-type=select|class=fmselect|label=Year of Birth|fieldname=fm_year|data=(select),1920,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1931,1932,1933,1934,1935,1936,1937,1938,1939,1940,1941,1942,1943,1944,1945,1946,1947,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011
-
+type=textarea|class=fmtextarea|label=Home Address|fieldname=fm_homeaddress|max=100|rows=3
 type=textarea|class=fmtextarea|label=Address in Bangalore|fieldname=fm_address|max=100|rows=3
-type=text|class=fmtext|label=PIN (post code): 560 |fieldname=fm_pin|max=10
-type=text|class=fmtext|label=Home Country|fieldname=fm_homecountry|max=25
-type=text|class=fmtext|label=Length of time you will be in Bangalore|fieldname=fm_lengthtime|max=50
-type=radio|class=fmradio|label=Previous Volunteer Experience|fieldname=fm_previousexperience|data=No,Yes
-
+type=html|text=<p><h2>Background</h2></p> 
+type=textarea|class=fmtextarea|label=Education/Background|fieldname=fm_background|max=1000|rows=3
 type=widetextarea|class=fmtextwide|label=Please give details of any previous volunteer experience: (Include: Organization / Country / Length of time as a volunteer / Volunteer Experience)|fieldname=fm_prev_experience|max=10000|rows=10
 
-type=textarea|class=fmtextarea|label=Area of Interest / Subject Interested|fieldname=fm_interest|max=100|rows=6|req=false
-
-type=checkbox|class=fmcheck|label=Preferred days to volunteer|data=fm_mon,Mon,false,false,fm_datetues,Tues,false,false,fm_dateted,Wed,false,false,fm_datethurs,Thurs,false,false,fm_datetri,Fri,false,false,fm_datetat,Sat,false,false
-type=textarea|class=fmtextarea|label=Please let us know if AM or PM suits you better and possible time blocks|fieldname=fm_suitabletime|max=1000|rows=6
-type=radio|class=fmradio|label=Do you currently work in Bangalore?|fieldname=fm_workinbangalore|data=Yes,No
-type=text|class=fmtext|label=If yes, which company?|fieldname=fm_workcompany|max=50
+type=html|text=<p><h2>Volunteer Interest</h2></p> 
+type=text|class=fmtext|label=Length of time you would like to volunteer at Sukrupa|fieldname=fm_lengthoftime|max=10
 
 type=checkbox|class=fmcheck|label=Agreement|data=fm_agree,I agree that the information I have provided is true.,false,true
-
 type=verify|class=fmverify|label=Verify
 ');
 	    add_option($this->var_pre . 'manual_form_code', '');
@@ -2500,6 +2495,7 @@ type=verify|class=fmverify|label=Verify
 	    add_option($this->var_pre . 'email_subject', 'fm_name');
 	    add_option($this->var_pre . 'max_file_size', 1000000);
 	    add_option($this->var_pre . 'message_structure', '
+PERSONAL INFORMATION
 ----------------------------------------------------------------------------
 Name: fm_name
 ----------------------------------------------------------------------------
@@ -2509,36 +2505,22 @@ Mobile Phone No.: fm_mobilephone
 ----------------------------------------------------------------------------
 Email: fm_email
 ----------------------------------------------------------------------------
-Date of Birth: fm_day / fm_month / fm_year
+Date of Birth: fm_dob
+----------------------------------------------------------------------------
+Home Address: fm_homeaddress
 ----------------------------------------------------------------------------
 Address in Bangalore: fm_address
 ----------------------------------------------------------------------------
-PIN (post code): 560: fm_pin
+BACKGROUND
 ----------------------------------------------------------------------------
-Home Country: fm_homecountry
+Education/Background: fm_background
 ----------------------------------------------------------------------------
-Length of time you will be in Bangalore: fm_lengthtime
-----------------------------------------------------------------------------
-Previous Volunteer Experience: fm_previousexperience
-----------------------------------------------------------------------------
-Please give details of any previous volunteer experience: (Include: Organization / Country / Length of time as a volunteer / Volunteer Experience):
-
+Previous Experience:
 fm_prev_experience
 ----------------------------------------------------------------------------
-Area of Interest / Subject Interested: fm_interest
+VOLUNTEER INTEREST
 ----------------------------------------------------------------------------
-Preferred days to volunteer:
-fm_mon
-fm_datetues
-fm_dateted
-fm_datethurs
-fm_datetat
-----------------------------------------------------------------------------
-Please let us know if AM or PM suits you better and possible time blocks: fm_suitabletime
-----------------------------------------------------------------------------
-Do you currently work in Bangalore?: fm_workinbangalore
-----------------------------------------------------------------------------
-If yes, which company?: fm_workcompany
+Length of time you will be in Bangalore: fm_lengthoftime
 ----------------------------------------------------------------------------
 ');
 	    add_option($this->var_pre . 'sent_message', '<br /><p>Thank you for registering as a volunteer. The team at Sukrupa will be in touch with you soon.</p>');
