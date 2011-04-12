@@ -74,7 +74,7 @@ prerequisites() {
     echo "*) You need to enable apache's mod_php5, mod_rewrite, and mod_substitute."
     echo ""
     echo "FOR CI AND STAGING SERVERS:"
-    echo "*) You need to install MySQL community edition server, sudo apt-get install mysql-server php5-mysql"
+    echo "*) You need to install MySQL community edition server, sudo apt-get install mysql-server php5-mysql php5-gd"
     echo "*) The go user must be able to run '/bin/ln' and '/etc/init.d/apache2 restart' as sudo without a password."
     echo "   i.e. in /etc/sudoers:  go ALL = (root) NOPASSWD: /bin/ln, /etc/init.d/apache2 restart"
     echo ""
@@ -114,6 +114,7 @@ install_wordpress() {
     ln -sf `pwd`/sukrupa-theme/ ./installed-wordpress/wp-content/themes/sukrupa
     ln -sf `pwd`/content/ ./installed-wordpress/content
     cp -fr `pwd`/plugins/sukrupa-forms ./installed-wordpress/wp-content/plugins/
+    cp -fr `pwd`/plugins/sukrupa-calendar ./installed-wordpress/wp-content/plugins/
     #ln -sf `pwd`/plugins/sukrupa-forms ./installed-wordpress/wp-content/plugins/sukrupa-forms
 }
 
