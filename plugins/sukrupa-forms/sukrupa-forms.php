@@ -2480,7 +2480,7 @@ class VolunteerForm extends ddfmClass {
 	<li>A photograph of you</li>
 </ul><br>');
 	    add_option($this->var_pre . 'form_struct', '
-type=html|text=<p><h2>Personal Information</h2></p> 
+type=html|text=<div><h2>Personal Information</h2></div> 
 type=text|class=fmtext|label=Name|fieldname=fm_name|max=100|req=true
 type=text|class=fmtext|label=Home Phone No.|fieldname=fm_homephone|max=25
 type=text|class=fmtext|label=Mobile:|fieldname=fm_mobilephone|max=25
@@ -2497,8 +2497,22 @@ type=html|text=<p><h2>Background</h2></p>
 type=textarea|class=fmtextarea|label=Education/Background|fieldname=fm_background|max=1000|rows=3
 type=widetextarea|class=fmtextwide|label=Please give details of any previous volunteer experience: (Include: Organization / Country / Length of time as a volunteer / Volunteer Experience)|fieldname=fm_prev_experience|max=10000|rows=10
 
-type=html|text=<p><h2>Volunteer Interest</h2></p> 
-type=text|class=fmtext|label=Length of time you would like to volunteer at Sukrupa|fieldname=fm_lengthoftime|max=10
+type=html|text=<div><h2>Volunteer Interest</h2></div> 
+type=text|class=fmtext|label=Length of time you would like to volunteer at Sukrupa|fieldname=fm_lengthoftime|max=40
+
+type=html|text=<div class="volunteerAvailibility"><h2>Volunteer availability</h2></div> 
+
+type=checkbox|class=fmcheck|label=Daily/ 4 days a week|data=fm_teaching,Teaching specialized subjects ie. Maths or science or languages,false,false,fm_group,Teaching a group ie. reading or writing,false,false
+
+type=checkbox|class=fmcheck|label=Available to volunteer once a week|data=fm_updating,Updating the website of Sukrupa,false,false,fm_pt,PT on Saturdays,false,false,fm_sports,Sports,false,false,fm_teachclean,Teaching cleanliness,false,false,fm_reciting,Reciting stories & poems,false,false
+
+type=checkbox|class=fmcheck|label=Available to volunteer twice a week|data=fm_conducting_gk,Conducting G.K,false,false,fm_art,Teaching Art and Craft,false,false,fm_tech_computer,Teaching Computers,false,false,fm_teachgrammer,Teaching grammer,false,false
+
+type=checkbox|class=fmcheck|label=Available to volunteer once a month|data=fm_competitions,Conducting Competitions,false,false,fm_skilldev,Conducting class on skill development Eg. Creative Writing,false,false
+
+type=checkbox|class=fmcheck|label=Available to volunteer occasionally|data=fm_condprograms,Assisting in conducting programs,false,false,fm_programs,Assisting in programs,false,false,fm_outtirp,Assisting in outings/trips,false,false,fm_photo,Photographer (Taking the photographs for an event),false,false
+
+type=textarea|class=fmtextarea|label=Other|fieldname=fm_other|max=1000|rows=3
 
 type=checkbox|class=fmcheck|label=Agreement|data=fm_agree,I agree that the information I have provided is true.,false,true
 type=verify|class=fmverify|label=Verify
@@ -2539,8 +2553,37 @@ Previous Experience:
 fm_prev_experience
 ----------------------------------------------------------------------------
 VOLUNTEER INTEREST
+
+Daily/4 days a week: 
+fm_teaching 
+fm_group
 ----------------------------------------------------------------------------
-Length of time you will be in Bangalore: fm_lengthoftime
+Available to volunteer once a week: 
+fm_updating 
+fm_pt 
+fm_sports 
+fm_teachclean 
+fm_reciting
+----------------------------------------------------------------------------
+Available to volunteer twice a week: 
+fm_conducting_gk 
+fm_art fm_tech_computer 
+fm_teachgrammer
+----------------------------------------------------------------------------
+Available to volunteer once a month: 
+fm_competitions 
+fm_skilldev
+----------------------------------------------------------------------------
+Available to volunteer occasionally:
+fm_condprograms 
+fm_programs 
+fm_outtirp 
+fm_photo
+----------------------------------------------------------------------------
+Other:
+fm_other
+----------------------------------------------------------------------------
+Length of time you will be in Bangalore: fm_lengthoftime 
 ----------------------------------------------------------------------------
 ');
 	    add_option($this->var_pre . 'sent_message', '<br /><p>Thank you for registering as a volunteer. The team at Sukrupa will be in touch with you soon.</p>');
