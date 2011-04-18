@@ -2698,7 +2698,11 @@ type=text|class=fmtext|label=Confirm Email|fieldname=fm_confirmemail|max=100|req
 		add_option($this->var_pre . 'sender_email', 'fm_email');
 		add_option($this->var_pre . 'email_subject', 'fm_name');
 		add_option($this->var_pre . 'max_file_size', 1000000);
-		add_option($this->var_pre . 'message_structure', '');
+		add_option($this->var_pre . 'message_structure', '
+Name: fm_name
+----------------------------------------------------------------------------
+Email: fm_email
+----------------------------------------------------------------------------');
 		add_option($this->var_pre . 'sent_message', '<br /><p>Thank you for your interest in Sukrupa. You are now subscribed.</p>');
 		add_option($this->var_pre . 'auto_reply_name', '');
 		add_option($this->var_pre . 'auto_reply_email', '');
