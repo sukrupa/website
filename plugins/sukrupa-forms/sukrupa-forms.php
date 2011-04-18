@@ -2553,7 +2553,11 @@ Previous Experience:
 fm_prev_experience
 ----------------------------------------------------------------------------
 VOLUNTEER INTEREST
-
+----------------------------------------------------------------------------
+Length of time you would like to volunteer at Sukrupa: fm_lengthoftime 
+----------------------------------------------------------------------------
+VOLUNTEER AVAILABILITY
+----------------------------------------------------------------------------
 Daily/4 days a week: 
 fm_teaching 
 fm_group
@@ -2582,9 +2586,6 @@ fm_photo
 ----------------------------------------------------------------------------
 Other:
 fm_other
-----------------------------------------------------------------------------
-Length of time you will be in Bangalore: fm_lengthoftime 
-----------------------------------------------------------------------------
 ');
 	    add_option($this->var_pre . 'sent_message', '<br /><p>Thank you for registering as a volunteer. The team at Sukrupa will be in touch with you soon.</p>');
 	    add_option($this->var_pre . 'auto_reply_name', '');
