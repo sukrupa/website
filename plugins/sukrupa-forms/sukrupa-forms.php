@@ -2665,8 +2665,65 @@ type=verify|class=fmverify|label=Verify
 	}
 }
 
+class SubscribeForm extends ddfmClass {
+    /* Initialize instance */
+	function SubscribeForm($i, $ver) {
+		$this->ver = $ver;
+		$this->inst = $i;
+		$this->var_pre = "ddfm{$i}_";
+
+		// Setup default options if they do not exist
+		add_option($this->var_pre . 'language', 'English');
+		add_option($this->var_pre . 'desc', 'Subscribe Form');
+		add_option($this->var_pre . 'link_text', 'Subscribe Form');
+		add_option($this->var_pre . 'path_contact_page', (get_option('siteurl') . '/subscribe/'));
+		add_option($this->var_pre . 'wrap_messages', TRUE);
+		add_option($this->var_pre . 'attach_save', FALSE);
+		add_option($this->var_pre . 'attach_path', '');
+		add_option($this->var_pre . 'show_required', TRUE);
+		add_option($this->var_pre . 'show_url', FALSE);
+		add_option($this->var_pre . 'show_ip_hostname', TRUE);
+		add_option($this->var_pre . 'recipients', 'sukrupa.connect@sukrupa.org');
+		add_option($this->var_pre . 'form_header', '');
+		add_option($this->var_pre . 'form_struct', '
+type=text|class=fmtext|label=Name|fieldname=fm_name|max=100|req=true
+type=text|class=fmtext|label=Email|fieldname=fm_email|max=100|req=true|ver=email
+type=text|class=fmtext|label=Confirm Email|fieldname=fm_confirmemail|max=100|req=true|ver=email
+
+
+
+');
+		add_option($this->var_pre . 'manual_form_code', '');
+		add_option($this->var_pre . 'sender_name', 'fm_name');
+		add_option($this->var_pre . 'sender_email', 'fm_email');
+		add_option($this->var_pre . 'email_subject', 'fm_name');
+		add_option($this->var_pre . 'max_file_size', 1000000);
+		add_option($this->var_pre . 'message_structure', '');
+		add_option($this->var_pre . 'sent_message', '<br /><p>Thank you for your interest in Sukrupa. You are now subscribed.</p>');
+		add_option($this->var_pre . 'auto_reply_name', '');
+		add_option($this->var_pre . 'auto_reply_email', '');
+		add_option($this->var_pre . 'auto_reply_subject', '');
+		add_option($this->var_pre . 'auto_reply_message', '');
+
+		add_option($this->var_pre . 'save_to_file', FALSE);
+		add_option($this->var_pre . 'save_email', TRUE);
+		add_option($this->var_pre . 'save_path', '');
+		add_option($this->var_pre . 'save_delimiter', '|');
+		add_option($this->var_pre . 'save_newlines', '<br>');
+		add_option($this->var_pre . 'save_timestamp', 'm-d-Y h:i:s A');
+
+
+		// Setup actions/hooks
+
+		add_action('admin_menu', Array(&$this, 'add_options'));
+		add_filter('the_content', Array(&$this, 'check_content'));
+
+	}
+}
+
+
 function activate_sukrupa_forms() {
-    add_option('ddfm_instances', 2);
+    add_option('ddfm_instances', 3);
 
     add_option('ddfm_verify_method', 'basic'); // off, basic, recaptcha
 
@@ -2681,6 +2738,8 @@ function activate_sukrupa_forms() {
     
     new VolunteerForm(1, $ddfm_version); 
     new SponsorshipForm(2, $ddfm_version);
+    new SubscribeForm(3, $ddfm_version);
+
     
     global $user_ID;
     $volunteer_page = array(
@@ -2706,9 +2765,23 @@ function activate_sukrupa_forms() {
         'post_excerpt' => ' ',
         'post_name' => 'sponsor'
     );
+
+	$subscribe_page = array(
+        'post_title' => 'Subscribe',
+        'post_content' => '<!-- ddfm3 -->',
+        'post_status' => 'publish',
+        'post_date' => date('Y-m-d H:i:s'),
+        'post_author' => $user_ID,
+        'post_type' => 'page',
+        'post_category' => array(0),
+        'post_excerpt' => ' ',
+        'post_name' => 'subscribe'
+    );
     
     wp_insert_post($volunteer_page);
     wp_insert_post($sponsorship_page);
+    wp_insert_post($subscribe_page);
+
 }
 
 /* Initialize instances */
