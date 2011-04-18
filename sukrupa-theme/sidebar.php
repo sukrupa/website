@@ -87,11 +87,21 @@
 		<div class="sidebarContent">
 			FROM THE R.T. NAGAR POLICE STATION
 			<ul>
-				<li>- Head towards Dinnur Main Road (north) on R.T. Nagar Main Road (600 m)</li>
-				<li>- Turn RIGHT at end of road (200 m)</li>
-				<li>- Turn LEFT at end of road (350 m)</li>
-				<li>- Cross bridge over drainage and turn RIGHT at end of road (60 m)</li>
-				<li>- Arrive at Sukrupa School on LEFT.</li>
+				<li>- HMT Grounds are diagonally opposite to Police Station.</li>
+
+				<li>- Come past HMT Grounds and past Karnataka Flag Post.</li>
+
+				<li>- Turn RIGHT at dead end.</li>
+
+				<li>- Come to next dead end (Salamat School) and turn LEFT.</li>
+
+				<li>- Come past Mamatha High School and Shakthi Bakery (on right).</li>
+
+				<li>- Cross drainage bridge and continue straight; road will curve to the RIGHT.</li>
+
+				<li>- SUKRUPA Education Center is at the junction of the first left.</li>
+
+				<li>- Continue to dead end and turn LEFT. SUKRUPA Administration on RIGHT (three story green and pink building).</li>
 			<ul>
 		</div>
     </div>
