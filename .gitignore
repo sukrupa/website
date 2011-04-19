@@ -6,6 +6,7 @@ conf/apache-sukrupa-dev.conf
 local-apache-sukrupa-dev.conf
 .DS_Store
 lib/local_sukrupa_wordpress.dump.sql
+lib/sukrupa_wordpress.dump.from-*-env.sql
 sukrupa-theme/content/
 *.iws
 *~

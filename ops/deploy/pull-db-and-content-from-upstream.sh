@@ -17,11 +17,26 @@ db_backup() {
     mysqldump -u$DB_USER -p$DB_PASS -h$DB_HOST $DB_NAME > lib/sukrupa_wordpress.dump.from-$ENV-env.sql
 }
 
+db_backup_dreamhost() {
+    stty -echo
+    read -p "DB password for $DB_USER@$DB_HOST: " DB_PASS; echo
+    stty echo
+    
+    echo "=== backing up db... ==="
+    maybe_explain_password_prompt $DB_USER@$DB_HOST
+    
+    echo "=== ssh'ing into server for creating dump... ==="
+    ssh $SERVER_USER@$SERVER "mysqldump -u$DB_USER -p'$DB_PASS' -h$DB_HOST $DB_NAME > /tmp/sukrupa_wordpress.dump.from-$ENV-env.sql"
+    
+    echo "=== copying dump from remote server... ==="
+    scp $SERVER_USER@$SERVER:/tmp/sukrupa_wordpress.dump.from-$ENV-env.sql lib/sukrupa_wordpress.dump.from-$ENV-env.sql
+}
+
 content_sync() {
     echo "=== syncing the  server to your local machine... ==="
-    maybe_explain_password_prompt $CONTENT_USER@$CONTENT_HOST
+    maybe_explain_password_prompt $SERVER_USER@$SERVER
     rsync --verbose --archive --progress --stats --compress --recursive \
-	--times --perms $CONTENT_USER@$CONTENT_HOST:$CONTENT_PATH ./content/
+	--times --perms $SERVER_USER@$SERVER:$CONTENT_PATH ./content/
 }
 
 prompt_git() {
@@ -42,13 +57,14 @@ usage: $0 [options]
 OPTIONS:
   -p   copy from production
   -s   copy from staging
+  -c   copy from ci
 
 Note: when copying from Prod, if you commit it will break Staging.
 This is WIP, see Jonathan please with questions!
 EOF
 }
 
-while getopts "ps" OPTION; do
+while getopts "psc" OPTION; do
     case $OPTION in
 	p)
 	    # TODO: jaw, does not work (yet) b/c disallows connections from all but 
@@ -58,8 +74,8 @@ while getopts "ps" OPTION; do
 	    DB_HOST=db.sukrupa.org
 	    DB_USER=sukrupadb
 	    DB_NAME=sukrupa_wordpress_production
-	    CONTENT_HOST=sukrupa.org
-	    CONTENT_USER=sukrupaweb
+	    SERVER=sukrupa.org
+	    SERVER_USER=sukrupaweb
 	    CONTENT_PATH=/home/sukrupaweb/sukrupa.org/current/content/
 	    db_backup
 	    content_sync
@@ -71,13 +87,25 @@ while getopts "ps" OPTION; do
 	    DB_USER=root
 	    DB_NAME=sukrupa_wordpress
 	    DB_PASS=root
-	    CONTENT_HOST=twu-staging
-	    CONTENT_USER=twu
+	    SERVER=twu-staging
+	    SERVER_USER=twu
 	    CONTENT_PATH=/var/opt/sukrupa/sukrupa-website/content/
 	    db_backup
 	    content_sync
 	    prompt_git
 	    ;;
+	c)
+	    ENV=ci
+	    DB_HOST=db.sukrupa.org
+	    DB_USER=sukrupadb
+	    DB_NAME=sukrupa_wordpress_ci
+	    SERVER=ci.sukrupa.org
+	    SERVER_USER=sukrupaweb
+	    CONTENT_PATH=/home/sukrupaweb/ci.sukrupa.org/current/content/
+	    db_backup_dreamhost
+	    content_sync
+	    prompt_git
+	    ;;    
 	*)
 	    usage
 	    exit 1
