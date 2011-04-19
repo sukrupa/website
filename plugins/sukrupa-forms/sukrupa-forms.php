@@ -2766,7 +2766,9 @@ function activate_sukrupa_forms() {
         'post_author' => $user_ID,
         'post_type' => 'page',
         'post_category' => array(0),
-        'post_excerpt' => ' ',
+        'post_excerpt' => '<a href="http://beta.sukrupa.org/cost-breakdown/" target="_blank">
+			   <img src="http://beta.sukrupa.org/wp-content/uploads/2011/04/sponsor
+			   -e1303195723116.jpg"> </a>  ',
         'post_name' => 'sponsor'
     );
 
