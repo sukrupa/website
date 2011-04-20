@@ -6,6 +6,7 @@ set -x
 INPUT_DUMP=$2
 OUTPUT_DUMP=$3
 NEW_HOST='sukrupa.localhost'
+TEMP_FILE="/tmp/temp_dump.sql"
 
 
 usage() {
@@ -26,16 +27,20 @@ EOF
 if [[ $# != 3 ]]; then usage; exit 1; fi 
 
 process() {
-    sed -e "s/$ORIG_HOST/$NEW_HOST/g" $INPUT_DUMP > $OUTPUT_DUMP
+    sed -e "s/$ORIG_HOST/$NEW_HOST/g" $1 > $2
 }
 
 while getopts "ps" OPTION; do
     case $OPTION in
-	p)
+	p)	
 	    ORIG_HOST='www.sukrupa.org'
-	    process
+	    process $INPUT_DUMP $TEMP_FILE
+	    	    
+	    ORIG_HOST='sukrupa.org'
+	    process $TEMP_FILE $OUTPUT_DUMP
 	    ;;
 	s)
+	    # TODO get rid of this
 	    ORIG_HOST='twu-staging'
 	    process
 	    ;;

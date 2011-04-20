@@ -29,10 +29,7 @@ db_backup_dreamhost() {
     COMMANDS="mysqldump -u$DB_USER -p'$DB_PASS' -h$DB_HOST $DB_NAME > /tmp/sukrupa_wordpress.dump.from-$ENV-env.sql"
     
     COMMANDS="$COMMANDS && export DB_USER=$DB_USER && export DB_PASS='$DB_PASS' && export DB_NAME=$DB_NAME && export DB_HOST=$DB_HOST && export ENV=$ENV"
-    COMMANDS="$COMMANDS && sh $OPS_PATH/fix_users_passwords.sh"
-    
-    echo $COMMANDS
-    
+    COMMANDS="$COMMANDS && sh $OPS_PATH/fix_users_passwords.sh"    
     
     ssh $SERVER_USER@$SERVER "$COMMANDS"
     
@@ -84,8 +81,9 @@ while getopts "psc" OPTION; do
 	    DB_NAME=sukrupa_wordpress_production
 	    SERVER=sukrupa.org
 	    SERVER_USER=sukrupaweb
+	    OPS_PATH=/home/sukrupaweb/ops
 	    CONTENT_PATH=/home/sukrupaweb/sukrupa.org/current/content/
-	    db_backup
+	    db_backup_dreamhost
 	    content_sync
 	    prompt_git
 	    ;;
