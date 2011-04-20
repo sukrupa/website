@@ -26,7 +26,12 @@ db_backup_dreamhost() {
     maybe_explain_password_prompt $DB_USER@$DB_HOST
     
     echo "=== ssh'ing into server for creating dump... ==="
-    ssh $SERVER_USER@$SERVER "mysqldump -u$DB_USER -p'$DB_PASS' -h$DB_HOST $DB_NAME > /tmp/sukrupa_wordpress.dump.from-$ENV-env.sql"
+    COMMANDS="mysqldump -u$DB_USER -p'$DB_PASS' -h$DB_HOST $DB_NAME > /tmp/sukrupa_wordpress.dump.from-$ENV-env.sql"
+    
+    COMMANDS=$COMMANDS " && export DB_USER=$DB_USER && export DB_PASS='$DB_PASS' && export DB_NAME=$DB_NAME && export DB_HOST=$DB_HOST && export ENV=$ENV"
+    COMMANDS=$COMMANDS " && $WEBSITE_ROOT/ops/deploy/fix_user_passwords.sh"
+    
+    ssh $SERVER_USER@$SERVER "$COMMANDS"
     
     echo "=== copying dump from remote server... ==="
     scp $SERVER_USER@$SERVER:/tmp/sukrupa_wordpress.dump.from-$ENV-env.sql lib/sukrupa_wordpress.dump.from-$ENV-env.sql
@@ -101,7 +106,8 @@ while getopts "psc" OPTION; do
 	    DB_NAME=sukrupa_wordpress_ci
 	    SERVER=ci.sukrupa.org
 	    SERVER_USER=sukrupaweb
-	    CONTENT_PATH=/home/sukrupaweb/ci.sukrupa.org/current/content/
+	    WEBSITE_ROOT=/home/sukrupaweb/ci.sukrupa.org
+	    CONTENT_PATH=$WEBSITE_ROOT/current/content/
 	    db_backup_dreamhost
 	    content_sync
 	    prompt_git

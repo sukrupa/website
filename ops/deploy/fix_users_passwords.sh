@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PASS=$(mysql -uroot -proot -hlocalhost -Dsukrupa_wordpress -e 'select user_pass from wp_users;')
+PASS=$(mysql -u$DB_USER -p"$DB_PASS" -h$DB_HOST -D$DB_NAME -e 'select user_pass from wp_users;')
 
 PASS=${PASS#'user_pass'}
 
@@ -15,5 +15,5 @@ do
     CURRENT_PASS=$(echo $CURRENT_PASS | sed -e "s/\\$/\\\\$/g")
     CURRENT_PASS=$(echo $CURRENT_PASS | sed -e 's/\//\\\//g')
     
-    sed -i -e "s/$CURRENT_PASS/$PASSWORD_HASH/g" lib/sukrupa_wordpress.dump.from-ci-env.sql
+    sed -i -e "s/$CURRENT_PASS/$PASSWORD_HASH/g" /tmp/sukrupa_wordpress.dump.from-$ENV-env.sql
 done
