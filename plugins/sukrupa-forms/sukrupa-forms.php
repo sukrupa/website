@@ -2470,7 +2470,6 @@ class VolunteerForm extends ddfmClass {
 	    add_option($this->var_pre . 'show_ip_hostname', TRUE);
 	    add_option($this->var_pre . 'recipients', 'volunteer@sukrupa.org');
 	    add_option($this->var_pre . 'form_header', '<p>Please fill in the below form to register your interest in becoming a volunteer at Sukrupa.</p>
-
 <p>Once your registration has been received we will be in touch to discuss your registration. We ask that you provide us with as much details as possible so that we can follow up with your registration.</p>
 
 <p>Once your registration has been accepted you will also need to provide the following:</p>
@@ -2798,8 +2797,21 @@ function activate_sukrupa_forms() {
     wp_insert_post($sponsorship_page);
     wp_insert_post($subscribe_page);
     wp_insert_post($cost_breakdown_page);
-
 }
+
+function deactivate_sukrupa_forms() { 
+    $pages_to_remove = array('volunteer', 'sponsor', 'subscribe', 'cost-breakdown');
+    foreach ($pages_to_remove as $page_name) {
+        $query = new WP_Query( "pagename=$page_name" ); 
+        $posts = $query->get_posts();
+        wp_delete_post($posts[0]->ID, true);    
+    }
+    
+    global $wpdb;
+    $wpdb->query('DELETE FROM wp_options WHERE option_name LIKE "ddfm%"');
+}
+
+
 
 /* Initialize instances */
 for ($i = 1; $i <= (int)get_option('ddfm_instances'); $i++) {
@@ -2807,6 +2819,6 @@ for ($i = 1; $i <= (int)get_option('ddfm_instances'); $i++) {
 }   
 
 register_activation_hook(__FILE__, 'activate_sukrupa_forms');
-
+register_deactivation_hook(__FILE__,'deactivate_sukrupa_forms');
 
 ?>
