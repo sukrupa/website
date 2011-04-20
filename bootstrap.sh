@@ -153,7 +153,7 @@ reset_db_beta() {
     mysqldump $MYSQL_ARGS > database-backups/sukrupa_wordpress_beta.dump.$timestamp.sql   
     die_if_errors
     
-    sed 's/twu-staging/beta.sukrupa.org/g' lib/sukrupa_wordpress.dump.sql > lib/sukrupa_wordpress_beta.dump.sql
+    sed 's/sukrupa.localhost/beta.sukrupa.org/g' lib/sukrupa_wordpress.dump.sql > lib/sukrupa_wordpress_beta.dump.sql
     die_if_errors
 
     echo "  (If the database migration was successful, you may want to remove the backup db dump.)"
@@ -172,7 +172,7 @@ reset_db_ci() {
     mysqldump $MYSQL_ARGS > database-backups/sukrupa_wordpress_ci.dump.$timestamp.sql   
     die_if_errors
     
-    sed 's/twu-staging/ci.sukrupa.org/g' lib/sukrupa_wordpress.dump.sql > lib/sukrupa_wordpress_ci.dump.sql
+    sed 's/sukrupa.localhost/ci.sukrupa.org/g' lib/sukrupa_wordpress.dump.sql > lib/sukrupa_wordpress_ci.dump.sql
     die_if_errors
 
     echo "  (If the database migration was successful, you may want to remove the backup db dump.)"
