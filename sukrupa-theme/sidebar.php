@@ -1,10 +1,9 @@
 <?php 
-// Includes plugin file in order to check if plugin was activated
+  // Includes plugin file in order to check if plugin was activated
   $sDir = dirname(__FILE__);
-
   require_once($sDir . '/../installed-wordpress/wp-admin/includes/plugin.php');
-
 ?>
+
 <div id="sidebar">
 <div id="slider">
 	<div class="sidebarEntry"> 
@@ -43,7 +42,9 @@
 	    	<a style='margin-bottom:5px; display:block' href="<?php bloginfo('home'); ?>/donate/">Donation Information</a>
 	    	
 	    	<?php if(is_plugin_active('sukrupa-forms/sukrupa-forms.php')) { ?>
+	    	<!-- UNCOMMENT TO DISPLAY THE LINK TO SPONSOR A CHILD
 	    	<a style='margin-bottom:5px; display:block' href="<?php bloginfo('home'); ?>/sponsor">Sponsor a child</a>
+	    	-->
 	    	<?php } ?>
 	    	
 	    	<a style='margin-bottom:5px; display:block' href="<?php bloginfo('home'); ?>/supporting-sukrupa/#volunteers">Volunteer information</a>
