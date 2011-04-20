@@ -23,6 +23,13 @@ namespace :deploy do
         set :user, "sukrupaweb"
         set :deploy_to, "/home/sukrupaweb/ci.sukrupa.org"
     end
+    
+    def work_with_production
+        set :target_server, "sukrupa.org"
+        server "#{target_server}", :production_server
+        set :user, "sukrupaweb"
+        set :deploy_to, "/home/sukrupaweb/sukrupa.org"
+    end
 
     desc "deploy to twu-staging"
     task :staging do 
@@ -53,6 +60,15 @@ namespace :deploy do
         move_in_wp_config_ci
         protect_ci
      	safety_check(target_server, 401)
+   	end
+   	
+   	desc "deploy to sukrupa.org"
+    task :production do
+    	work_with_production
+        set :bootstrap_servertype, "-P"
+        
+        upload_artifact_for_production
+        run_bootstrap
    	end
 
     task :setup_wordpress do
@@ -97,12 +113,20 @@ EOF
         system ("rm toUpload.tar.gz")
         run "cd #{deploy_to}; tar xzf toUpload.tar.gz --overwrite; rm toUpload.tar.gz"        
     end
+    
+    task :upload_artifact_for_production do
+        run "mkdir -p #{deploy_to}/content #{deploy_to}/database-backups"
+        system ("tar cfz toUpload.tar.gz content bootstrap.sh sukrupa-theme plugins")
+        upload "toUpload.tar.gz", "#{deploy_to}/", :via => :scp, :recursive => true
+        system ("rm toUpload.tar.gz")
+        run "cd #{deploy_to}; tar xzf toUpload.tar.gz --overwrite; rm toUpload.tar.gz"        
+    end
 
     task :run_bootstrap do
         run "cd #{deploy_to} && sh bootstrap.sh #{bootstrap_servertype}" 
         run "rm #{deploy_to}/bootstrap.sh" 
         # TODO, you need to later edit permissions to block these files
-        run "rm -r #{deploy_to}/lib" 
+        run "rm -r #{deploy_to}/lib" if bootstrap_servertype != '-P'        
     end
     
     task :move_in_wp_config do

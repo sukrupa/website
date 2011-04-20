@@ -42,6 +42,7 @@ usage: $0 [options]
 OPTIONS:
   -R	reset, totally wipe out local database and installed files
   -d	configure ci and staging deployment environments
+  -P    configure production server
   -l    configure local development environments (including to use staging server db)
   -b    configure beta environment, overwriting database
   -c    configure ci server, overwriting database
@@ -118,6 +119,17 @@ install_wordpress() {
     #ln -sf `pwd`/plugins/sukrupa-forms ./installed-wordpress/wp-content/plugins/sukrupa-forms
 }
 
+setup_wordpress_for_production() {
+    echo "- Updating production theme, static content and plugins"
+    mkdir -p logs/
+    cp -f content/favicon.ico installed-wordpress/
+    ln -sf `pwd`/sukrupa-theme/ ./installed-wordpress/wp-content/themes/sukrupa
+    ln -sf `pwd`/content/ ./installed-wordpress/content
+    cp -fr `pwd`/plugins/sukrupa-forms ./installed-wordpress/wp-content/plugins/
+    cp -fr `pwd`/plugins/sukrupa-calendar ./installed-wordpress/wp-content/plugins/
+    #ln -sf `pwd`/plugins/sukrupa-forms ./installed-wordpress/wp-content/plugins/sukrupa-forms
+}
+
 reset_db() {
     mkdir -p database-backups
     echo "- first creating backup of old database tables before dropping everything"
@@ -169,22 +181,25 @@ reset_db_ci() {
     die_if_errors
 }
 
-while getopts "Rdlbc" OPTION
+while getopts "RdlbcP" OPTION
 do
     case $OPTION in
 	R)
 	    create_database_if_missing
 	    reset_db
 	    ;;
+	    
 	d)
 	    prerequisites		
 	    create_database_if_missing
 	    install_wordpress
 	    ;;
+	    
 	l)
 	    prerequisites
 	    install_wordpress           
       	    ;;
+      	    
 	b)
 	    prerequisites
 	    install_wordpress
@@ -198,6 +213,11 @@ do
 		install_wordpress
 		reset_db_ci
 		;;
+		
+	P)
+		setup_wordpress_for_production
+		;;
+		
 	*)
 	    usage
 	    ;;
