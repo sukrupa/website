@@ -2766,7 +2766,7 @@ function activate_sukrupa_forms() {
         'post_author' => $user_ID,
         'post_type' => 'page',
         'post_category' => array(0),
-        'post_excerpt' => '<a href="http://beta.sukrupa.org/cost-breakdown/" target="_blank"><img src="http:/beta.sukrupa.org/wp-content/uploads/2011/04/sponsor.jpg"> </a>   ',
+        'post_excerpt' => '<a href="http://beta.sukrupa.org/cost-breakdown/" target="_blank"><img src="http://beta.sukrupa.org/content/sponsor.jpg"> </a>   ',
         'post_name' => 'sponsor'
     );
 
@@ -2781,10 +2781,23 @@ function activate_sukrupa_forms() {
         'post_excerpt' => ' ',
         'post_name' => 'subscribe'
     );
+
+	$cost_breakdown_page = array(
+        'post_title' => 'Cost Breakdown',
+        'post_content' => '<img src="http://beta.sukrupa.org/content/cost_breakdown.jpg">',
+        'post_status' => 'publish',
+        'post_date' => date('Y-m-d H:i:s'),
+        'post_author' => $user_ID,
+        'post_type' => 'page',
+        'post_category' => array(0),
+        'post_excerpt' => ' ',
+        'post_name' => 'cost-breakdown'
+    );
     
     wp_insert_post($volunteer_page);
     wp_insert_post($sponsorship_page);
     wp_insert_post($subscribe_page);
+    wp_insert_post($cost_breakdown_page);
 
 }
 
