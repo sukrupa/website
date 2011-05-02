@@ -42,9 +42,7 @@
 	    	<a style='margin-bottom:5px; display:block' href="<?php bloginfo('home'); ?>/donate/">Donation Information</a>
 	    	
 	    	<?php if(is_plugin_active('sukrupa-forms/sukrupa-forms.php')) { ?>
-	    	<!-- UNCOMMENT TO DISPLAY THE LINK TO SPONSOR A CHILD
 	    	<a style='margin-bottom:5px; display:block' href="<?php bloginfo('home'); ?>/sponsor">Sponsor a child</a>
-	    	-->
 	    	<?php } ?>
 	    	
 	    	<a style='margin-bottom:5px; display:block' href="<?php bloginfo('home'); ?>/supporting-sukrupa/#volunteers">Volunteer information</a>
