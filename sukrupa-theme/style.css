@@ -203,3 +203,23 @@ ul.volunteerAttachments{
     font-family: Palatino,Georgia,serif;
     line-height: 1.4em;
 }
+
+#donation-form
+{
+	margin: 20px;
+}
+
+.donerForm
+{
+	padding: 15px;
+}
+
+.entryValue .label	
+{
+	width: 115px;
+}
+
+.entryValue .textSpace
+{
+	width: 250px;
+}
