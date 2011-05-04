@@ -4,6 +4,9 @@ remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'rsd_link'); 
 
+add_action('wp_ajax_ammado_mail_action', 'sending_mail');
+add_action('wp_ajax_nopriv_ammado_mail_action', 'sending_mail');
+
 function hide_wp_vers() {
 	return '';
 }
@@ -89,6 +92,16 @@ $(document).ready(function() {
 
 add_action('admin_footer', 'jquery_hide_send_password');
 
+function sending_mail(){
+	if(isset($_POST['donorEmail']))
+	{
+		$to = "sukrupa.connect@sukrupa.org";
+		$subject = "Donation";
+		$message = $_POST['donorEmail'] . " has made a donation";	
+
+		mail($to, $subject, $message);
+	}
+}
 
 /*
    Description: Allows you to edit excerpts for Pages.

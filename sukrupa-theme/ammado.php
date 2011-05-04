@@ -66,7 +66,7 @@ $currencies_object = json_decode($currencies_json,true);
 			</div>
 		</div>
 		<div class="entryValue">
-			<input id="submit" type="submit" value="Donate"/>
+			<input id="submit" type="submit" value="Donate" />
 		</div>
 		</form>
 		<div id="manualContent">
@@ -77,15 +77,12 @@ $currencies_object = json_decode($currencies_json,true);
 </div>
 
 <script>
-	$('#donerForm').submit( function() {
-		var emailCheck = /^[\._a-zA-Z0-9!#\$%&'\*\+\-/=\?\^`\{\|\}~]+@[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)+$/;
-		if( $('#donorEmail').value.search(emailCheck) == 0 )
-		{
-			alert('Please input valid email address');
-			return true;
-		}
-		else
-			return false;
+	var data = {};
+	data.donorEmail = $("#donorEmail").val();
+	data.action = "ammado_mail_action";
+	$("#donerForm").submit(function(e){
+		e.preventDefault(); 
+		$.post('http://sukrupa.localhost/wp-admin/admin-ajax.php',data);
 	});
 
 </script>
