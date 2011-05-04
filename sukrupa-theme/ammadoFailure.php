@@ -21,7 +21,7 @@ define("1602","Last name too long (max 100 characters).");
 get_header();
 
 $errorCode = $_GET["errorCode"];
-$errorCodes = preg_split("/:/", $errorCode);
+$errorCodes = preg_split("/;/", $errorCode);
 
 ?>
 <div class="grid_18">

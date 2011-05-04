@@ -24,7 +24,7 @@ $currencies_object = json_decode($currencies_json,true);
 		<input type="hidden" name="beneficiaryId" value="488" />
 		<input type="hidden" name="apiKey" value="9CACC3AA-C207-4510-A553-461CBCA34ADB" />
 		<input type="hidden" name="onSuccess" value="http://www.sukrupa.org/"/>
-		<input type="hidden" name="onError" value="http://sukrupa.localhost/failure" />
+		<input type="hidden" name="onError" value="http://www.sukrupa.org/failure" />
 		<div class="entryValue">
 			<div class="label">First Name:</div>
 			<div>
