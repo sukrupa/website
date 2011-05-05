@@ -99,7 +99,10 @@ function sending_mail(){
 		$subject = "Donation";
 		$message = $_POST['donorEmail'] . " has made a donation";	
 
-		mail($to, $subject, $message);
+		if(mail($to, $subject, $message))
+		{
+			echo "0";
+		}
 	}
 }
 

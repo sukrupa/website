@@ -85,9 +85,10 @@ $currencies_object = json_decode($currencies_json,true);
 		$.post('http://sukrupa.localhost/wp-admin/admin-ajax.php',data, onSuccess);
 	});
 
-	function onSuccess()
+	function onSuccess(results)
 	{
-		document.forms['donorForm'].submit()
+		if( results == "00")
+			document.forms['donorForm'].submit()
 	}
 </script>
 
