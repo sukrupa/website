@@ -100,7 +100,6 @@ function sending_mail(){
 		$message = $_POST['donorEmail'] . " has made a donation";	
 
 		mail($to, $subject, $message);
-		sleep(2);
 	}
 }
 
