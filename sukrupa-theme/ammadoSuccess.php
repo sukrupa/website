@@ -13,7 +13,7 @@ get_header();
 		    <?php the_excerpt(); ?>
 		</p>
 	</div>
-	<div id="success">
+	<div id="donation-form">
 		Thank you for your donation.
 	</div>
 </div>

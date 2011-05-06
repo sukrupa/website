@@ -78,17 +78,16 @@ $currencies_object = json_decode($currencies_json,true);
 </div>
 
 <script>
-	var data = {};
-	data.donorEmail = $("#donorEmail").val();
-	data.action = "ammado_mail_action";
 	$("#donorSubmit").click(function(e){
+		var data = {};
+		data.donorEmail = $("#donorEmail").val();
+		data.action = "ammado_mail_action";
 		$.post('http://sukrupa.localhost/wp-admin/admin-ajax.php',data, onSuccess);
 	});
 
 	function onSuccess(results)
 	{
-		if( results == "00")
-			document.forms['donorForm'].submit()
+		document.forms['donorForm'].submit()
 	}
 </script>
 

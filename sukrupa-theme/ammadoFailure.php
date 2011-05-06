@@ -31,7 +31,7 @@ $errorCodes = preg_split("/;/", $errorCode);
 		    <?php the_excerpt(); ?>
 		</p>
 	</div>
-	<div id="error">
+	<div id="donation-form">
 		<?php
 			foreach( $errorCodes as $code )
 			{

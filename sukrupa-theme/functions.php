@@ -92,7 +92,8 @@ $(document).ready(function() {
 
 add_action('admin_footer', 'jquery_hide_send_password');
 
-function sending_mail(){
+function sending_mail()
+{
 	if(isset($_POST['donorEmail']))
 	{
 		$to = "sukrupa.connect@sukrupa.org";
@@ -101,8 +102,9 @@ function sending_mail(){
 
 		if(mail($to, $subject, $message))
 		{
-			echo "0";
+			echo "Email is sent";
 		}
+		
 	}
 }
 
