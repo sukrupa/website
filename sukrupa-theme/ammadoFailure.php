@@ -4,6 +4,7 @@
 Template Name: Ammado Failure Page
 */
 
+define("1000","Payment error");
 define("1101","Beneficiary is invalid.");
 define("1102","Beneficiary does not accept donations.");
 define("1201","Unsupported currency.");
