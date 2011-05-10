@@ -20,8 +20,8 @@ $currencies_object = json_decode($currencies_json,true);
 		</p>
 	</div>
 	<div id="donation-form">
-		<form id="donerForm" name="donorForm" class="donerForm" method="post" action="https://api-test.ammado.net/v1/donate" accept-charset="utf-8">
-		<input type="hidden" name="beneficiaryId" value="488" />
+		<form id="donerForm" name="donorForm" class="donerForm" method="post" action="https://api.ammado.net/v1/donate" accept-charset="utf-8">
+		<input type="hidden" name="beneficiaryId" value="118838" />
 		<input type="hidden" name="apiKey" value="9CACC3AA-C207-4510-A553-461CBCA34ADB" />
 		<input type="hidden" name="onSuccess" value="http://beta.sukrupa.org/donation-success"/>
 		<input type="hidden" name="onError" value="http://beta.sukrupa.org/donation-failure" />
