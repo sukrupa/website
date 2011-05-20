@@ -45,7 +45,7 @@
 	    	<a style='margin-bottom:5px; display:block' href="<?php bloginfo('home'); ?>/sponsor">Sponsor a child</a>
 	    	<?php } ?>
 	    	
-	    	<a style='margin-bottom:5px; display:block' href="<?php bloginfo('home'); ?>/supporting-sukrupa/#volunteers">Volunteer information</a>
+	    	<a style='margin-bottom:5px; display:block' href="<?php bloginfo('home'); ?>/volunteer-information">Volunteer information</a>
 	    	
 	    	<?php if(is_plugin_active('sukrupa-forms/sukrupa-forms.php')) { ?>
 	    	<a style='margin-bottom:5px; display:block' href="<?php bloginfo('home'); ?>/volunteer">Apply as a volunteer</a>
