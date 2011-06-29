@@ -77,7 +77,6 @@ a#fl{ background: url(img/18px_sprites.png) no-repeat 0% 39%; }
 
 /* Progress Bars - allows styling of progress bars to be separated from content
 ********************************************************************/
-
 .progressBar {width:200px; height:25px; background-color:#ccc; margin-bottom:30px;}
 .progressBar div {position:relative; background-color:#396D51; height:100%;}
 .progressBar div .progressMarker {position:absolute; top:25px; right:-30px; color:#396D51; font-family:"century gothic",verdana,arial,helvetica,sans-serif;}

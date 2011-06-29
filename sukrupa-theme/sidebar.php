@@ -2,6 +2,8 @@
   // Includes plugin file in order to check if plugin was activated
   $sDir = dirname(__FILE__);
   require_once($sDir . '/../installed-wordpress/wp-admin/includes/plugin.php');
+  include("sukrupaCustomFunctions/SponsorshipWidget.php");
+  $sponsorshipWidget = new SponsorshipWidget();
 ?>
 
 <div id="sidebar">
@@ -10,7 +12,7 @@
 		<div class="sidebarHeader">Sponsor A Child</div>
         <div class="sidebarGuts">
             <div class="progressBar">
-                <div class="percent55"><p class="progressMarker">300/450</p></div>
+                <div class="<?php echo $sponsorshipWidget->progressComplete(); ?>"><p class="progressMarker">300/450</p></div>
             </div>
 
             <p>150 children need a sponsor. <a href="">Sponsor a child</a></p>
