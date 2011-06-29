@@ -6,6 +6,16 @@
 
 <div id="sidebar">
 <div id="slider">
+    <div class="sidebarEntry">
+		<div class="sidebarHeader">Sponsor A Child</div>
+        <div class="sidebarGuts">
+            <div class="progressBar">
+                <div class="percent55"><p class="progressMarker">300/450</p></div>
+            </div>
+
+            <p>150 children need a sponsor. <a href="">Sponsor a child</a></p>
+        </div>
+    </div>
 	<div class="sidebarEntry"> 
 		<?php $query = new WP_Query('showposts=1&meta_key=donormeter&post_type=page');
 			  if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>

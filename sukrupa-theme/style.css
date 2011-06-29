@@ -9,8 +9,17 @@ Version: 0.2a
 @author Shefali Kakodkar
 */
 
+
+/* import meyerweb CSS reset and CSS grid
+********************************************************************/
 @import url('import.css');
 
+/* Useful classes and styles
+********************************************************************/
+.progressBar, .progressBar div {-webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px;}
+
+/* Global styles and default element settings
+********************************************************************/
 body{background-color: #24333D; font-size: 14px; font-family: "century gothic",verdana,arial,helvetica,sans-serif; line-height: normal;}
 a{text-decoration: none;}
 a.hover{}
@@ -65,6 +74,43 @@ a#fl{ background: url(img/18px_sprites.png) no-repeat 0% 39%; }
 .sidebarHeader a{color: inherit;}
 .sidebarGuts{background: #EBE8E5; padding: 10px; float: left; width: 200px;}
 .sidebarEntry{width: 220px; float: left; margin-bottom: 10px;}
+
+/* Progress Bars - allows styling of progress bars to be separated from content
+********************************************************************/
+
+.progressBar {width:200px; height:25px; background-color:#ccc; margin-bottom:30px;}
+.progressBar div {position:relative; background-color:#396D51; height:100%;}
+.progressBar div .progressMarker {position:absolute; top:25px; right:-30px; color:#396D51; font-family:"century gothic",verdana,arial,helvetica,sans-serif;}
+.progressBar .percent0 .progressMarker,
+.progressBar .percent5 .progressMarker,
+.progressBar .percent10 .progressMarker {left:0;}
+.progressBar .percent90 .progressMarker,
+.progressBar .percent95 .progressMarker,
+.progressBar .percent100 .progressMarker {left:150px;}
+.percent0 {width:0}
+.percent5 {width:10px}
+.percent10 {width:20px}
+.percent15 {width:30px}
+.percent20 {width:40px}
+.percent25 {width:50px}
+.percent30 {width:60px}
+.percent35 {width:70px}
+.percent40 {width:80px}
+.percent45 {width:90px}
+.percent50 {width:100px}
+.percent55 {width:110px}
+.percent60 {width:120px}
+.percent65 {width:130px}
+.percent70 {width:140px}
+.percent75 {width:150px}
+.percent80 {width:160px}
+.percent85 {width:170px}
+.percent90 {width:180px}
+.percent95 {width:190px}
+.percent100 {width:200px}
+
+/* Progress meter - please use progressBar instead - this needs to be removed - Nick
+********************************************************************/
 .baseMeter{width:193px; padding:5px 7px 0 0; background: #9DC4AE; height: 20px; float:left; position: relative; z-index: 1; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; font-weight: bold; letter-spacing: .03em; color: #6D6E71; text-align: right; font-size: .9em;}
 #capitalCampaign{text-indent: -9999px; width:200px; height: 20px; float: left; background: inherit; position: relative; z-index: 2;}
 .baseMeter p{position: relative; z-index: 3; color: #f7f7f7; font-family: "century gothic",verdana,arial,helvetica,sans-serif; line-height: normal; margin: 0;}
