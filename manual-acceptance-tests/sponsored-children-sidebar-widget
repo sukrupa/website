@@ -1,0 +1,11 @@
+Feature: Sponsored children sidebar widget
+
+
+    Scenario: Sponsored children sidebar widget is displayed with the correct information
+
+        Given I am on the sukrupa.org home page
+        Then I should see sponsored children widget
+        And I should see a link to the sponsorship form page
+        And I should see a progress bar
+        And I should see the total number of students in the school
+        And I should see the total number of sponsored students in the school
