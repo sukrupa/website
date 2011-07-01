@@ -1,0 +1,13 @@
+To get PHPUnit set up on Mac OSX - need to find a better way:
+1) Install pear
+2) You will probably have to upgrade pear (and possibly force it):
+sudo pear upgrade --force http://pear.php.net/get/PEAR-1.9.3
+3) Install PHPUnit (using pear):
+sudo pear install http://pear.phpunit.de/get/PHPUnit-3.5.14.tgz
+Notes: this should install a bunch of stuff including things like a code coverage tool.
+4) Try running the tests in IntelliJ - they will probably say you need to edit the php.ini file.
+cd /private/etc/
+cp php.ini.default php.ini
+5) Open php.ini in your editor and find 'include_path' which is commented out using a semi-colon (;):
+6) Change it to read:
+include_path = "/usr/lib/php/PEAR:/php/includes:/usr/lib/php"
