@@ -10,6 +10,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$/../.." />
+    <content url="file:///usr/lib/php/PEAR" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="JRuby SDK 1.5.5-p249 facet library" level="application" />

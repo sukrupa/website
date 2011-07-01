@@ -9,3 +9,11 @@ Feature: Sponsored children sidebar widget
         And I should see a progress bar
         And I should see the total number of students in the school
         And I should see the total number of sponsored students in the school
+
+    Scenario: Sponsored children sidebar widget changes when another student gets sponsored
+        Given I am on the sukrupa.org home page
+        And there are 300 students sponsored
+        When I sponsor another child
+        And I navigate back to the hope page
+        Then I should see that there are 301 students sponsored
+
