@@ -14,6 +14,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="JRuby SDK 1.5.5-p249 facet library" level="application" />
+    <orderEntry type="library" name="PEAR" level="project" />
+    <orderEntry type="library" name="PHPUnit" level="project" />
   </component>
 </module>
 

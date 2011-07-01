@@ -332,12 +332,18 @@
     <option name="showOnlyWarnings" value="false" />
   </component>
   <component name="libraryTable">
+    <library name="PEAR">
+      <CLASSES />
+      <JAVADOC />
+      <SOURCES>
+        <root url="file:///usr/lib/php/PEAR" />
+      </SOURCES>
+    </library>
     <library name="PHPUnit">
       <CLASSES />
       <JAVADOC />
       <SOURCES>
-        <root url="file:///usr/lib/php/PHPUnit-3.5.14/PHPUnit-3.5.14/PHPUnit" />
-        <root url="file:///usr/lib/php/PEAR" />
+        <root url="file:///usr/lib/php/PHPUnit" />
       </SOURCES>
     </library>
   </component>
