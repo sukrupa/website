@@ -24,7 +24,7 @@ $(document).ready(function() {
 	<?php endwhile; endif; ?>
 	</div>
 	
-	<div class="grid_9 container col" style="overflow:hidden;">
+	<div id="photos-and-media" class="grid_9 container col" style="overflow:hidden;">
 	    <h2>Photos and Media</h2>
 	    <?php $query = new WP_Query('category_name=media&showposts=5');
 	    if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
@@ -41,8 +41,9 @@ $(document).ready(function() {
 	    </div>
 	</div>
 	
-	<div class="grid_9 container col" style="margin-left: 15px;">
+	<div id="current-news" class="grid_9 container col" style="margin-left: 15px;">
 	    <h2>Current News</h2>
+        <a class="icon news-icon" href="#">Subscribe to newsletter</a>
 		<?php 
 		// Category is a more stable query basis; with 'meta_key' the client will need to unneccessiarily
 		// tag items (especially since the meta_key has a null and unused value)
