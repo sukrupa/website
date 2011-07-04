@@ -1,0 +1,12 @@
+Feature: Newsletter subscription
+
+
+    Scenario: The newletter subscription link on the homepage should take me to the subscription form
+        Given I am on the sukrupa.org home page
+        When I follow the link to the subscription form
+        Then I should be on the subscription form page
+
+    Scenario: The newletter subscription link on the current news and blog page should take me to the subscription form
+        Given I am on the sukrupa.org current news and blog page
+        When I follow the link to the subscription form
+        Then I should be on the subscription form page
