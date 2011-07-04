@@ -1,7 +1,6 @@
 <?php
 
 require_once '../sukrupa-theme/sukrupaCustomFunctions/SponsorshipWidget.php';
-require_once '../sukrupa-theme/sukrupaCustomFunctions/SukrupaRequestHandler.php';
 
 class SponsorshipWidgetTest extends PHPUnit_Framework_TestCase {
 
@@ -11,14 +10,11 @@ class SponsorshipWidgetTest extends PHPUnit_Framework_TestCase {
         $httpServiceMock = $this->getMock('SukrupaRequestHandler', array('getNumberOfStudents'));
 
         $httpServiceMock->expects($this->once())
-                  ->method('getNumberOfStudents');
+                ->method('getNumberOfStudents')
+                ->will($this->returnValue(345));;
 
         $sponsorshipWidget = new SponsorshipWidget($httpServiceMock);
-        $sponsorshipWidget->progressComplete();
-
- //            ->method('progressComplete');
- //                 ->with($this->equalTo('params'));
-
+        $this->assertEquals(345,$sponsorshipWidget->progressComplete());
     }
 }
 ?>
