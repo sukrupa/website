@@ -11,3 +11,8 @@ cp php.ini.default php.ini
 5) Open php.ini in your editor and find 'include_path' which is commented out using a semi-colon (;):
 6) Change it to read:
 include_path = "/usr/lib/php/PEAR:/php/includes:/usr/lib/php"
+
+** GOTCHAS - to fix **
+1) For some reason right clicking on an individual unit test and selecting run gives the error:
+"PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in"
+However, running all in 'unit-tests' folder works as does right clicking inside the class in the file - BUT NOT ABOVE THE CLASS!
