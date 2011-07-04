@@ -19,8 +19,6 @@ class SponsorshipWidgetTest extends PHPUnit_Framework_TestCase {
 
         $sponsorshipWidget = new SponsorshipWidget($httpServiceMock);
         $this->assertEquals(55,$sponsorshipWidget->progressComplete());
-
-        //todo fix sidebar
     }
 
 }
