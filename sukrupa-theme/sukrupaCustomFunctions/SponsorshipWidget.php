@@ -15,5 +15,3 @@ class SponsorshipWidget
         return $this->_sukrupaRequestHandler->getNumberOfStudents();
     }
 }
-
-?>

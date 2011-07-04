@@ -17,5 +17,5 @@ class SponsorshipWidgetTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(345,$sponsorshipWidget->progressComplete());
     }
 }
-?>
+
 
