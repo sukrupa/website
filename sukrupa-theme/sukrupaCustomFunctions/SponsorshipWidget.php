@@ -1,19 +1,30 @@
 <?php
 
-class SponsorshipWidget {
+class SponsorshipWidget
+{
 
-//    private var httpService;
-//
-//    function __construct(HttpService httpService) {
-//        this.httpService = httpService;
-//    }
+    var $sukrupaRequestHandler;
 
-    public function progressComplete(){
+    function __construct($sukrupaRequestHandlerInput)
+    {
+        $this->sukrupaRequestHandler = $sukrupaRequestHandlerInput;
+    }
+
+    public function progressComplete()
+    {
+        $this->sukrupaRequestHandler.getNumberOfStudents();
         return "percent55";
     }
 
-    public function requestSponsorshipInfoFromAdminSystem(){
+    public function justATestMethodReturning1()
+    {
         return 1;
     }
+
+    public function justATestMethodWhichShouldReturnWhatWePassInAtConstructionTime()
+    {
+        return $this->sukrupaRequestHandler;
+    }
 }
+
 ?>
