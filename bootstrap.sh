@@ -3,7 +3,7 @@
 #uncomment for debugging script
 #set -x
 
-MYSQL_PASSWORD='root'
+MYSQL_PASSWORD='aarsha@142'
 DATABASE_NAME=sukrupa_wordpress
 DATABASE_HOST=localhost
 DATABASE_USER=root
