@@ -3,27 +3,16 @@
 class SponsorshipWidget
 {
 
-    var $sukrupaRequestHandler;
+    private $_sukrupaRequestHandler;
 
-    function __construct($sukrupaRequestHandlerInput)
+    function __construct(SukrupaRequestHandler $sukrupaRequestHandlerInput)
     {
-        $this->sukrupaRequestHandler = $sukrupaRequestHandlerInput;
+        $this->_sukrupaRequestHandler = $sukrupaRequestHandlerInput;
     }
 
     public function progressComplete()
     {
-        $this->sukrupaRequestHandler.getNumberOfStudents();
-        return "percent55";
-    }
-
-    public function justATestMethodReturning1()
-    {
-        return 1;
-    }
-
-    public function justATestMethodWhichShouldReturnWhatWePassInAtConstructionTime()
-    {
-        return $this->sukrupaRequestHandler;
+        return $this->_sukrupaRequestHandler->getNumberOfStudents();
     }
 }
 
