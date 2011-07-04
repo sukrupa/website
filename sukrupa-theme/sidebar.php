@@ -3,7 +3,8 @@
   $sDir = dirname(__FILE__);
   require_once($sDir . '/../installed-wordpress/wp-admin/includes/plugin.php');
   include("sukrupaCustomFunctions/SponsorshipWidget.php");
-  $sponsorshipWidget = new SponsorshipWidget();
+  include("sukrupaCustomFunctions/SukrupaRequestHandler.php");
+  $sponsorshipWidget = new SponsorshipWidget(new SukrupaRequestHandler());
 ?>
 
 <div id="sidebar">
