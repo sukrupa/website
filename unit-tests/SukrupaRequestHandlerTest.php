@@ -7,7 +7,8 @@ class SukrupaRequestHandlerTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function returnDummyValueForRenderingWebpage(){
         $sukrupaRequestHandler = new SukrupaRequestHandler();
-        $this->assertEquals(120, $sukrupaRequestHandler->getNumberOfStudents());
+        $this->assertEquals(450, $sukrupaRequestHandler->getNumberOfStudents());
+        $this->assertEquals(301, $sukrupaRequestHandler->getNumberOfStudentsSponsored());
     }
 }
 

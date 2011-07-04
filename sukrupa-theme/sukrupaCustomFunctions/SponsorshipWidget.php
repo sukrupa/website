@@ -3,6 +3,7 @@
 class SponsorshipWidget
 {
 
+    const ROUNDING_TO_5_PERCENT = 5;
     private $_sukrupaRequestHandler;
 
     // ToDo: Anita & Mike: should by default has a new SukrupaRequestHandler instance
@@ -14,6 +15,10 @@ class SponsorshipWidget
 
     public function progressComplete()
     {
-        return $this->_sukrupaRequestHandler->getNumberOfStudents();
+        $numberOfStudents = $this->_sukrupaRequestHandler->getNumberOfStudents();
+        $numberOfStudentsSponsored = $this->_sukrupaRequestHandler->getNumberOfStudentsSponsored();
+
+        $sponsoredPercentageAbsolute = $numberOfStudentsSponsored / $numberOfStudents * 100;
+        return ((int)($sponsoredPercentageAbsolute/ self::ROUNDING_TO_5_PERCENT))* self::ROUNDING_TO_5_PERCENT;
     }
 }

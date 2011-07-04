@@ -11,6 +11,11 @@ class SukrupaRequestHandler
 {
     public function getNumberOfStudents()
     {
-       return 120;
+       return 450;
+    }
+
+    public function getNumberOfStudentsSponsored()
+    {
+        return 301;
     }
 }
