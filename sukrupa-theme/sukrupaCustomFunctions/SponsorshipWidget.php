@@ -21,4 +21,12 @@ class SponsorshipWidget
         $sponsoredPercentageAbsolute = $numberOfStudentsSponsored / $numberOfStudents * 100;
         return ((int)($sponsoredPercentageAbsolute/ self::ROUNDING_TO_5_PERCENT))* self::ROUNDING_TO_5_PERCENT;
     }
+
+    public function getNumberOfStudents(){
+        return $this->_sukrupaRequestHandler->getNumberOfStudents();
+    }
+
+    public function getNumberOfStudentsSponsored(){
+        return $this->_sukrupaRequestHandler->getNumberOfStudentsSponsored();
+    }
 }

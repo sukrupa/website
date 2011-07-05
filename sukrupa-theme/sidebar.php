@@ -13,7 +13,7 @@
 		<div class="sidebarHeader">Sponsor A Child</div>
         <div class="sidebarGuts">
             <div class="progressBar">
-                <div class="percent<?php echo $sponsorshipWidget->progressComplete(); ?>"><p class="progressMarker">300/450</p></div>
+                <div class="percent<?php echo $sponsorshipWidget->progressComplete(); ?>"><p class="progressMarker"><?php echo $sponsorshipWidget->getNumberOfStudentsSponsored(); ?>/<?php echo $sponsorshipWidget->getNumberOfStudents(); ?></p></div>
             </div>
 
             <p>150 children need a sponsor. <a href="">Sponsor a child</a></p>

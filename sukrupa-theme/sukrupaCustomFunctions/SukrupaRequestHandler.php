@@ -6,16 +6,22 @@
  * Time: 14:04
  * To change this template use File | Settings | File Templates.
  */
-
 class SukrupaRequestHandler
 {
+    private $sponsorshipinfo;
+    public function requestData(){
+        $response = file_get_contents("http://127.0.0.1:8080/getsponsorshipinfo");
+        $this->sponsorshipinfo = json_decode($response);
+    }
     public function getNumberOfStudents()
     {
-       return 450;
+       $this->requestData();
+       return $this->sponsorshipinfo->{'numberOfStudents'};
     }
 
     public function getNumberOfStudentsSponsored()
     {
-        return 301;
+        $this->requestData();
+        return $this->sponsorshipinfo->{'numberOfStudentsSponsored'};
     }
 }
