@@ -108,14 +108,7 @@ function sending_mail()
 	}
 }
 
-function getAdminLink(){
-     if ( $_SERVER['REMOTE_ADDR'] == '127.0.0.1' ) {
-	     return "http://127.0.0.1:8080";
-    } else {
-	     return "http://school.sukrupa.org";
-    }
 
-}
 /*
    Description: Allows you to edit excerpts for Pages.
    Author: Peter Westwood

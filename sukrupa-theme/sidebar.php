@@ -22,6 +22,9 @@
             <p><?php echo $totalStudentsCount-$sponsoredStudentsCount; ?> children need a sponsor.</br> <a href="<?php bloginfo('home'); ?>/sponsor/">Click here</a> to Sponsor a child</p>
         </div>
     </div>
+    <span class="sidebarEntry">
+        <?php echo $sponsorshipWidget->getErrorMessageIfAny(); ?>
+    </span>
 	<div class="sidebarEntry"> 
 		<?php $query = new WP_Query('showposts=1&meta_key=donormeter&post_type=page');
 			  if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>

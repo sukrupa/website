@@ -29,4 +29,8 @@ class SponsorshipWidget
     public function getNumberOfStudentsSponsored(){
         return $this->_sukrupaRequestHandler->getNumberOfStudentsSponsored();
     }
+
+    public function getErrorMessageIfAny(){
+        return $this->_sukrupaRequestHandler->getErrorMessageIfAny();
+    }
 }
