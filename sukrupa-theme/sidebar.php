@@ -5,18 +5,21 @@
   include("sukrupaCustomFunctions/SponsorshipWidget.php");
   include("sukrupaCustomFunctions/SukrupaRequestHandler.php");
   $sponsorshipWidget = new SponsorshipWidget(new SukrupaRequestHandler());
+  $sponsoredStudentsCount = $sponsorshipWidget->getNumberOfStudentsSponsored();
+  $totalStudentsCount = $sponsorshipWidget->getNumberOfStudents();
+
 ?>
 
 <div id="sidebar">
 <div id="slider">
     <div class="sidebarEntry">
-		<div class="sidebarHeader">Sponsor A Child</div>
+		<div class="sidebarHeader"><a href="<?php bloginfo('home'); ?>/sponsor/">Sponsor A Child</a></div>
         <div class="sidebarGuts">
             <div class="progressBar">
-                <div class="percent<?php echo $sponsorshipWidget->progressComplete(); ?>"><p class="progressMarker"><?php echo $sponsorshipWidget->getNumberOfStudentsSponsored(); ?>/<?php echo $sponsorshipWidget->getNumberOfStudents(); ?></p></div>
+                <div class="percent<?php echo $sponsorshipWidget->progressComplete(); ?>"><p class="progressMarker"><?php echo $sponsoredStudentsCount;  ?>/<?php echo $totalStudentsCount; ?></p></div>
             </div>
 
-            <p>150 children need a sponsor. <a href="">Sponsor a child</a></p>
+            <p><?php echo $totalStudentsCount-$sponsoredStudentsCount; ?> children need a sponsor.</br> <a href="<?php bloginfo('home'); ?>/sponsor/">Click here</a> to Sponsor a child</p>
         </div>
     </div>
 	<div class="sidebarEntry"> 

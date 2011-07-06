@@ -10,7 +10,7 @@ class SukrupaRequestHandler
 {
     private $sponsorshipinfo;
     public function requestData(){
-        $response = file_get_contents("http://127.0.0.1:8080/getsponsorshipinfo");
+        $response = file_get_contents(getAdminLink()."/getsponsorshipinfo");
         $this->sponsorshipinfo = json_decode($response);
     }
     public function getNumberOfStudents()
