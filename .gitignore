@@ -10,3 +10,4 @@ lib/sukrupa_wordpress.dump.from-*-env.sql*
 sukrupa-theme/content/
 *.iws
 *~
+*.swp
