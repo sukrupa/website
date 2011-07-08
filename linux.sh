@@ -11,6 +11,8 @@ download_xampp() {
 		echo "If this takes forever for you (over an hour), you might have better luck getting it from someone else"
 		echo "or downloading it yourself. If you choose to do so, stop this script and put it in the tools directory"
 		echo "and then restart this script."
+		echo "Installing curl..."
+		sudo apt-get install curl
 		curl "http://sourceforge.net/projects/xampp/files/XAMPP%20Linux/1.7.4/xampp-linux-1.7.4.tar.gz" -L -o xampp-linux-1.7.4.tar.gz 
 	fi
 }
