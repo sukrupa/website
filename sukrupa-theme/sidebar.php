@@ -28,8 +28,13 @@
 	<div class="sidebarEntry"> 
 		<?php $query = new WP_Query('showposts=1&meta_key=donormeter&post_type=page');
 			  if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
-		<div class="sidebarHeader"><a href="<?php bloginfo('home'); ?>/donate/"><?php the_title(); ?></a></div>
+		<div class="sidebarHeader">
+            <a href="#" onclick=window.open('<?php bloginfo('home'); ?>/big-pipe-line-donation/','popup','width=450,height=700,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0')> <?php the_title(); ?></a>
+        </div>
 		<div class="sidebarGuts">
+
+                 <!--   <a href="<?php bloginfo('home'); ?>/big-pipe-line-donation/"><?php the_title(); ?></a>   -->
+
 		<?php $donormeter = get_post_meta($post->ID,'donormeter',true);
 			  $donormeter = explode('/', $donormeter);
 			  $moneyRaised = (int) str_ireplace(",", "", $donormeter[0] );
