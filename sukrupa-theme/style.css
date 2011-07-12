@@ -25,7 +25,7 @@ h3 {margin-top:5px; color: #254965; font-size: 1.1em; font-weight: bold; letter-
 h4 {color:#254965; text-align:center;}
 #wrapper {clear:both; margin:0 auto; position:relative; width:960px;}
 #site{ float: left; overflow: hidden;}
-p{font-family: Palatino, Georgia,font-color: Black, serif; line-height: 1.4em; margin: 5px 5px 0 0;}
+p{font-family: Palatino, Georgia, serif; line-height: 1.4em; margin: 5px 5px 0 0;}
 
 /* Useful classes and styles
 ********************************************************************/
@@ -83,7 +83,7 @@ a#fl{ background: url(img/18px_sprites.png) no-repeat 0% 39%; }
 .sidebarHeader { background-color: #4991C9; color: #F9DD85; padding: 5px; font-size: 1.1em; text-indent: 5px;}
 .sidebarContent{font-size: 0.7em}
 .sidebarHeader a{color: inherit;}
-.sidebarGuts{background: #EBE8E5; padding: 5px; float: left; width: 200px; margin-left: -5px;margin-top: 12px }
+.sidebarGuts{background: #EBE8E5; padding: 5px; float: left; width: 200px; margin-left: -3px;margin-top: 12px;}
 .sidebarEntry{width: 220px; float: left; margin-bottom: 10px;}
 
 /* Progress Bars - allows styling of progress bars to be separated from content

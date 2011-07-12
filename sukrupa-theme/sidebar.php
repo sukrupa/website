@@ -34,7 +34,7 @@
 		<div class="sidebarGuts">
 
                  <!--   <a href="<?php bloginfo('home'); ?>/big-pipe-line-donation/"><?php the_title(); ?></a>   -->
-                        <a href="#" color:blue>Click here to donate</a>
+                       
 
 		<?php $donormeter = get_post_meta($post->ID,'donormeter',true);
 			  $donormeter = explode('/', $donormeter);
@@ -53,7 +53,11 @@
 				<p>Rs. <?php echo number_format( $moneyNeeded );?></p>
 				<div style="width:<?php echo $width; ?>px;" class="progressMeter"></div>
 			</div>
-</div> </a>
+          <p style="color: #0000ff; font-size: 90%">Click here to donate</p>
+          </div>
+
+          </a>
+
 
 			<div style="float:left;margin-top:10px;color:black" ><?php the_excerpt(); ?></div>
 		<?php endwhile; endif; ?>
