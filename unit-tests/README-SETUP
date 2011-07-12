@@ -1,18 +1,18 @@
-To get PHPUnit set up on Mac OSX - need to find a better way:
-1) Install pear
-2) You will probably have to upgrade pear (and possibly force it):
-sudo pear upgrade --force http://pear.php.net/get/PEAR-1.9.3
-3) Install PHPUnit (using pear):
-sudo pear install http://pear.phpunit.de/get/PHPUnit-3.5.14.tgz
-Notes: this should install a bunch of stuff including things like a code coverage tool.
-4) Try running the tests in IntelliJ - they will probably say you need to edit the php.ini file.
-cd /private/etc/
-cp php.ini.default php.ini
-5) Open php.ini in your editor and find 'include_path' which is commented out using a semi-colon (;):
-6) Change it to read:
-include_path = "/usr/lib/php/PEAR:/php/includes:/usr/lib/php"
+Setting up IntelliJ to run PHP and PHPUnit tests with XAMPP
+---
+1) Run the appropriate script (mac.sh, linux.sh, windows.bat) that will setup the sukrupa website
+   on your locale machine and also pear and phpunit.
+2) Open up the sukrupa-website intelliJ project file.
+3) Go into your PHP settings (File > Settings > PHP for Windows/Linux, IntelliJ IDEA > Preferences for Mac). Change
+   the PHP Home path to point to the /bin directory of your XAMPP installation, and click 'Update Include Paths'.
+4) Run the test(s)!
 
-** GOTCHAS - to fix **
-1) For some reason right clicking on an individual unit test and selecting run gives the error:
-"PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in"
-However, running all in 'unit-tests' folder works as does right clicking inside the class in the file - BUT NOT ABOVE THE CLASS!
+
+Writing PHPUnit Tests
+---
+1) Add "require_once 'PHPUnit/Autoload.php';" to the top of the test file.
+2) Either name ALL your test methods starting with 'test...' OR use
+   this annotation /** @test */ above each test method.
+   See www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
+
+

@@ -1,5 +1,6 @@
 <?php
 
+require_once 'PHPUnit/Autoload.php';
 require_once '../sukrupa-theme/sukrupaCustomFunctions/SponsorshipWidget.php';
 
 class SponsorshipWidgetTest extends PHPUnit_Framework_TestCase {
