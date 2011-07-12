@@ -1,10 +1,7 @@
 #!/bin/bash
 
 XAMPP_ROOT=/Applications/XAMPP
-
-download_xampp() {
-	if [ -e xampp-macosx-1.7.3.dmg ]; then
-		echo Using preexisting xampp-macosx-1.7.3.dmg
+download_xampp() { if [ -e xampp-macosx-1.7.3.dmg ]; then echo Using preexisting xampp-macosx-1.7.3.dmg
 	else
 		echo "Can't find xampp-macosx-1.7.3.dmg"
 		echo "Downloading from http://downloads.sourceforge.net/project/xampp/XAMPP%20Mac%20OS%20X/1.7.3/xampp-macosx-1.7.3.dmg"
@@ -50,3 +47,11 @@ sudo /Applications/XAMPP/xamppfiles/xampp startmysql
 echo "Bootstrapping... (yeah...)"
 ./bootstrap.sh -lR
 
+echo "Upgrading PEAR..."
+sudo /Applications/XAMPP/xamppfiles/bin/pear upgrade
+sudo /Applications/XAMPP/xamppfiles/bin/pear channel-discover pear.phpunit.de
+sudo /Applications/XAMPP/xamppfiles/bin/pear channel-discover components.ez.no 
+sudo /Applications/XAMPP/xamppfiles/bin/pear channel-discover pear.symfony-project.com 
+sudo /Applications/XAMPP/xamppfiles/bin/pear channel-discover pear.phpunit.de
+sudo /Applications/XAMPP/xamppfiles/bin/pear install --nodeps XML_RPC2 
+sudo /Applications/XAMPP/xamppfiles/bin/pear install phpunit/PHPUnit
