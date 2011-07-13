@@ -48,4 +48,6 @@ echo "Bootstrapping... (yeah...)"
 ./bootstrap-windows.sh -lR
 
 #rm -R installed-wordpress/
+echo "Upgrading PEAR..."
+#sh -c ./upgradePear.bat
 

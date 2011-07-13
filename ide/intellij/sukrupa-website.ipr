@@ -281,12 +281,7 @@
   </component>
   <component name="PhpProjectConfiguration">
     <sdk>
-      <PhpSdkConfig version="5.3.5" home="C:\xampp\php">
-        <include_paths>
-          <path value="." />
-          <path value="C:\xampp\php\PEAR\PHPUnit2" />
-        </include_paths>
-      </PhpSdkConfig>
+      <PhpSdkConfig version="5.3.5" home="C:\xampp\php" />
     </sdk>
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -341,19 +336,18 @@
   </component>
   <component name="libraryTable">
     <library name="PEAR">
-      <CLASSES>
-        <root url="file://C:/xampp/php/PEAR" />
-      </CLASSES>
+      <CLASSES />
       <JAVADOC />
-      <SOURCES />
+      <SOURCES>
+        <root url="file:///usr/lib/php/PEAR" />
+      </SOURCES>
     </library>
     <library name="PHPUnit">
-      <CLASSES>
-        <root url="file://C:/xampp/php/PEAR/PHPUnit" />
-        <root url="file://C:/xampp/php/PEAR/PHPUnit2" />
-      </CLASSES>
+      <CLASSES />
       <JAVADOC />
-      <SOURCES />
+      <SOURCES>
+        <root url="file:///usr/lib/php/PHPUnit" />
+      </SOURCES>
     </library>
   </component>
 </project>
