@@ -55,6 +55,5 @@ sudo $XAMPP_ROOT/bin/pear upgrade
 sudo $XAMPP_ROOT/bin/pear channel-discover pear.phpunit.de
 sudo $XAMPP_ROOT/bin/pear channel-discover components.ez.no 
 sudo $XAMPP_ROOT/bin/pear channel-discover pear.symfony-project.com 
-sudo $XAMPP_ROOT/bin/pear channel-discover pear.phpunit.de
 sudo $XAMPP_ROOT/bin/pear install --nodeps XML_RPC2 
 sudo $XAMPP_ROOT/bin/pear install phpunit/PHPUnit

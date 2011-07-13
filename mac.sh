@@ -52,6 +52,5 @@ sudo /Applications/XAMPP/xamppfiles/bin/pear upgrade
 sudo /Applications/XAMPP/xamppfiles/bin/pear channel-discover pear.phpunit.de
 sudo /Applications/XAMPP/xamppfiles/bin/pear channel-discover components.ez.no 
 sudo /Applications/XAMPP/xamppfiles/bin/pear channel-discover pear.symfony-project.com 
-sudo /Applications/XAMPP/xamppfiles/bin/pear channel-discover pear.phpunit.de
 sudo /Applications/XAMPP/xamppfiles/bin/pear install --nodeps XML_RPC2 
 sudo /Applications/XAMPP/xamppfiles/bin/pear install phpunit/PHPUnit
