@@ -117,6 +117,8 @@ install_wordpress() {
     ln -sf `pwd`/content/ ./installed-wordpress/content
     cp -fr `pwd`/plugins/sukrupa-forms ./installed-wordpress/wp-content/plugins/
     cp -fr `pwd`/plugins/sukrupa-calendar ./installed-wordpress/wp-content/plugins/
+    cp -f  `pwd`/lib/rss2.xsl ./installed-wordpress/
+    cp -f  `pwd`/lib/wp-includes/feed-rss2.php ./installed-wordpress/
     #ln -sf `pwd`/plugins/sukrupa-forms ./installed-wordpress/wp-content/plugins/sukrupa-forms
 }
 
