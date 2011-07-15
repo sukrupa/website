@@ -22,7 +22,7 @@ class SponsorshipWidgetTest extends PHPUnit_Framework_TestCase {
                 ->method('getNumberOfStudentsSponsored')
                 ->will($this->returnValue(238));
 
-        $sponsorshipWidget = new SponsorshipWidget($httpServiceMock);
+        $sponsorshipWidget = new SponsoredChildrenStatus($httpServiceMock);
         $this->assertEquals(55,$sponsorshipWidget->progressComplete());
     }
 

@@ -2,9 +2,9 @@
   // Includes plugin file in order to check if plugin was activated
   $sDir = dirname(__FILE__);
   require_once($sDir . '/../installed-wordpress/wp-admin/includes/plugin.php');
-  include("sukrupaCustomFunctions/SponsorshipWidget.php");
+  include("sukrupaCustomFunctions/SponsoredChildrenStatus.php");
   include("sukrupaCustomFunctions/SukrupaRequestHandler.php");
-  $sponsorshipWidget = new SponsorshipWidget(new SukrupaRequestHandler());
+  $sponsorshipWidget = new SponsoredChildrenStatus(new SukrupaRequestHandler());
   $sponsoredStudentsCount = $sponsorshipWidget->getNumberOfStudentsSponsored();
   $totalStudentsCount = $sponsorshipWidget->getNumberOfStudents();
 

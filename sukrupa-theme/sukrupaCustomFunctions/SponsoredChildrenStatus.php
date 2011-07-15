@@ -1,10 +1,10 @@
 <?php
 
-class SponsorshipWidget
+class SponsoredChildrenStatus
 {
 
     const ROUNDING_TO_5_PERCENT = 5;
-    private $_sukrupaRequestHandler;
+    //private $_sukrupaRequestHandler;
 
     // ToDo: Anita & Mike: should by default has a new SukrupaRequestHandler instance
     // but lack of php knowledge need to postpone this
@@ -15,19 +15,21 @@ class SponsorshipWidget
 
     public function progressComplete()
     {
-        $numberOfStudents = $this->_sukrupaRequestHandler->getNumberOfStudents();
-        $numberOfStudentsSponsored = $this->_sukrupaRequestHandler->getNumberOfStudentsSponsored();
+        $numberOfStudents = $this->getNumberOfStudents();
+        $numberOfStudentsSponsored = $this->getNumberOfStudentsSponsored();
 
         $sponsoredPercentageAbsolute = $numberOfStudentsSponsored / $numberOfStudents * 100;
         return ((int)($sponsoredPercentageAbsolute/ self::ROUNDING_TO_5_PERCENT))* self::ROUNDING_TO_5_PERCENT;
     }
 
     public function getNumberOfStudents(){
-        return $this->_sukrupaRequestHandler->getNumberOfStudents();
+       $sponsorshipInfo = $this->_sukrupaRequestHandler->requestData("/getsponsorshipinfo");
+       return $sponsorshipInfo->{'numberOfStudents'};
     }
 
     public function getNumberOfStudentsSponsored(){
-        return $this->_sukrupaRequestHandler->getNumberOfStudentsSponsored();
+        $sponsorshipInfo = $this->_sukrupaRequestHandler->requestData("/getsponsorshipinfo");
+        return $sponsorshipInfo->{'numberOfStudentsSponsored'};
     }
 
     public function getErrorMessageIfAny(){
