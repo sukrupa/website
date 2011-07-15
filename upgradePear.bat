@@ -1,8 +1,15 @@
 cd C:/xampp/php
-start "C:/xampp/php/pear-update.bat"
-#cmd /K "pear channel-discover pear.phpunit.de"
-#cmd /K "pear channel-discover components.ez.no"
-#cmd /K "pear channel-discover pear.symfony-project.com"
-#cmd /K "pear install --nodeps XML_RPC2" 
-#cmd /K "pear install phpunit/PHPUnit"
-echo "upgraded Successfully"
+call go-pear.bat
+call pear-update.bat
+call pear clear-cache
+call pear channel-discover pear.phpunit.de
+call pear channel-discover components.ez.no
+call pear channel-discover pear.symfony-project.com
+call pear upgrade-all
+call pear install --nodeps XML_RPC2
+call pear install phpunit/PHPUnit
+call pear upgrade-all
+call pear clear-cache
+call pear install --alldeps --force phpunit/PHPUnit
+
+

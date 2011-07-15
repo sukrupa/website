@@ -46,8 +46,7 @@ sh -c ./startServers.bat
 
 echo "Bootstrapping... (yeah...)"
 ./bootstrap-windows.sh -lR
-
 #rm -R installed-wordpress/
+cmd.exe /c upgradePear.bat
 echo "Upgrading PEAR..."
-#sh -c ./upgradePear.bat
 
