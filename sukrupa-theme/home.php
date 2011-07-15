@@ -43,7 +43,7 @@ $(document).ready(function() {
 	
 	<div id="current-news" class="grid_9 container col" style="margin-left: 15px;">
 	    <h2>Current News</h2>
-        <a class="icon news-icon" href="#">Subscribe to newsletter</a>
+        <a class="icon news-icon" href="<?php bloginfo('home'); ?>/subscribe/">Subscribe to newsletter</a>
 		<?php 
 		// Category is a more stable query basis; with 'meta_key' the client will need to unneccessiarily
 		// tag items (especially since the meta_key has a null and unused value)

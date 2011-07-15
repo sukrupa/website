@@ -45,6 +45,9 @@ sudo /Applications/XAMPP/xamppfiles/xampp startapache
 sudo /Applications/XAMPP/xamppfiles/xampp startmysql
 
 echo "Bootstrapping... (yeah...)"
+
+
+
 ./bootstrap.sh -lR
 
 echo "Upgrading PEAR..."
