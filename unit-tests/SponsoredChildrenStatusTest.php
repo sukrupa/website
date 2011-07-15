@@ -12,7 +12,7 @@ class SponsoredChildrenStatusTest extends PHPUnit_Framework_TestCase {
 
         $json = '{"numberOfStudents":400,"numberOfStudentsSponsored":238}';
 
-        $httpServiceMock->expects($this->exactly(2))
+        $httpServiceMock->expects($this->once())
                 ->method('requestData')
                 ->will($this->returnValue(json_decode($json)));
 
