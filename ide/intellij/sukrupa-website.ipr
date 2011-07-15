@@ -281,10 +281,10 @@
   </component>
   <component name="PhpProjectConfiguration">
     <sdk>
-      <PhpSdkConfig version="5.3.5" home="C:\xampp\php">
+      <PhpSdkConfig version="5.3.5" home="/opt/lampp/bin">
         <include_paths>
           <path value="." />
-          <path value="C:\xampp\php\PEAR" />
+          <path value="/opt/lampp/lib/php" />
         </include_paths>
       </PhpSdkConfig>
     </sdk>

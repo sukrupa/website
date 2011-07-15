@@ -9,8 +9,8 @@
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file:///usr/lib/php/PEAR" />
     <content url="file://$MODULE_DIR$/../.." />
+    <content url="file:///usr/lib/php/PEAR" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="JRuby SDK 1.5.5-p249 facet library" level="application" />
@@ -19,7 +19,7 @@
     <orderEntry type="module-library">
       <library name="PHP 5.3.5">
         <CLASSES>
-          <root url="file://C:/xampp/php/PEAR" />
+          <root url="file:///opt/lampp/lib/php" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
