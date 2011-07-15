@@ -8,11 +8,13 @@ class DonationToBigPipelineStatusTest extends PHPUnit_Framework_TestCase {
     /** @test */
     public function shouldReturnTheFirstBigNeed()
     {
-        $httpServiceMock = $this->getMock('SukrupaRequestHandler', array('getHighPriorityBigPipelineItem'));
+        $httpServiceMock = $this->getMock('SukrupaRequestHandler', array('requestData'));
+
+        $json = '{"highPriorityBigNeedItem": "Power Generator"}';
 
         $httpServiceMock->expects($this->once())
-                ->method('getHighPriorityBigPipelineItem')
-                ->will($this->returnValue("Power Generator"));
+                ->method('requestData')
+                ->will($this->returnValue(json_decode($json)));
 
         $donationToBigPipelineStatus = new DonationToBigPipelineStatus($httpServiceMock);
         $this->assertEquals("Power Generator",$donationToBigPipelineStatus->getHighPriorityBigPipelineItem());

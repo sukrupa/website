@@ -18,8 +18,8 @@ class DonationToBigPipelineStatus {
     }
 
     public function getHighPriorityBigPipelineItem(){
-        return $this->_sukrupaRequestHandler->getHighPriorityBigPipelineItem();
-
-
+        $highPriorityBigNeedItemInfo=$this->_sukrupaRequestHandler->requestData("./getHighPriorityBigNeedItem");
+        return $highPriorityBigNeedItemInfo->{'highPriorityBigNeedItem'};
     }
+
 }

@@ -27,9 +27,6 @@ class SukrupaRequestHandler
         return json_decode($response);
     }
 
-    public function getHighPriorityBigPipelineItem(){
-
-    }
 
     public function getErrorMessageIfAny(){
         return $this->msg;
