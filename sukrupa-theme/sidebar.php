@@ -4,9 +4,12 @@
   require_once($sDir . '/../installed-wordpress/wp-admin/includes/plugin.php');
   include("sukrupaCustomFunctions/SponsoredChildrenStatus.php");
   include("sukrupaCustomFunctions/SukrupaRequestHandler.php");
+  include("sukrupaCustomFunctions/DonationToBigPipelineStatus.php");
   $sponsorshipWidget = new SponsoredChildrenStatus(new SukrupaRequestHandler());
   $sponsoredStudentsCount = $sponsorshipWidget->getNumberOfStudentsSponsored();
   $totalStudentsCount = $sponsorshipWidget->getNumberOfStudents();
+  $bigNeedDonationStatus = new DonationToBigPipelineStatus(new SukrupaRequestHandler());
+  $highPriorityBigNeedItem = $bigNeedDonationStatus->getHighPriorityBigPipelineItem();
 
 ?>
 
@@ -29,7 +32,7 @@
 		<?php $query = new WP_Query('showposts=1&meta_key=donormeter&post_type=page');
 			  if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
 		<div class="sidebarHeader">
-            <a href="<?php bloginfo('home'); ?>/big-pipe-line-donation"> <div><?php the_title(); ?>
+            <a href="<?php bloginfo('home'); ?>/big-pipe-line-donation"> <div><?php echo $highPriorityBigNeedItem; ?>
         </div>
 		<div class="sidebarGuts">
 

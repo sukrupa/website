@@ -9,7 +9,6 @@
  
 class DonationToBigPipelineStatus {
 
-
     private $_sukrupaRequestHandler;
 
     function __construct(SukrupaRequestHandler $sukrupaRequestHandlerInput)

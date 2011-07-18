@@ -6,7 +6,7 @@ require_once '../sukrupa-theme/sukrupaCustomFunctions/DonationToBigPipelineStatu
 class DonationToBigPipelineStatusTest extends PHPUnit_Framework_TestCase {
 
     /** @test */
-    public function shouldReturnTheFirstBigNeed()
+    public function shouldReturnTheFirstBigNeedOnHomepage()
     {
         $httpServiceMock = $this->getMock('SukrupaRequestHandler', array('requestData'));
 
@@ -19,5 +19,6 @@ class DonationToBigPipelineStatusTest extends PHPUnit_Framework_TestCase {
         $donationToBigPipelineStatus = new DonationToBigPipelineStatus($httpServiceMock);
         $this->assertEquals("Power Generator",$donationToBigPipelineStatus->getHighPriorityBigPipelineItem());
     }
+
 
 }
