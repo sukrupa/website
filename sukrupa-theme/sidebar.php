@@ -1,4 +1,4 @@
-<?php 
+<?php
   // Includes plugin file in order to check if plugin was activated
   $sDir = dirname(__FILE__);
   require_once($sDir . '/../installed-wordpress/wp-admin/includes/plugin.php');
@@ -66,6 +66,37 @@
 		<?php endwhile; endif; ?>
 		</div>
 	</div>
+
+
+
+
+
+
+
+    <div class="sidebarEntry">
+		<?php $query = new WP_Query('showposts=1&meta_key=donormeter&post_type=page');
+			  if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
+		<div class="sidebarHeader">SMALL NEEDS </div>
+
+		<div class="sidebarGuts">
+          <p style="color: #0000ff; font-size: 90%">
+              <table>
+                <thead>
+                    <td>Item Name</td><td>Cost</td>
+                </thead>
+                <tr>
+                    <td><a href="<?php bloginfo('home'); ?>/big-pipe-line-donation"> <div><?php echo $highPriorityBigNeedItem; ?>Pen</td></a><td>Rs 200</td>
+                </tr>
+              </table>
+          </p>
+          </div>
+
+			<div style="float:left;margin-top:10px;color:black" ><?php the_excerpt(); ?></div>
+		<?php endwhile; endif; ?>
+		</div>
+	</div>
+
+
 
 
 	   
@@ -153,5 +184,5 @@
 		</div>
     </div>
     
-</div>
+</div>    a
 </div>
