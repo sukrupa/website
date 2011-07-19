@@ -49,9 +49,10 @@
 			  $totalCostForBigNeedItem = (int) str_ireplace(",", "", $totalCostForHighPriorityBigNeedItem );
 			  
 			  if ( !is_int( $amountDonatedToBigNeedItem ) || !is_int( $totalCostForBigNeedItem ) ) { continue; }
-			  if ( $amountDonatedToBigNeedItem < 0 || $totalCostForBigNeedItem < 0 ) {continue;}
+			  if ( $amountDonatedToBigNeedItem <= 0 || $totalCostForBigNeedItem < 0) {$percentage=0;}
+              else {$percentage = $amountDonatedToBigNeedItem/$totalCostForBigNeedItem;}
 			  
-			  $percentage = $amountDonatedToBigNeedItem/$totalCostForBigNeedItem;
+
 			  $width = 200 * $percentage; 
 			  if ( $width > 200 ) { $width = 200; }
 			  ?>
