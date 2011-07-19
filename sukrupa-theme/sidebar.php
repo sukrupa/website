@@ -11,8 +11,8 @@
   $totalStudentsCount = $sponsorshipWidget->getNumberOfStudents();
   $bigNeedDonationStatus = new DonationToBigPipelineStatus(new SukrupaRequestHandler());
   $highPriorityBigNeedItem = $bigNeedDonationStatus->getHighPriorityBigPipelineItem();
-  $totalCostForBigNeedItem = $bigNeedDonationStatus->getTotalCostOfBigPipelineItem();
-  $amountDonatedToBigNeedItem = $bigNeedDonationStatus->getAmountDonatedToBigPipeLineItem();
+  $totalCostForHighPriorityBigNeedItem = $bigNeedDonationStatus->getTotalCostOfBigPipelineItem();
+  $amountDonatedToHighPriorityBigNeedItem = $bigNeedDonationStatus->getAmountDonatedToBigPipeLineItem();
   $smallNeedDonationStatus= new DonationToSmallPipelineStatus(new SukrupaRequestHandler());
   $smallNeedList = $smallNeedDonationStatus->getSmallPipelineItems();
 ?>
@@ -45,13 +45,13 @@
 
 		<?php $donormeter = get_post_meta($post->ID,'donormeter',true);
 			  $donormeter = explode('/', $donormeter);
-			  $moneyRaised = (int) str_ireplace(",", "", $donormeter[0] );
-			  $moneyNeeded = (int) str_ireplace(",", "", $donormeter[1] );
+			  $amountDonatedToBigNeedItem = (int) str_ireplace(",", "", $amountDonatedToHighPriorityBigNeedItem );
+			  $totalCostForBigNeedItem = (int) str_ireplace(",", "", $totalCostForHighPriorityBigNeedItem );
 			  
-			  if ( !is_int( $moneyRaised ) || !is_int( $moneyNeeded ) ) { continue; }
-			  if ( $moneyRaised < 0 || $moneyNeeded < 0 ) {continue;}
+			  if ( !is_int( $amountDonatedToBigNeedItem ) || !is_int( $totalCostForBigNeedItem ) ) { continue; }
+			  if ( $amountDonatedToBigNeedItem < 0 || $totalCostForBigNeedItem < 0 ) {continue;}
 			  
-			  $percentage = $moneyRaised/$moneyNeeded;
+			  $percentage = $amountDonatedToBigNeedItem/$totalCostForBigNeedItem;
 			  $width = 200 * $percentage; 
 			  if ( $width > 200 ) { $width = 200; }
 			  ?>
