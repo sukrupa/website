@@ -19,9 +19,7 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/ourAmmado.js"></script>
-<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/validateEmail.js"></script>
-<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/ajaxPost.js"></script>
-
+ <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/validateEmail.js"></script>
 <!--[if lte IE 7]>
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/ie.css" type="text/css" media="screen" />
 <![endif]-->
