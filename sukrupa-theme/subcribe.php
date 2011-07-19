@@ -15,13 +15,35 @@ Template Name: Subscribe Page
                var datastring ='subscriberName='+subscriberName+'&subscriberEmail='+subscriberEmail;
                $.ajax({
                    type:"POST",
-                   url: "http://localhost:8080/addsubscriberinfo",
+                   url: "../ajaxproxy.php",
                    data: datastring,
-                   success:function(){
-                       $('#errorMessage').hide();
-                   $('#subscriberform').html("<div id='message'></div>");
-                           $('#message').html("<h2>Thank you for your interest in Sukrupa. You are now subscribed.</h2>");
-               }
+                   success:function(result,status,XHR){
+                       if(result == "Success"){
+                            $('#errorMessage').hide();
+                            $('#subscriberform').html("<div id='message'></div>");
+                            $('#message').html("<h2>Thank you for your interest in Sukrupa. You are now subscribed.</h2>");
+                       }
+                       else{
+                            $('#errorMessage')[0].innerHTML = "Admin Server is down. Please contact the Administrator."
+                       }
+                   }
+/*                   statusCode: {
+                       404: function(){
+                           alert("Service Down");
+                       }
+                   },
+                   error: function( xhr, ajaxOptions, thrownError) {
+                       alert(xhr.statusText);
+                       alert(thrownError);
+                   }*/
+/*                   complete : function(transport){
+                       if(transport.status == 200){
+                           alert('Success');
+                       }
+                       else{
+                           alert(transport.status);
+                       }
+                   }*/
                });
             }
            return false;
