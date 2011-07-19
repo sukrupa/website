@@ -120,6 +120,7 @@ install_wordpress() {
     cp -f  `pwd`/lib/rss2.xsl ./installed-wordpress/
     cp -f  `pwd`/lib/wp-includes/feed-rss2.php ./installed-wordpress/wp-includes/
     #ln -sf `pwd`/plugins/sukrupa-forms ./installed-wordpress/wp-content/plugins/sukrupa-forms
+
 }
 
 setup_wordpress_for_production() {
