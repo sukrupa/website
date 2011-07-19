@@ -80,16 +80,16 @@
     <div class="sidebarEntry">
 		<?php $query = new WP_Query('showposts=1&meta_key=donormeter&post_type=page');
 			  if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
-		<div class="sidebarHeader">SMALL NEEDS </div>
+		<div class="sidebarHeader">Small Needs </div>
 
 		<div class="sidebarGuts">
           <p style="color: #0000ff; font-size: 90%">
               <table>
                 <thead>
-                    <td>Item Name</td><td>Cost</td>
+                    <td><b>Item Name</b></td><td><b>Cost</b></td>
                 </thead>
                <?php
-               for($i=0;$i<5;$i=$i+2)
+               for($i=0;$i<10;$i=$i+2)
                 echo "<tr>
                     <td>" .$smallNeedList[$i]."</td>
                     <td>".$smallNeedList[$i+1] ."</td>
@@ -99,7 +99,7 @@
           </p>
           </div>
 
-			<div style="float:left;margin-top:10px;color:black" ><?php the_excerpt(); ?></div>
+			<div style="float:left;margin-top:10px;color:black" >Click on the item to donate</div>
 		<?php endwhile; endif; ?>
 		</div>
 	</div>
