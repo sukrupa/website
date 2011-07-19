@@ -25,14 +25,14 @@ class DonationToBigPipelineStatusTest extends PHPUnit_Framework_TestCase {
     {
         $httpServiceMock = $this->getMock('SukrupaRequestHandler', array('requestData'));
 
-        $json = '{"bigNeedItemTotalCost": "50000"}';
+        $json = '{"bigNeedItemTotalCost": 50000.0}';
 
         $httpServiceMock->expects($this->once())
                 ->method('requestData')
                 ->will($this->returnValue(json_decode($json)));
 
         $donationToBigPipelineStatus = new DonationToBigPipelineStatus($httpServiceMock);
-        $this->assertEquals("50000",$donationToBigPipelineStatus->getTotalCostOfBigPipelineItem());
+        $this->assertEquals(50000.0,$donationToBigPipelineStatus->getTotalCostOfBigPipelineItem());
     }
 
     /** @test */
@@ -40,14 +40,14 @@ class DonationToBigPipelineStatusTest extends PHPUnit_Framework_TestCase {
     {
         $httpServiceMock = $this->getMock('SukrupaRequestHandler', array('requestData'));
 
-        $json = '{"bigNeedItemAmountDonated": "20000"}';
+        $json = '{"bigNeedItemAmountDonated": 20000.0}';
 
         $httpServiceMock->expects($this->once())
                 ->method('requestData')
                 ->will($this->returnValue(json_decode($json)));
 
         $donationToBigPipelineStatus = new DonationToBigPipelineStatus($httpServiceMock);
-        $this->assertEquals("20000",$donationToBigPipelineStatus->getAmountDonatedToBigPipeLineItem());
+        $this->assertEquals(20000.0,$donationToBigPipelineStatus->getAmountDonatedToBigPipeLineItem());
     }
 
 
