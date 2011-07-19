@@ -1,16 +1,20 @@
-<?php 
+<?php
   // Includes plugin file in order to check if plugin was activated
   $sDir = dirname(__FILE__);
   require_once($sDir . '/../installed-wordpress/wp-admin/includes/plugin.php');
   include("sukrupaCustomFunctions/SponsoredChildrenStatus.php");
   include("sukrupaCustomFunctions/SukrupaRequestHandler.php");
   include("sukrupaCustomFunctions/DonationToBigPipelineStatus.php");
+  include("sukrupaCustomFunctions/DonationToSmallPipelineStatus.php");
   $sponsorshipWidget = new SponsoredChildrenStatus(new SukrupaRequestHandler());
   $sponsoredStudentsCount = $sponsorshipWidget->getNumberOfStudentsSponsored();
   $totalStudentsCount = $sponsorshipWidget->getNumberOfStudents();
   $bigNeedDonationStatus = new DonationToBigPipelineStatus(new SukrupaRequestHandler());
   $highPriorityBigNeedItem = $bigNeedDonationStatus->getHighPriorityBigPipelineItem();
-
+  $totalCostForBigNeedItem = $bigNeedDonationStatus->getTotalCostOfBigPipelineItem();
+  $amountDonatedToBigNeedItem = $bigNeedDonationStatus->getAmountDonatedToBigPipeLineItem();
+  $smallNeedDonationStatus= new DonationToSmallPipelineStatus(new SukrupaRequestHandler());
+  $smallNeedList = $smallNeedDonationStatus->getSmallPipelineItems();
 ?>
 
 <div id="sidebar">
@@ -53,7 +57,7 @@
 			  ?>
 			<div class="baseMeter">
 				<!-- <a href="<?php the_permalink(); ?>" id="capitalCampaign"><?php the_title(); ?></a> -->
-				<p>Rs. <?php echo number_format( $moneyNeeded );?></p>
+				<p>Rs. <?php echo number_format( $totalCostForBigNeedItem );?></p>
 				<div style="width:<?php echo $width; ?>px;" class="progressMeter"></div>
 			</div>
           <p style="color: #0000ff; font-size: 90%">Click here to donate</p>
@@ -66,6 +70,41 @@
 		<?php endwhile; endif; ?>
 		</div>
 	</div>
+
+
+
+
+
+
+
+    <div class="sidebarEntry">
+		<?php $query = new WP_Query('showposts=1&meta_key=donormeter&post_type=page');
+			  if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
+		<div class="sidebarHeader">Small Needs </div>
+
+		<div class="sidebarGuts">
+          <p style="color: #0000ff; font-size: 90%">
+              <table>
+                <thead>
+                    <td><b>Item Name</b></td><td><b>Cost</b></td>
+                </thead>
+               <?php
+               for($i=0;$i<10;$i=$i+2)
+                echo "<tr>
+                    <td>" .$smallNeedList[$i]."</td>
+                    <td>".$smallNeedList[$i+1] ."</td>
+                </tr>"
+                ?>
+              </table>
+          </p>
+          </div>
+
+			<div style="float:left;margin-top:10px;color:black" >Click on the item to donate</div>
+		<?php endwhile; endif; ?>
+		</div>
+	</div>
+
+
 
 
 	   
@@ -153,5 +192,5 @@
 		</div>
     </div>
     
-</div>
+</div>    a
 </div>

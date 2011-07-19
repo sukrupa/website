@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: sreerajan
- * Date: 15/7/11
- * Time: 9:27 AM
- * To change this template use File | Settings | File Templates.
- */
+
  
 class DonationToBigPipelineStatus {
 
@@ -19,6 +13,16 @@ class DonationToBigPipelineStatus {
     public function getHighPriorityBigPipelineItem(){
         $highPriorityBigNeedItemInfo=$this->_sukrupaRequestHandler->requestData("./getHighPriorityBigNeedItem");
         return $highPriorityBigNeedItemInfo->{'highPriorityBigNeedItem'};
+    }
+
+    public function getTotalCostOfBigPipelineItem(){
+        $highPriorityBigNeedItemInfo=$this->_sukrupaRequestHandler->requestData("./getHighPriorityBigNeedItem/totalCost");
+        return $highPriorityBigNeedItemInfo->{'bigNeedItemTotalCost'};
+    }
+
+    public function getAmountDonatedToBigPipeLineItem(){
+        $highPriorityBigNeedItemInfo=$this->_sukrupaRequestHandler->requestData("./getHighPriorityBigNeedItem/amountDonated");
+        return $highPriorityBigNeedItemInfo->{'bigNeedItemAmountDonated'};
     }
 
 }
