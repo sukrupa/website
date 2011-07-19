@@ -5,12 +5,16 @@
   include("sukrupaCustomFunctions/SponsoredChildrenStatus.php");
   include("sukrupaCustomFunctions/SukrupaRequestHandler.php");
   include("sukrupaCustomFunctions/DonationToBigPipelineStatus.php");
+  include("sukrupaCustomFunctions/DonationToSmallPipelineStatus.php");
   $sponsorshipWidget = new SponsoredChildrenStatus(new SukrupaRequestHandler());
   $sponsoredStudentsCount = $sponsorshipWidget->getNumberOfStudentsSponsored();
   $totalStudentsCount = $sponsorshipWidget->getNumberOfStudents();
   $bigNeedDonationStatus = new DonationToBigPipelineStatus(new SukrupaRequestHandler());
   $highPriorityBigNeedItem = $bigNeedDonationStatus->getHighPriorityBigPipelineItem();
-
+  $totalCostForBigNeedItem = $bigNeedDonationStatus->getTotalCostOfBigPipelineItem();
+  $amountDonatedToBigNeedItem = $bigNeedDonationStatus->getAmountDonatedToBigPipeLineItem();
+  $smallNeedDonationStatus= new DonationToSmallPipelineStatus(new SukrupaRequestHandler());
+  $smallNeedList = $smallNeedDonationStatus->getSmallPipelineItems();
 ?>
 
 <div id="sidebar">
@@ -53,7 +57,7 @@
 			  ?>
 			<div class="baseMeter">
 				<!-- <a href="<?php the_permalink(); ?>" id="capitalCampaign"><?php the_title(); ?></a> -->
-				<p>Rs. <?php echo number_format( $moneyNeeded );?></p>
+				<p>Rs. <?php echo number_format( $totalCostForBigNeedItem );?></p>
 				<div style="width:<?php echo $width; ?>px;" class="progressMeter"></div>
 			</div>
           <p style="color: #0000ff; font-size: 90%">Click here to donate</p>
@@ -84,9 +88,13 @@
                 <thead>
                     <td>Item Name</td><td>Cost</td>
                 </thead>
-                <tr>
-                    <td><a href="<?php bloginfo('home'); ?>/big-pipe-line-donation"> <div><?php echo $highPriorityBigNeedItem; ?>Pen</td></a><td>Rs 200</td>
-                </tr>
+               <?php
+               for($i=0;$i<5;$i=$i+2)
+                echo "<tr>
+                    <td>" .$smallNeedList[$i]."</td>
+                    <td>".$smallNeedList[$i+1] ."</td>
+                </tr>"
+                ?>
               </table>
           </p>
           </div>

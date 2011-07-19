@@ -15,4 +15,14 @@ class DonationToBigPipelineStatus {
         return $highPriorityBigNeedItemInfo->{'highPriorityBigNeedItem'};
     }
 
+    public function getTotalCostOfBigPipelineItem(){
+        $highPriorityBigNeedItemInfo=$this->_sukrupaRequestHandler->requestData("./getHighPriorityBigNeedItem/totalCost");
+        return $highPriorityBigNeedItemInfo->{'bigNeedItemTotalCost'};
+    }
+
+    public function getAmountDonatedToBigPipeLineItem(){
+        $highPriorityBigNeedItemInfo=$this->_sukrupaRequestHandler->requestData("./getHighPriorityBigNeedItem/amountDonated");
+        return $highPriorityBigNeedItemInfo->{'bigNeedItemAmountDonated'};
+    }
+
 }
