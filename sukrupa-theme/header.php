@@ -19,7 +19,8 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/ourAmmado.js"></script>
- <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/validateEmail.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/validateEmail.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/ajaxPost.js"></script>
 <!--[if lte IE 7]>
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/ie.css" type="text/css" media="screen" />
 <![endif]-->
@@ -47,10 +48,9 @@
 		<div id="logo" class="grid_9">
 			<h1><a href="<?php echo get_option('home'); ?>/">SUKRUPA</a></h1>
 		</div>
-        <div class="prefix_20 cornerlinks">
-          <a href="<?php bloginfo('home'); ?>/contact/">Contact Us</a> | <a href="<?php bloginfo('home'); ?>/wp-admin/">Login</a>
+        <div class="prefix_30 cornerlinks">
+          <a href="<?php bloginfo('home'); ?>/contact/"><b>Contact Us</b></a> | <a href="<?php bloginfo('home'); ?>/wp-admin/">Login</a>
         </div>
-
 		<div id="search" class="prefix_7">
 		    <form id="searchForm" action="<?php echo get_option('home'); ?>" method="get" class="grid_5">
 		    	<input id="searchInput" class="grid_4" type="text" name="s" value="Search Sukrupa" onfocus="if (this.value == 'Search Sukrupa') {this.value = '';}" />
