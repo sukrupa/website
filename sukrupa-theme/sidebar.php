@@ -15,6 +15,7 @@
   $amountDonatedToHighPriorityBigNeedItem = $bigNeedDonationStatus->getAmountDonatedToBigPipeLineItem();
   $smallNeedDonationStatus= new DonationToSmallPipelineStatus(new SukrupaRequestHandler());
   $smallNeedList = $smallNeedDonationStatus->getSmallPipelineItems();
+
 ?>
 
 <div id="sidebar">
@@ -90,9 +91,12 @@
                     <td><b>Item Name</b></td><td><b>Cost</b></td>
                 </thead>
                <?php
+               $smallPipelineDonationPageLink = get_bloginfo('home');
+               $smallPipelineDonationPageLink.='/small-pipe-line-donation';
+               $itemName=str_replace(" ","-",$smallNeedList[$i]);
                for($i=0;$i<10;$i=$i+2)
-                echo "<tr>
-                    <td>" .$smallNeedList[$i]."</td>
+                echo  "<tr>
+                    <td><a href=$smallPipelineDonationPageLink?itemName=".str_replace(" ","-",$smallNeedList[$i]).">" .$smallNeedList[$i]."</a></td>
                     <td>".$smallNeedList[$i+1] ."</td>
                 </tr>"
                 ?>
