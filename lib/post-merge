@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ -e sukrupa_wordpress.dump.sql ]; then
+	echo "Importing sukrupa_wordpress.dump.sql dump file into local database..."
+	mysql -u root sukrupa_wordpress < sukrupa_wordpress.dump.sql
+fi
+exit 0
