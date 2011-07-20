@@ -94,7 +94,11 @@
                $smallPipelineDonationPageLink = get_bloginfo('home');
                $smallPipelineDonationPageLink.='/small-pipe-line-donation';
                $itemName=str_replace(" ","-",$smallNeedList[$i]);
-               for($i=0;$i<10;$i=$i+2)
+               if(sizeof($smallNeedList) <=10)
+                    $listCount=sizeof($smallNeedList);
+               else
+                    $listCount=10;
+               for($i=0;$i<$listCount;$i=$i+2)
                 echo  "<tr>
                     <td><a href=$smallPipelineDonationPageLink?itemName=".str_replace(" ","-",$smallNeedList[$i]).">" .$smallNeedList[$i]."</a></td>
                     <td>".$smallNeedList[$i+1] ."</td>
