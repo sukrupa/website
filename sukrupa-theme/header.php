@@ -47,10 +47,10 @@
     <div id="header" class="grid_24">
 		<div id="logo" class="grid_9">
 			<h1><a href="<?php echo get_option('home'); ?>/">SUKRUPA</a></h1>
-            <a id="contact-us" href="<?php bloginfo('home'); ?>/contact/"><b>Contact Us</b></a>
+            <a id="contact-us" class="icon" href="<?php bloginfo('home'); ?>/contact/">Contact Us</a>
 		</div>
         <div class="prefix_30 cornerlinks">
-          <a href="<?php bloginfo('home'); ?>/contact/">Contact Us</a> | <a href="<?php bloginfo('home'); ?>/wp-admin/">Login</a>
+          <a id="login" href="<?php bloginfo('home'); ?>/wp-admin/">Login</a>
         </div>
 		<div id="search" class="prefix_7">
 		    <form id="searchForm" action="<?php echo get_option('home'); ?>" method="get" class="grid_5">
