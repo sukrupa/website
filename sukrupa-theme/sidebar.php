@@ -161,15 +161,11 @@
 	    </div>
     </div>
 
-    <!--script type="text/javascript">
-    $(document).ready(function() {
-       initSukrupaMap('mapCanvas');
-    });
-    </script-->
+   
     <div class="sidebarEntry">
         <div class="sidebarHeader">Visit Sukrupa</div>
 		<div class="sidebarContent">
-			Map shows directions from RT Neger Police Station to Sukrupa. For custom directions from a different location, click 'Get Directions' below.
+			Map shows directions from RT Nagar Police Station to Sukrupa. For custom directions from a different location, click 'Get Directions' below.
 		</div>
         <div id="mapCanvas">
 			<a href="http://maps.google.com/maps/ms?source=s_q&hl=en&geocode=&ie=UTF8&hq=&hnear=&msa=0&msid=215314882308192951750.0004a02a58dd0f0b83b28&ll=13.028788,77.594719&spn=0.016662,0.02326&z=16&iwloc=0004a02a6f59e763ba1a9">
@@ -200,6 +196,5 @@
 			<ul>
 		</div>
     </div>
-    
-</div>    a
+</div>
 </div>
