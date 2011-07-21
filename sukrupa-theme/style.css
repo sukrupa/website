@@ -18,7 +18,7 @@ Version: 0.2a
 ********************************************************************/
 body{background-color: #24333D; font-size: 14px; font-family: "century gothic",verdana,arial,helvetica,sans-serif; line-height: normal;}
 a {text-decoration: none;}
-a.hover{}
+a:hover{text-decoration: underline;}
 h1 {font-size: 1.2em; font-family: "century gothic",verdana,arial,helvetica,sans-serif;}
 h2 {text-align:left; color: #254965; font-size: 1.2em; display: block; margin: 5px 0 10px; border-bottom: 2px solid silver;}
 h3 {margin-top:5px; color: #254965; font-size: 1.1em; font-weight: bold; letter-spacing: .05em; font-family: "century gothic",verdana,arial,helvetica,sans-serif;}
