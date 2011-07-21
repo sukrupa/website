@@ -49,22 +49,22 @@ add_mysql_to_path() {
 check_if_apache_running() { 
     if ! ps ax | grep -v grep | grep bin/httpd > /dev/null 
     then 
-	echo "apache is not running." 
-	exit 1
+	echo "apache is not running."
+	return 0 
     else 
 	echo "apache is running..." 
-	exit 0
+    	return 1
     fi 
 } 
  
 check_if_mysql_running() { 
     if ! ps ax | grep -v grep | grep bin/mysqld > /dev/null 
     then 
-	echo "mysql is not running." 
-	exit 1
+	echo "mysql is not running."
+	return 0 
     else 
-	echo "mysql is running..." 
-	exit 0
+	echo "mysql is running..."
+	return 1 
     fi 
 } 
  
