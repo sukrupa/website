@@ -101,7 +101,7 @@
                for($i=0;$i<$listCount;$i=$i+2)
                 echo  "<tr>
                     <td><a href=$smallPipelineDonationPageLink?itemName=".str_replace(" ","-",$smallNeedList[$i]).">" .$smallNeedList[$i]."</a></td>
-                    <td>".$smallNeedList[$i+1] ."</td>
+                    <td>".(int)$smallNeedList[$i+1] ."</td>
                 </tr>"
                 ?>
               </table>
