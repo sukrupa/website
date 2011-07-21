@@ -1,13 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
 check_os() {
 	OS=`uname`
 
-	if [ $OS == "Linux" ]; then
+	if [ $OS = "Linux" ]; then
 	    OS=linux
 	    XAMPP_PATH=/opt/lampp/bin
 	    echo "You are using linux :)"
-	elif [ $OS == "Darwin" ]; then
+	elif [ $OS = "Darwin" ]; then
 	    OS=mac
 	    XAMPP_PATH=/Applications/XAMPP/xamppfiles/bin
 	    echo "You are using mac :)"
@@ -33,7 +33,12 @@ add_mysql_to_path() {
 	if [ -d $XAMPP_PATH ] && [[ ":$PATH:" != *":$XAMPP_PATH:"* ]]; then
 	    PATH=$XAMPP_PATH:$PATH
 	    export PATH
-	    echo "XAMPP successfully added to your path."
+ 	    touch ~/.bash_profile
+	    if ! grep -q $XAMPP_PATH ~/.bash_profile ; then
+		echo "PATH=$XAMPP_PATH:$PATH" >> ~/.bash_profile
+		echo "export PATH" >> ~/.bash_profile
+		echo "XAMPP successfully added to your path."
+	    fi
 	else
 	    echo "XAMPP already on your path."
 	fi
