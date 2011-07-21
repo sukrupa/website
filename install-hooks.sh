@@ -46,9 +46,37 @@ add_mysql_to_path() {
 	echo "Your path is now $PATH"
 }
 
-check_os
-install_hooks
-add_mysql_to_path
-sh .git/hooks/post-merge
+check_if_apache_running() { 
+    if ! ps ax | grep -v grep | grep bin/httpd > /dev/null 
+    then 
+	echo "apache is not running." 
+	exit 1
+    else 
+	echo "apache is running..." 
+	exit 0
+    fi 
+} 
+ 
+check_if_mysql_running() { 
+    if ! ps ax | grep -v grep | grep bin/mysqld > /dev/null 
+    then 
+	echo "mysql is not running." 
+	exit 1
+    else 
+	echo "mysql is running..." 
+	exit 0
+    fi 
+} 
+ 
+if ! check_if_apache_running && check_if_mysql_running
+then
+    echo "XAMPP does not appear to be running, please start it and run 
+ 	this script again"
+    else
+	check_os
+	install_hooks
+	add_mysql_to_path
+	sh .git/hooks/post-merge
+	echo "Hooks and database successfully installed"
+fi
 
-echo "Hooks and database successfully installed"

@@ -1,5 +1,5 @@
 #!/bin/sh
 echo 'dumping sukrupa_wordpress database into sukrupa_wordpress.sql ...'
-mysqldump -u root sukrupa_wordpress --skip-extended-insert > sukrupa_wordpress.dump.sql
+mysqldump -u root sukrupa_wordpress --skip-extended-insert --skip-dump-date > sukrupa_wordpress.dump.sql
 git add sukrupa_wordpress.dump.sql 
 exit 0
