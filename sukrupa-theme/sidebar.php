@@ -150,19 +150,6 @@
 	<?php endif; ?>
 
     <div class="sidebarEntry">
-        <?php $query = new WP_Query('showposts=3&meta_key=studentdisplay');?>
-	    	<?php if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();?>
-            <div class="sidebarHeader"><?php the_title();?></div>
-	    <div class="sidebarGuts">
-                <?php the_excerpt();
-                endwhile;
-                endif;
-                ?>
-	    </div>
-    </div>
-
-   
-    <div class="sidebarEntry">
         <div class="sidebarHeader">Visit Sukrupa</div>
 		<div class="sidebarContent">
 			Map shows directions from RT Nagar Police Station to Sukrupa. For custom directions from a different location, click 'Get Directions' below.
@@ -196,5 +183,19 @@
 			<ul>
 		</div>
     </div>
+
+    <div class="sidebarEntry">
+        <?php $query = new WP_Query('showposts=3&meta_key=studentdisplay');?>
+	    	<?php if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();?>
+            <div class="sidebarHeader"><?php the_title();?></div>
+	    <div class="sidebarGuts">
+                <?php the_excerpt();
+                endwhile;
+                endif;
+                ?>
+	    </div>
+    </div>
+
+
 </div>
 </div>
