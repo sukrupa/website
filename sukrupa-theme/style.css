@@ -89,10 +89,6 @@ a#fl{ background: url(img/18px_sprites.png) no-repeat 0% 39%; }
 .sidebarGuts{background: #EBE8E5; padding: 5px; float: left; width: 200px; margin-left: -3px;margin-top: 12px;}
 .sidebarEntry{width: 220px; float: left; margin-bottom: 10px;}
 
-/* Small Needs
-********************************************************************/
-#smallNeedsTable {font-family: Palatino, Georgia, serif; font-size: 90%;}
-
 /* Progress Bars - allows styling of progress bars to be separated from content
 ********************************************************************/
 .progressBar {width:200px; height:25px; background-color:#ccc; margin-bottom:30px;}
