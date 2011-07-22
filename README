@@ -1,5 +1,14 @@
 SUGGESTED PHP CODING STANDARDS
 
+INITIAL SETUP
+In order to install the sukrupa-website run 
+./mac.sh (if you are a mac user)
+./linux.sh (if you are a linux user)
+NOTE: these scripts should only ever be run once. To start and stop XAMPP use the XAMPP control panel.
+For windows installation refer to the manual steps in mingle instance
+Next, with XAMPP running, run ". ./install-hooks.sh" (This will install some git hooks that will import and export the wordpress database from a dump file upon commit and pull respectively, reflecting any changes in database into the git repository). This script only needs to be run once, the hooks operate automagically from here on :)
+
+
 AUTOMATION
 http://beta.phpformatter.com/
 

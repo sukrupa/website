@@ -69,7 +69,7 @@ check_if_mysql_running() {
     fi 
 } 
  
-if ! [[ $OS!="windows" ]] && check_if_apache_running && check_if_mysql_running
+if ! [[ $OS=="windows" ]] && check_if_apache_running && check_if_mysql_running
 then
     echo "XAMPP does not appear to be running, please start it and run 
  	this script again"

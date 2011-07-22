@@ -1,2 +1,5 @@
 #donateLink{position: absolute; top: 5px; right: 0;}
 .progressMeter{position: absolute; top:5px; left:0;}
+#content #sidebar{width: 200px;}
+#navigation a {float:left;}
+.carouselText {width: 330px; background-image: none; background-color: #333;}
