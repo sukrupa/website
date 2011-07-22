@@ -2,7 +2,7 @@ function ajaxPost() {
     if (validateForm()) {
         var subscriberName = $("input#fm_name").val();
         var subscriberEmail = $("input#fm_email").val();
-        var datastring = 'subscriberName=' + subscriberName + '&subscriberEmail=' + subscriberEmail;
+        var datastring = 'subscriberName=' + subscriberName.replace(" ", "_") + '&subscriberEmail=' + encodeURIComponent(subscriberEmail);
         $.ajax({
             type:"POST",
             url: "../ajaxproxy.php",

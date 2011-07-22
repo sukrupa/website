@@ -1,5 +1,5 @@
 <?php
-if ( $_SERVER['HTTP_HOST'] == 'localhost' ) {
+if ( $_SERVER['HTTP_HOST'] == 'sukrupa.localhost' ) {
     $school_admin_server = 'http://localhost:8080';
 } else {
     $school_admin_server = 'http://school.sukrupa.org';
