@@ -68,7 +68,13 @@
           </a>
 
 
-			<div style="float:left;margin-top:10px;color:black" ><?php the_excerpt(); ?></div>
+			<div style="float:left;margin-top:10px;color:black" >
+			<p style="font-size:15px">Join our current fundraising
+			campaign to purchase a new <?php echo
+			$highPriorityBigNeedItem; ?> for SUKRUPA by <a
+			style="color: #0000ff; font-size: 90%"
+			href="<?php bloginfo('home');
+			?>/big-pipe-line-donation">clicking here!</a></p></div>
 		<?php endwhile; endif; ?>
 		</div>
 	</div>
