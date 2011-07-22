@@ -106,12 +106,18 @@ create_database_if_missing() {
 
 install_wordpress() {
     echo "- extracting wordpress binary"
-    mkdir -p logs/
     rm -rf installed-wordpress/
     unzip -qo lib/wordpress.zip -d .
     mv wordpress installed-wordpress
     cp -f lib/wp-config.php installed-wordpress/
     cp -f lib/.htaccess installed-wordpress/
+
+    setup_wordpress_theme_content_and_plugins
+}
+
+setup_wordpress_theme_content_and_plugins() {
+    echo "- Updating theme, static content and plugins"
+    mkdir -p logs/
     cp -f content/favicon.ico installed-wordpress/
     ln -sf `pwd`/sukrupa-theme/ ./installed-wordpress/wp-content/themes/sukrupa
     ln -sf `pwd`/content/ ./installed-wordpress/content
@@ -119,18 +125,7 @@ install_wordpress() {
     cp -fr `pwd`/plugins/sukrupa-calendar ./installed-wordpress/wp-content/plugins/
     cp -f  `pwd`/lib/rss2.xsl ./installed-wordpress/
     cp -f  `pwd`/lib/wp-includes/feed-rss2.php ./installed-wordpress/wp-includes/
-    #ln -sf `pwd`/plugins/sukrupa-forms ./installed-wordpress/wp-content/plugins/sukrupa-forms
-
-}
-
-setup_wordpress_for_production() {
-    echo "- Updating production theme, static content and plugins"
-    mkdir -p logs/
-    cp -f content/favicon.ico installed-wordpress/
-    ln -sf `pwd`/sukrupa-theme/ ./installed-wordpress/wp-content/themes/sukrupa
-    ln -sf `pwd`/content/ ./installed-wordpress/content
-    cp -fr `pwd`/plugins/sukrupa-forms ./installed-wordpress/wp-content/plugins/
-    cp -fr `pwd`/plugins/sukrupa-calendar ./installed-wordpress/wp-content/plugins/
+    cp -f  `pwd`/sukrupa-theme/ajaxproxy.php ./installed-wordpress/
     #ln -sf `pwd`/plugins/sukrupa-forms ./installed-wordpress/wp-content/plugins/sukrupa-forms
 }
 
@@ -219,7 +214,7 @@ do
 		;;
 		
 	P)
-		setup_wordpress_for_production
+		setup_wordpress_theme_content_and_plugins
 		;;
 		
 	*)
