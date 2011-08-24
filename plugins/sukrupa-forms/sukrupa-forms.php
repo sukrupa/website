@@ -2073,10 +2073,12 @@ function ddfm_gen_selrecip($item) {
 
 		// This is the error bit!
 		$errorHtml = '';
-		
-		if( $fs_email != $fs_confirmemail)
-		{
-			$errors[] = "Emails don't match";
+		// This is to check that the sponsorship form doesn't have confirm email field.
+		if($fs_confirmemail) {
+			if( $fs_email != $fs_confirmemail)
+			{
+				$errors[] = "Emails don't match";
+			}
 		}
 		
 		if ($errors) {
