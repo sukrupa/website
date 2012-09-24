@@ -32,10 +32,11 @@ $(document).ready(function() {
 	    endwhile;
 	    endif;?>
 	    <div id="masonry">
-	    	<img src="<?php bloginfo('home'); ?>/content/dancing.jpeg" width="160" height="165" />
+	    	<object width="400" height="300"> <param name="flashvars" value="offsite=true&lang=en-us&page_show_url=%2Fphotos%2F87543005%40N03%2Fshow%2F&page_show_back_url=%2Fphotos%2F87543005%40N03%2F&user_id=87543005@N03&jump_to="></param> <param name="movie" value="http://www.flickr.com/apps/slideshow/show.swf?v=109615"></param> <param name="allowFullScreen" value="true"></param><embed type="application/x-shockwave-flash" src="http://www.flickr.com/apps/slideshow/show.swf?v=109615" allowFullScreen="true" flashvars="offsite=true&lang=en-us&page_show_url=%2Fphotos%2F87543005%40N03%2Fshow%2F&page_show_back_url=%2Fphotos%2F87543005%40N03%2F&user_id=87543005@N03&jump_to=" width="400" height="300"></embed></object>
+<!-- 	    	<img src="<?php bloginfo('home'); ?>/content/dancing.jpeg" width="160" height="165" />
 	    	<img src="<?php bloginfo('home'); ?>/content/download.jpeg" width="160" height="176" />
 	        <img src="<?php bloginfo('home'); ?>/content/krupa.jpeg" width="160" height="185" />	
-	        <img src="<?php bloginfo('home'); ?>/content/krupaandkids.jpeg" width="160" height="120" />    	
+	        <img src="<?php bloginfo('home'); ?>/content/krupaandkids.jpeg" width="160" height="120" />   -->  	
 	    	<!-- <img src="<?php bloginfo('home'); ?>/content/village.jpeg" width="330" height="248" /> -->
 <!-- 	    	<img src="<?php bloginfo('home'); ?>/content/lightingfire.jpeg" width="330" height="186" /> -->
 	    </div>
